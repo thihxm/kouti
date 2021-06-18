@@ -19,26 +19,21 @@ struct TagButton: View {
     }
     
     var body: some View {
-        VStack {
-            Text(category.rawValue)
-                .font(.body)
-                .fontWeight(.semibold)
-                .foregroundColor(category.getColor())
-                .padding(.horizontal, 16)
-                .padding(.vertical, 6)
-                .background(
-                    RoundedRectangle(cornerRadius: 50)
-                        .fill(colorScheme == .dark ? Color("light1"): Color("light4"))
-                        .shadow(color: Color("dark4"), radius: 4, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 40)
-                        .stroke(category.getColor(), lineWidth: self.hasBorder ? 2 : 0)
-                )
-                
-        }
-        
-        
+        Text(category.rawValue)
+            .font(.body)
+            .fontWeight(.semibold)
+            .foregroundColor(category.getColor())
+            .padding(.horizontal, 16)
+            .padding(.vertical, 6)
+            .background(
+                RoundedRectangle(cornerRadius: 50)
+                    .fill(colorScheme == .dark ? Color("light1"): Color("light4"))
+                    .shadow(color: Color("dark4"), radius: 4, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 40)
+                    .stroke(category.getColor(), lineWidth: self.hasBorder ? 2 : 0)
+            )
     }
 }
 
