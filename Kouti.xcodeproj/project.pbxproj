@@ -17,6 +17,7 @@
 		AF4E72B8267D245800861358 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B7267D245800861358 /* Category.swift */; };
 		AF4E72BA267D285600861358 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B9267D285600861358 /* TaskModel.swift */; };
 		AF4E72BC267D2B0A00861358 /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72BB267D2B0A00861358 /* Days.swift */; };
+		AF4E72BE267D327400861358 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72BD267D327400861358 /* HistoryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AF4E72B7267D245800861358 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		AF4E72B9267D285600861358 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		AF4E72BB267D2B0A00861358 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
+		AF4E72BD267D327400861358 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				AF4E72B5267D23E300861358 /* TitleModel.swift */,
 				AF4E72B0267D21C600861358 /* UserModel.swift */,
+				AF4E72BD267D327400861358 /* HistoryModel.swift */,
 				AF4E72B9267D285600861358 /* TaskModel.swift */,
 				AF4E72B2267D230200861358 /* MonsterModel.swift */,
 			);
@@ -174,6 +177,7 @@
 			files = (
 				AF4E72B6267D23E300861358 /* TitleModel.swift in Sources */,
 				AF4E72A3267D1B1500861358 /* ContentView.swift in Sources */,
+				AF4E72BE267D327400861358 /* HistoryModel.swift in Sources */,
 				AF4E72B1267D21C600861358 /* UserModel.swift in Sources */,
 				AF4E72B3267D230200861358 /* MonsterModel.swift in Sources */,
 				AF4E72A1267D1B1500861358 /* KoutiApp.swift in Sources */,
