@@ -12,5 +12,5 @@ struct TaskModel {
     let tag: Category
     let frequency: [Bool]
     let notifications: [DateComponents]
-    let monster: MosterModel
+    let monster: MonsterModel
 }
