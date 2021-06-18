@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MosterModel {
+struct MonsterModel {
     let name: String
     let description: String = ""
     let category: Category

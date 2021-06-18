@@ -17,6 +17,7 @@
 		AF4E72B8267D245800861358 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B7267D245800861358 /* Category.swift */; };
 		AF4E72BA267D285600861358 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B9267D285600861358 /* TaskModel.swift */; };
 		AF4E72BC267D2B0A00861358 /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72BB267D2B0A00861358 /* Days.swift */; };
+		FA79FEA3267D2FC2001D865D /* BestiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79FEA2267D2FC2001D865D /* BestiaryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AF4E72B7267D245800861358 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		AF4E72B9267D285600861358 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		AF4E72BB267D2B0A00861358 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
+		FA79FEA2267D2FC2001D865D /* BestiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestiaryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				AF4E72B0267D21C600861358 /* UserModels.swift */,
 				AF4E72B9267D285600861358 /* TaskModel.swift */,
 				AF4E72B2267D230200861358 /* MonsterModel.swift */,
+				FA79FEA2267D2FC2001D865D /* BestiaryModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				AF4E72B3267D230200861358 /* MonsterModel.swift in Sources */,
 				AF4E72A1267D1B1500861358 /* KoutiApp.swift in Sources */,
 				AF4E72B8267D245800861358 /* Category.swift in Sources */,
+				FA79FEA3267D2FC2001D865D /* BestiaryModel.swift in Sources */,
 				AF4E72BC267D2B0A00861358 /* Days.swift in Sources */,
 				AF4E72BA267D285600861358 /* TaskModel.swift in Sources */,
 			);
