@@ -9,5 +9,5 @@ import Foundation
 
 struct TitleModel {
     let label: String
-    let monsters: [MosterModel]
+    let monsters: [MonsterModel]
 }
