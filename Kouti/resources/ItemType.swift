@@ -8,9 +8,9 @@
 import Foundation
 
 enum ItemType {
-    case top
-    case bottom
-    case hat
-    case powerUp
-    case title
+    case top,
+         bottom,
+         hat,
+         powerUp,
+         title
 }

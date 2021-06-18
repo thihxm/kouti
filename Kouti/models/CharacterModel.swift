@@ -14,4 +14,17 @@ struct CharacterModel {
     var money: Int
     var inventory: InventoryModel
     var bestiary: Bestiary
+    
+    mutating func receiveExperience(amount: Int) {
+        let experienceNeededForLevel = Int(pow(Double(2), Double(level)))
+        let newExperienceValue = experience + amount
+        
+        if (newExperienceValue > experienceNeededForLevel) {
+            experience =  newExperienceValue - experienceNeededForLevel
+            level += 1
+        }
+        else {
+            experience = newExperienceValue
+        }
+    }
 }
