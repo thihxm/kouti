@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct MosterModel {
+    let name: String
+    let description: String = ""
+    let category: Category
+    let titles: [TitleModel]
+}
