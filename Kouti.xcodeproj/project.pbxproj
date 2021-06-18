@@ -12,6 +12,11 @@
 		AF4E72A5267D1B1600861358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF4E72A4267D1B1600861358 /* Assets.xcassets */; };
 		AF4E72A8267D1B1600861358 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF4E72A7267D1B1600861358 /* Preview Assets.xcassets */; };
 		AF4E72B1267D21C600861358 /* UserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B0267D21C600861358 /* UserModels.swift */; };
+		AF4E72B3267D230200861358 /* MonsterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B2267D230200861358 /* MonsterModel.swift */; };
+		AF4E72B6267D23E300861358 /* TitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B5267D23E300861358 /* TitleModel.swift */; };
+		AF4E72B8267D245800861358 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B7267D245800861358 /* Category.swift */; };
+		AF4E72BA267D285600861358 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B9267D285600861358 /* TaskModel.swift */; };
+		AF4E72BC267D2B0A00861358 /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72BB267D2B0A00861358 /* Days.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		AF4E72A7267D1B1600861358 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AF4E72A9267D1B1600861358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF4E72B0267D21C600861358 /* UserModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModels.swift; sourceTree = "<group>"; };
+		AF4E72B2267D230200861358 /* MonsterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterModel.swift; sourceTree = "<group>"; };
+		AF4E72B5267D23E300861358 /* TitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleModel.swift; sourceTree = "<group>"; };
+		AF4E72B7267D245800861358 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		AF4E72B9267D285600861358 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		AF4E72BB267D2B0A00861358 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,7 @@
 		AF4E729F267D1B1500861358 /* Kouti */ = {
 			isa = PBXGroup;
 			children = (
+				AF4E72B4267D23C500861358 /* resources */,
 				AF4E72AF267D21B500861358 /* models */,
 				AF4E72A0267D1B1500861358 /* KoutiApp.swift */,
 				AF4E72A2267D1B1500861358 /* ContentView.swift */,
@@ -75,9 +86,21 @@
 		AF4E72AF267D21B500861358 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				AF4E72B5267D23E300861358 /* TitleModel.swift */,
 				AF4E72B0267D21C600861358 /* UserModels.swift */,
+				AF4E72B9267D285600861358 /* TaskModel.swift */,
+				AF4E72B2267D230200861358 /* MonsterModel.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		AF4E72B4267D23C500861358 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF4E72B7267D245800861358 /* Category.swift */,
+				AF4E72BB267D2B0A00861358 /* Days.swift */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +172,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF4E72B6267D23E300861358 /* TitleModel.swift in Sources */,
 				AF4E72A3267D1B1500861358 /* ContentView.swift in Sources */,
 				AF4E72B1267D21C600861358 /* UserModels.swift in Sources */,
+				AF4E72B3267D230200861358 /* MonsterModel.swift in Sources */,
 				AF4E72A1267D1B1500861358 /* KoutiApp.swift in Sources */,
+				AF4E72B8267D245800861358 /* Category.swift in Sources */,
+				AF4E72BC267D2B0A00861358 /* Days.swift in Sources */,
+				AF4E72BA267D285600861358 /* TaskModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
