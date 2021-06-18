@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Category: String {
     case health = "Saúde",
@@ -13,4 +14,19 @@ enum Category: String {
          learning = "Aprendizado",
          work = "Trabalho",
          financial = "Financeiro"
+    
+    func getColor() -> Color {
+        switch self {
+        case .financial:
+            return Color("yellow")
+        case .entertainment:
+            return Color("red")
+        case .learning:
+            return Color("purple")
+        case .work:
+            return Color("blue")
+        default: // Health is set as default
+            return Color("green")
+        }
+    }
 }
