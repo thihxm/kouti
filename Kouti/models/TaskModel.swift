@@ -10,7 +10,7 @@ import Foundation
 struct TaskModel {
     let name: String
     let tag: Category
-    let frequency: [Bool]
+    let frequency: Set<Days>
     let notifications: [DateComponents]
     let monster: MosterModel
 }
