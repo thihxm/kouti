@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TagButton: View {
+    @Environment(\.colorScheme) var colorScheme
+
     let category: Category
     let hasBorder: Bool
     
@@ -26,7 +28,7 @@ struct TagButton: View {
                 .padding(.vertical, 6)
                 .background(
                     RoundedRectangle(cornerRadius: 50)
-                        .fill(Color("light1"))
+                        .fill(colorScheme == .dark ? Color("light1"): Color("light4"))
                         .shadow(color: Color("dark4"), radius: 4, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
                 )
                 .overlay(
@@ -43,6 +45,5 @@ struct TagButton: View {
 struct TagButton_Previews: PreviewProvider {
     static var previews: some View {
         TagButton(.health, hasBorder: true)
-            .preferredColorScheme(.dark)
     }
 }
