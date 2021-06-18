@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum Days: String {
-    case sunday = "d",
-         monday = "s",
-         tuesday = "t",
-         wednesday = "q",
-         thursday = "q",
-         friday = "s",
-         saturday = "s"
+enum Days {
+    case sunday,
+         monday,
+         tuesday,
+         wednesday,
+         thursday,
+         friday,
+         saturday
 }
