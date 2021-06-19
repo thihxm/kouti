@@ -26,17 +26,17 @@ struct TagButton: View {
                 .font(.body)
                 .foregroundColor(category.getColor())
                 .fontWeight(.semibold)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 6)
+                .background(colorScheme == .dark ? Color("light1"): Color("light4")
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 50))
+                .shadow(color: Color("dark4"), radius: 4, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 50)
+                        .stroke(category.getColor(), lineWidth: self.hasBorder ? 2 : 0)
+                )
         })
-        .padding(.horizontal, 16)
-        .padding(.vertical, 6)
-        .background(colorScheme == .dark ? Color("light1"): Color("light4")
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 50))
-        .shadow(color: Color("dark4"), radius: 4, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
-        .overlay(
-            RoundedRectangle(cornerRadius: 50)
-                .stroke(category.getColor(), lineWidth: self.hasBorder ? 2 : 0)
-        )
     }
 }
 
