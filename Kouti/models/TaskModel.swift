@@ -13,4 +13,12 @@ struct TaskModel {
     let frequency: Set<Days>
     let notifications: [DateComponents]
     let monster: MonsterModel
+    var isComplete: Bool
+    
+    func frequencyDescription() -> String {
+        if frequency.count == 7 {
+            return "Todos os dias"
+        }
+        return frequency.map { $0.rawValue }.joined(separator: " - ")
+    }
 }

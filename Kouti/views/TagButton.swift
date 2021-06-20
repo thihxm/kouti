@@ -43,5 +43,6 @@ struct TagButton: View {
 struct TagButton_Previews: PreviewProvider {
     static var previews: some View {
         TagButton(.health, hasBorder: true, action: {})
+            
     }
 }
