@@ -19,6 +19,9 @@ struct TaskModel {
         if frequency.count == 7 {
             return "Todos os dias"
         }
-        return frequency.map { $0.rawValue }.joined(separator: " - ")
+        return frequency
+            .sorted { $0.rawValue < $1.rawValue }
+            .map { $0.getDescription() }
+            .joined(separator: " - ")
     }
 }

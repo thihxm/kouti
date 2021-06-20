@@ -7,12 +7,31 @@
 
 import Foundation
 
-enum Days: String {
-    case sunday = "DOM",
-         monday = "SEG",
-         tuesday = "TER",
-         wednesday = "QUA",
-         thursday = "QUI",
-         friday = "SEX",
-         saturday = "SAB"
+enum Days: Int {
+    case sunday = 0,
+         monday,
+         tuesday,
+         wednesday,
+         thursday,
+         friday,
+         saturday
+    
+    func getDescription() -> String {
+        switch self {
+            case .sunday:
+                return "Dom"
+            case .monday:
+                return "Seg"
+            case .tuesday:
+                return "Ter"
+            case .wednesday:
+                return "Qua"
+            case .thursday:
+                return "Qui"
+            case .friday:
+                return "Sex"
+            case .saturday:
+                return "Sab"
+        }
+    }
 }
