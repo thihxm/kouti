@@ -50,19 +50,7 @@ struct TagButton: View {
     
     var body: some View {
         Button(action: onClick) {
-            Text(category.rawValue)
-                .font(.body)
-                .foregroundColor(getTextColor())
-                .fontWeight(.semibold)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 6)
-                .background(getButtonBackgroundColor())
-                .clipShape(RoundedRectangle(cornerRadius: 50))
-                .shadow(color: Color("dark4"), radius: 3, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 50)
-                        .stroke(category.getColor(), lineWidth: self.hasBorder ? 2 : 0)
-                )
+            Tag(category.rawValue, hasBorder: false, textColor: getTextColor(), bgColor: getButtonBackgroundColor())
         }
     }
 }
