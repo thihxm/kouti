@@ -8,7 +8,7 @@
 import Foundation
 
 struct UserModel {
-    let character: CharacterModel
-    let tasks: [TaskModel]
-    let streak: Int    
+    var character: CharacterModel
+    var tasks: [TaskModel]
+    var streak: Int
 }

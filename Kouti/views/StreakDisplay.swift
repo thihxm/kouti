@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StreakDisplay: View {
-    @State var streakCount: Int
+    @Binding var streakCount: Int
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -36,8 +36,9 @@ struct StreakDisplay: View {
     }
 }
 
-struct StreakDisplay_Previews: PreviewProvider {
-    static var previews: some View {
-        StreakDisplay(streakCount: 4)
-    }
-}
+//struct StreakDisplay_Previews: PreviewProvider {
+//    @State var streak = 4
+//    static var previews: some View {
+//        StreakDisplay(streakCount: $streak)
+//    }
+//}

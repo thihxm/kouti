@@ -13,27 +13,28 @@ struct TaskButton: View {
     // TODO: Alguma modificação na aparência quando estiver completo?
     // TODO: Comportamento de slide para abrir opções. Quais são os comportamentos que devem ser incluidos?
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .offset(y: bottomRectangleOffset)
-                .foregroundColor(task.tag.getColor())
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .foregroundColor(Color("grayBgButtons"))
-            HStack (alignment: .center) {
-                VStack (alignment: .leading, spacing: 10) {
-                    Text(task.name)
-                        .font(.system(size: 17, weight: .bold, design: .default))
-                    Text(task.frequencyDescription())
-                        .font(.footnote)
-                }
-                Spacer()
-                makeCompleteButton()
-            }.padding()
-        }.frame(maxHeight: 68)
+        Button(action: {task.isComplete.toggle()})
+        {
+            ZStack {
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .offset(y: bottomRectangleOffset)
+                    .foregroundColor(task.tag.getColor())
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .foregroundColor(Color("grayBgButtons"))
+                HStack (alignment: .center) {
+                    VStack (alignment: .leading, spacing: 10) {
+                        Text(task.name)
+                            .font(.system(size: 17, weight: .bold, design: .default))
+                        Text(task.frequencyDescription())
+                            .font(.footnote)
+                    }
+                    Spacer()
+                    makeCompleteButton()
+                }.padding()
+            }.frame(maxHeight: 68)
+        }.foregroundColor(.black)
+        .animation(.easeOut)
         .padding()
-        .onTapGesture {
-            task.isComplete.toggle()
-        }
     }
     
     @ViewBuilder

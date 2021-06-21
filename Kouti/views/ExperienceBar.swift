@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExperienceBar: View {
-    @State var character: CharacterModel
+    @Binding var character: CharacterModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -34,8 +34,8 @@ struct ExperienceBar: View {
     }
 }
 
-struct ExperienceBar_Previews: PreviewProvider {
-    static var previews: some View {
-        ExperienceBar(character: CharacterModel(name: "Camaradinha", level: 12, experience: 3000, money: 10, inventory: InventoryModel(items: [], equipedItems: []), bestiary: Bestiary(monsterColletion: [:])))
-    }
-}
+//struct ExperienceBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ExperienceBar(character: CharacterModel(name: "Camaradinha", level: 12, experience: 3000, money: 10, inventory: InventoryModel(items: [], equipedItems: []), bestiary: Bestiary(monsterColletion: [:])))
+//    }
+//}

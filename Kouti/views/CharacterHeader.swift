@@ -14,6 +14,7 @@ struct CharacterHeader: View {
     var body: some View {
         let title = user.character.inventory.equipedItems.filter { $0.type == .title }.first
         
+        VStack {
         HStack (alignment: .top, spacing: 12)
         {
             Circle()
@@ -24,13 +25,33 @@ struct CharacterHeader: View {
                     .font(.headline)
                 Text("\(title?.name ?? "")")
                     .font(.subheadline)
-                ExperienceBar(character: user.character)
+                ExperienceBar(character: $user.character)
                     .padding(.top)
-                StreakDisplay(streakCount: user.streak)
+                StreakDisplay(streakCount: $user.streak)
             }
-        }.padding(.horizontal, 30)
-        .background(Color("bgOpcional"))
+        }
         
+            Button(
+                action: {user.character.receiveExperience(amount: 300)},
+                label: {
+                    Text("Give exp")
+                }
+            )
+            
+            Button(
+                action: {user.streak += 1},
+                label: {
+                    Text("Give streak")
+                }
+            )
+            
+            Button(
+                action: {user.streak = 0},
+                label: {
+                    Text("Reset streak")
+                }
+            )
+        }.padding()
     }
 }
 
