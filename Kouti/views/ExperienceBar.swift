@@ -23,7 +23,7 @@ struct ExperienceBar: View {
                     RoundedRectangle(cornerRadius: 25)
                         .frame(width: CGFloat(character.percentageExperience)*geometry.size.width, height: geometry.size.height)
                         .foregroundColor(.black)
-                }
+                }.animation(.easeOut)
             }
             HStack {
                 Spacer()
@@ -34,8 +34,9 @@ struct ExperienceBar: View {
     }
 }
 
+// Pra usar o preview precisa alterar @Binding para @State na linha 11 e descomentar abaixo
 //struct ExperienceBar_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ExperienceBar(character: CharacterModel(name: "Camaradinha", level: 12, experience: 3000, money: 10, inventory: InventoryModel(items: [], equipedItems: []), bestiary: Bestiary(monsterColletion: [:])))
+//        ExperienceBar(character: CharacterModel(name: "Camaradinha", level: 12, experience: 3000, money: 10, inventory: InventoryModel(items: [], equipedItems: []), bestiary: BestiaryModel(monsterCollection: [:])))
 //    }
 //}

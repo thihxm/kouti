@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: A animação pode melhorar, acender e apagar a chama devagar
 struct StreakDisplay: View {
     @Binding var streakCount: Int
     
@@ -20,6 +21,7 @@ struct StreakDisplay: View {
     
     @ViewBuilder
     func flameDisplay() -> some View {
+        // TODO: Consertar a forma com que o streak é contado
         let litFlames = min(7, streakCount)
         
         // TODO: A imagem está pixelada, estudar @2x, @3x para ver se resolve
@@ -32,13 +34,12 @@ struct StreakDisplay: View {
             Image(litFlames >= 6 ? "litFlame" : "unlitFlame")
             Image(litFlames >= 7 ? "litFlame" : "unlitFlame")
         }
-        
     }
 }
 
+// Pra usar o preview precisa alterar @Binding para @State na linha 11 e descomentar abaixo
 //struct StreakDisplay_Previews: PreviewProvider {
-//    @State var streak = 4
 //    static var previews: some View {
-//        StreakDisplay(streakCount: $streak)
+//        StreakDisplay(streakCount: 4)
 //    }
 //}

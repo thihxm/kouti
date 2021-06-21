@@ -7,10 +7,20 @@
 
 import Foundation
 
-enum ItemType {
-    case top,
-         bottom,
-         hat,
-         powerUp,
-         title
+//enum ItemType {
+//    case top,
+//         bottom,
+//         hat,
+//         powerUp,
+//         sticker
+//}
+
+// TODO: A alteração com rawValue é temporária, para testar TelaPersonagemCompras. Voltar ao original quando itens tiverem nomes e representações definitivas
+enum ItemType: String {
+    case top = "camiseta",
+         bottom = "calca",
+         hat = "chapeu",
+         powerUp = "powerUp",
+         sticker = "adesivo",
+         title = "titulo"
 }

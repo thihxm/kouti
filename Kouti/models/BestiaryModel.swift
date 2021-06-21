@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Bestiary {
-    var monsterColletion: [MonsterModel: Int]
+struct BestiaryModel {
+    var monsterCollection: [MonsterModel: Int]
 }

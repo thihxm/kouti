@@ -11,4 +11,5 @@ struct ItemModel {
     var name: String
     var type: ItemType
     var price: Int
+    var amount: Int = 0
 }
