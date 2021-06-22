@@ -36,8 +36,8 @@
 		FAD6C9622681242D00134A83 /* Bestiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9612681242D00134A83 /* Bestiary.swift */; };
 		FAD6C9642681260D00134A83 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9632681260D00134A83 /* Items.swift */; };
 		FAD6C966268126DA00134A83 /* CharacterInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */; };
-		FAD6C96826821E2700134A83 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C96726821E2700134A83 /* TaskList.swift */; };
 		FAD6C96A2682262500134A83 /* TasksDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9692682262500134A83 /* TasksDisplay.swift */; };
+		FAD6C9702682586F00134A83 /* TagSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C96F2682586F00134A83 /* TagSelector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,8 +72,8 @@
 		FAD6C9612681242D00134A83 /* Bestiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bestiary.swift; sourceTree = "<group>"; };
 		FAD6C9632681260D00134A83 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoDisplay.swift; sourceTree = "<group>"; };
-		FAD6C96726821E2700134A83 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		FAD6C9692682262500134A83 /* TasksDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksDisplay.swift; sourceTree = "<group>"; };
+		FAD6C96F2682586F00134A83 /* TagSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +157,8 @@
 			children = (
 				AF4E72C0267D381900861358 /* TagButton.swift */,
 				AF2D3C132681205200878238 /* Tag.swift */,
+				FAD6C96F2682586F00134A83 /* TagSelector.swift */,
 				FA612C9F267F836B002BDDC2 /* TaskButton.swift */,
-				FAD6C96726821E2700134A83 /* TaskList.swift */,
 				FAD6C9692682262500134A83 /* TasksDisplay.swift */,
 				FA612CA1267FA086002BDDC2 /* ExperienceBar.swift */,
 				FA612CA3267FA4FF002BDDC2 /* StreakDisplay.swift */,
@@ -245,6 +245,7 @@
 			files = (
 				AF99CEC92680FB7800AD151A /* TagList.swift in Sources */,
 				AF4E72B6267D23E300861358 /* TitleModel.swift in Sources */,
+				FAD6C9702682586F00134A83 /* TagSelector.swift in Sources */,
 				FAD6C9622681242D00134A83 /* Bestiary.swift in Sources */,
 				FA79FEAB267D31DD001D865D /* ItemType.swift in Sources */,
 				AF2D3C1A26817A1700878238 /* NotificationTimePicker.swift in Sources */,
@@ -266,7 +267,6 @@
 				FA612CA0267F836B002BDDC2 /* TaskButton.swift in Sources */,
 				AF2D3C16268122FB00878238 /* NewHabitView.swift in Sources */,
 				FA79FEA3267D2FC2001D865D /* BestiaryModel.swift in Sources */,
-				FAD6C96826821E2700134A83 /* TaskList.swift in Sources */,
 				FA79FEA9267D3159001D865D /* CharacterModel.swift in Sources */,
 				AF4E72C1267D381900861358 /* TagButton.swift in Sources */,
 				AF4E72BC267D2B0A00861358 /* Days.swift in Sources */,

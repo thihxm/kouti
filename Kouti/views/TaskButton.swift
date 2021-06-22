@@ -59,8 +59,8 @@ struct TaskButton: View {
 }
 
 
-struct TaskButton_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskButton(task: TaskModel(name: "Beber água", tag: .health, frequency: Set([.monday,.friday,.saturday,.sunday,.wednesday]), notifications: [], monster: MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true))
-    }
-}
+//struct TaskButton_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TaskButton(task: TaskModel(name: "Beber água", tag: .health, frequency: Set([.monday,.friday,.saturday,.sunday,.wednesday]), notifications: [], monster: MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true))
+//    }
+//}
