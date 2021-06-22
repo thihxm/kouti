@@ -8,18 +8,72 @@
 import SwiftUI
 
 struct NewHabitView: View {
+    @State var task: TaskModel = TaskModel(
+        name: "",
+        tag: .health,
+        frequency: [],
+        notifications: [],
+        monster: MonsterModel(name: "", category: .health, titles: []),
+        isComplete: false
+    )
     @State var allowNotification: Bool = false
     @State var missionTitle: String = ""
     @State var alertsTime: [Date] = []
     @State var selectedCategory: Category? = nil
     @State private var selectedDays: Set<Days> = []
     
-    init(selectedCategory: Category? = nil) {
-        self._selectedCategory = State(initialValue: selectedCategory)
+    init() {
+        self.task = TaskModel(
+            name: "",
+            tag: .health,
+            frequency: [],
+            notifications: [],
+            monster: MonsterModel(name: "", category: .health, titles: []),
+            isComplete: false
+        )
+        
+        self.allowNotification = false
+        self.missionTitle = ""
+        self.alertsTime = []
+        self.selectedCategory = nil
+        self.selectedDays = []
+    }
+    
+    init(task: TaskModel) {
+        self.task = task
+        
+        self._allowNotification = State(initialValue: !task.notifications.isEmpty)
+        self._missionTitle = State(initialValue: task.name)
+        self._alertsTime = State(initialValue: task.notifications.map {
+            let calendar = Calendar.current
+            return calendar.date(from: $0)!
+        })
+        self._selectedCategory = State(initialValue: task.tag)
+        self._selectedDays = State(initialValue: task.frequency)
     }
     
     func addAlert() {
         alertsTime.append(Date())
+    }
+    
+    // TODO: Generate a random monster or get current task Monster
+    func saveTask() {
+        let notifications: [DateComponents] = Array(Set(alertsTime.map {date in
+            let calendar = Calendar.current
+            let hour = calendar.component(.hour, from: date)
+            let minute = calendar.component(.minute, from: date)
+            
+            return DateComponents(hour: hour, minute: minute)
+        }))
+        
+        let task = TaskModel(
+            name: missionTitle,
+            tag: selectedCategory!,
+            frequency: selectedDays,
+            notifications: notifications,
+            monster: MonsterModel(name: "", category: .health, titles: []),
+            isComplete: false
+        )
     }
 
     var body: some View {
@@ -94,7 +148,7 @@ struct NewHabitView: View {
             }
             .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
             
-            Button(action: {}) {
+            Button(action: saveTask) {
                 Text("Salvar")
                     .font(.callout)
                     .foregroundColor(Color("dark3"))
@@ -113,6 +167,17 @@ struct NewHabitView: View {
 struct NewHabitView_Previews: PreviewProvider {
     static var previews: some View {
         NewHabitView()
+            .previewDisplayName("Vazio")
             .environment(\.locale, .init(identifier: "br"))
+        NewHabitView(task: TaskModel(
+            name: "Tomar água",
+            tag: .health,
+            frequency: [.monday, .tuesday, .wednesday, .friday],
+            notifications: [DateComponents(hour: 10, minute: 30), DateComponents(hour: 23, minute: 19)],
+            monster: MonsterModel(name: "", category: .health, titles: []),
+            isComplete: false
+        ))
+        .previewDisplayName("Passando Task")
+        .environment(\.locale, .init(identifier: "br"))
     }
 }
