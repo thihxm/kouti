@@ -9,7 +9,11 @@ import SwiftUI
 
 struct TagList: View {
     var hasBorder: Bool = false
-    @State var selectedCategory: Category = .health
+    @Binding var selectedCategory: Category?
+    
+    init(_ selectedCategory: Binding<Category?>) {
+        self._selectedCategory = selectedCategory
+    }
     
     var body: some View {
         ScrollView(.horizontal) {
@@ -24,6 +28,6 @@ struct TagList: View {
 
 struct TagList_Previews: PreviewProvider {
     static var previews: some View {
-        TagList()
+        TagList(.constant(.health))
     }
 }
