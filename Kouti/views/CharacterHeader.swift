@@ -57,6 +57,6 @@ struct CharacterHeader: View {
 
 struct CharacterHeader_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterHeader(user: UserModel(character: CharacterModel(name: "Camaradinha", level: 12, experience: 3000, money: 10, inventory: InventoryModel(items: [], equipedItems: [ItemModel(name: "Semideus Atlantico", type: .title, price: 0)]), bestiary: Bestiary(monsterColletion: [:])), tasks: [], streak: 15))
+        CharacterHeader(user: UserModel(character: CharacterModel(name: "Camaradinha", level: 12, experience: 3000, money: 10, inventory: InventoryModel(items: [], equipedItems: [ItemModel(name: "Semideus Atlantico", type: .title, price: 0)]), bestiary: BestiaryModel(monsterCollection: [:])), tasks: [], streak: 15))
     }
 }

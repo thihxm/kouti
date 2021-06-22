@@ -33,6 +33,9 @@
 		FA79FEA7267D30FD001D865D /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79FEA6267D30FD001D865D /* ItemModel.swift */; };
 		FA79FEA9267D3159001D865D /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79FEA8267D3159001D865D /* CharacterModel.swift */; };
 		FA79FEAB267D31DD001D865D /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79FEAA267D31DD001D865D /* ItemType.swift */; };
+		FAD6C9622681242D00134A83 /* Bestiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9612681242D00134A83 /* Bestiary.swift */; };
+		FAD6C9642681260D00134A83 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9632681260D00134A83 /* Items.swift */; };
+		FAD6C966268126DA00134A83 /* CharacterInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		FA79FEA6267D30FD001D865D /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		FA79FEA8267D3159001D865D /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		FA79FEAA267D31DD001D865D /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
+		FAD6C9612681242D00134A83 /* Bestiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bestiary.swift; sourceTree = "<group>"; };
+		FAD6C9632681260D00134A83 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,9 @@
 				AF99CECA2681083900AD151A /* DaysSelector.swift */,
 				AF2D3C15268122FB00878238 /* NewHabitView.swift */,
 				AF2D3C1926817A1700878238 /* NotificationTimePicker.swift */,
+				FAD6C9632681260D00134A83 /* Items.swift */,
+				FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */,
+				FAD6C9612681242D00134A83 /* Bestiary.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -230,10 +239,12 @@
 			files = (
 				AF99CEC92680FB7800AD151A /* TagList.swift in Sources */,
 				AF4E72B6267D23E300861358 /* TitleModel.swift in Sources */,
+				FAD6C9622681242D00134A83 /* Bestiary.swift in Sources */,
 				FA79FEAB267D31DD001D865D /* ItemType.swift in Sources */,
 				AF2D3C1A26817A1700878238 /* NotificationTimePicker.swift in Sources */,
 				AF4E72A3267D1B1500861358 /* ContentView.swift in Sources */,
 				AF99CECB2681083900AD151A /* DaysSelector.swift in Sources */,
+				FAD6C966268126DA00134A83 /* CharacterInfoDisplay.swift in Sources */,
 				FA612CA2267FA086002BDDC2 /* ExperienceBar.swift in Sources */,
 				AF2D3C142681205200878238 /* Tag.swift in Sources */,
 				AF4E72BE267D327400861358 /* HistoryModel.swift in Sources */,
@@ -244,6 +255,7 @@
 				FA79FEA7267D30FD001D865D /* ItemModel.swift in Sources */,
 				FA612CA4267FA4FF002BDDC2 /* StreakDisplay.swift in Sources */,
 				AF4E72B8267D245800861358 /* Category.swift in Sources */,
+				FAD6C9642681260D00134A83 /* Items.swift in Sources */,
 				FA612CA0267F836B002BDDC2 /* TaskButton.swift in Sources */,
 				AF2D3C16268122FB00878238 /* NewHabitView.swift in Sources */,
 				FA79FEA3267D2FC2001D865D /* BestiaryModel.swift in Sources */,
