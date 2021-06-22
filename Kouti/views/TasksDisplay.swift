@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TasksDisplay: View {
     @State var tasks: [TaskModel]
+    @State var selectedCategories: Set<Category>
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,8 +21,12 @@ struct TasksDisplay: View {
                     Image(systemName: "plus.app")
                 })
             }
-            TagList()
-            TaskList(tasks: tasks)
+            TagSelector($selectedCategories)
+            ScrollView {
+                ForEach(tasks.filter {selectedCategories.contains($0.tag) || selectedCategories.isEmpty}, id: \.self.name) { task in
+                    TaskButton(task: task)
+                }.animation(.easeInOut)
+            }
         }.padding()
     }
 }
@@ -72,7 +77,7 @@ struct TasksDisplay_Previews: PreviewProvider {
                  notifications: [],
                  monster:
                      MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true)
-            ]
+            ], selectedCategories: Set<Category>()
         )
     }
 }
