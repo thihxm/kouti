@@ -8,21 +8,32 @@
 import SwiftUI
 
 struct DaysSelector: View {
-    @State private var selectedDays = [Bool](repeating: false, count: Days.allCases.count)
+    @Binding var selectedDays: Set<Days>
     
-    func selectDay(_ index: Int) -> () -> () {
-        return { selectedDays[index].toggle() }
+    init(_ selectedDays: Binding<Set<Days>>) {
+        self._selectedDays = selectedDays
     }
     
-    func getBackgroundColor(_ index: Int) -> Color {
-        if selectedDays[index] {
+    func selectDay(_ day: Days) -> () -> () {
+        return {
+            if selectedDays.contains(day) {
+                selectedDays.remove(day)
+                return
+            }
+            selectedDays.insert(day)
+            
+        }
+    }
+    
+    func getBackgroundColor(_ day: Days) -> Color {
+        if selectedDays.contains(day) {
             return Color("bgSelectedItem")
         }
         return Color("grayCheckboxButtons")
     }
     
-    func getShadow(_ index: Int) -> Color {
-        if selectedDays[index] {
+    func getShadow(_ day: Days) -> Color {
+        if selectedDays.contains(day) {
             return .black.opacity(0.25)
         }
         return .clear
@@ -30,19 +41,19 @@ struct DaysSelector: View {
     
     var body: some View {
         HStack(spacing: 15) {
-            ForEach(selectedDays.indices) { index in
+            ForEach(Days.allCases, id: \.self) { day in
                 VStack(alignment: .center) {
-                    Button(action: selectDay(index)) {
-                        Text(Days.allCases[index].getDescription().prefix(1))
+                    Button(action: selectDay(day)) {
+                        Text(day.getDescription().prefix(1))
                             .font(.callout)
                             .foregroundColor(.white)
-                            .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+                            .textCase(.uppercase)
                     }
                 }
                 .frame(width: 24, height: 24, alignment: .center)
-                .background(getBackgroundColor(index))
+                .background(getBackgroundColor(day))
                 .cornerRadius(50)
-                .shadow(color: getShadow(index), radius: 4, x: 0.0, y: 4)
+                .shadow(color: getShadow(day), radius: 4, x: 0.0, y: 4)
                 .animation(.easeInOut(duration: 0.05))
             }
         }
@@ -51,6 +62,6 @@ struct DaysSelector: View {
 
 struct DaysSelector_Previews: PreviewProvider {
     static var previews: some View {
-        DaysSelector()
+        DaysSelector(.constant([]))
     }
 }

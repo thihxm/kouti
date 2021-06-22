@@ -9,12 +9,12 @@ import SwiftUI
 
 struct TagButton: View {
     @Environment(\.colorScheme) var colorScheme
-    @Binding var activeCategory: Category
+    @Binding var activeCategory: Category?
 
     let category: Category
     let hasBorder: Bool
     
-    init(_ category: Category, hasBorder: Bool = false, activeCategory: Binding<Category>) {
+    init(_ category: Category, hasBorder: Bool = false, activeCategory: Binding<Category?>) {
         self.category = category
         self.hasBorder = hasBorder
         self._activeCategory = activeCategory
@@ -57,6 +57,6 @@ struct TagButton: View {
 
 struct TagButton_Previews: PreviewProvider {
     static var previews: some View {
-        TagButton(.health, hasBorder: false, activeCategory: .constant(Category.health))
+        TagButton(.health, hasBorder: false, activeCategory: .constant(.health))
     }
 }
