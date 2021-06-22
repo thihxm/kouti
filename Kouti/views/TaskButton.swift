@@ -34,7 +34,7 @@ struct TaskButton: View {
             }.frame(maxHeight: 68)
         }.foregroundColor(.black)
         .animation(.easeOut)
-        .padding()
+        .padding(.vertical)
     }
     
     @ViewBuilder
