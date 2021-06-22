@@ -18,8 +18,14 @@ struct TasksDisplay: View {
                     .font(.system(size: 24, weight: .semibold, design: .default))
                 Spacer()
                 Button(action: {}, label: {
-                    Image(systemName: "plus.app")
+                    Image(systemName: "plus.app.fill")
+                        .accentColor(Color("grayCheckboxButtons"))
+                        .font(.system(size: 23, weight: .semibold, design: .default))
+                        .frame(width: 20, height: 20, alignment: .center)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
                 })
+                .shadow(color: .black.opacity(0.25), radius: 3, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
             }
             TagSelector($selectedCategories)
             ScrollView {
