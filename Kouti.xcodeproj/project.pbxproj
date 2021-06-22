@@ -38,6 +38,7 @@
 		FAD6C966268126DA00134A83 /* CharacterInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */; };
 		FAD6C96A2682262500134A83 /* TasksDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9692682262500134A83 /* TasksDisplay.swift */; };
 		FAD6C9702682586F00134A83 /* TagSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C96F2682586F00134A83 /* TagSelector.swift */; };
+		FAD6C972268260A700134A83 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C971268260A700134A83 /* MainPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoDisplay.swift; sourceTree = "<group>"; };
 		FAD6C9692682262500134A83 /* TasksDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksDisplay.swift; sourceTree = "<group>"; };
 		FAD6C96F2682586F00134A83 /* TagSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelector.swift; sourceTree = "<group>"; };
+		FAD6C971268260A700134A83 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				FAD6C9632681260D00134A83 /* Items.swift */,
 				FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */,
 				FAD6C9612681242D00134A83 /* Bestiary.swift */,
+				FAD6C971268260A700134A83 /* MainPageView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			files = (
 				AF99CEC92680FB7800AD151A /* TagList.swift in Sources */,
 				AF4E72B6267D23E300861358 /* TitleModel.swift in Sources */,
+				FAD6C972268260A700134A83 /* MainPageView.swift in Sources */,
 				FAD6C9702682586F00134A83 /* TagSelector.swift in Sources */,
 				FAD6C9622681242D00134A83 /* Bestiary.swift in Sources */,
 				FA79FEAB267D31DD001D865D /* ItemType.swift in Sources */,
