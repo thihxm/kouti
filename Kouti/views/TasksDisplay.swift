@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TasksDisplay: View {
     @State var tasks: [TaskModel]
-    @State var selectedCategories: Set<Category>
+    @State var selectedCategories: Set<Category> = Set<Category>()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -17,7 +17,9 @@ struct TasksDisplay: View {
                 Text("Meus hábitos")
                     .font(.system(size: 24, weight: .semibold, design: .default))
                 Spacer()
-                Button(action: {}, label: {
+                NavigationLink(
+                    destination: NewHabitView(),
+                    label: {
                     Image(systemName: "plus.app.fill")
                         .accentColor(Color("grayCheckboxButtons"))
                         .font(.system(size: 23, weight: .semibold, design: .default))
@@ -33,7 +35,10 @@ struct TasksDisplay: View {
                     TaskButton(task: task)
                 }.animation(.easeInOut)
             }
-        }.padding()
+        }.padding(.top, 25)
+        .padding(.horizontal, 20)
+        .background(Color.white)
+        .cornerRadius(16)
     }
 }
 
