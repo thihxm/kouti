@@ -9,9 +9,9 @@ import SwiftUI
 
 struct NotificationTimePicker: View {
     let label: String
-    @Binding var alertTime: Date
+    @State var alertTime: Date
     
-    init(_ label: String, alertTime: Binding<Date>) {
+    init(_ label: String, alertTime: State<Date> = State(initialValue: Date())) {
         self.label = label
         self._alertTime = alertTime
     }
@@ -33,7 +33,7 @@ struct NotificationTimePicker: View {
 
 struct NotificationTimePicker_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationTimePicker("Alerta 1", alertTime: .constant(Date()))
+        NotificationTimePicker("Alerta 1")
             .environment(\.locale, .init(identifier: "br"))
     }
 }

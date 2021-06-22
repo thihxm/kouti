@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TasksDisplay: View {
     @State var tasks: [TaskModel]
+    @State var selectedCategory: Category?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,7 +21,7 @@ struct TasksDisplay: View {
                     Image(systemName: "plus.app")
                 })
             }
-            TagList()
+            TagList($selectedCategory)
             TaskList(tasks: tasks)
         }.padding()
     }

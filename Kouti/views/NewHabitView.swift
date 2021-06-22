@@ -10,12 +10,16 @@ import SwiftUI
 struct NewHabitView: View {
     @State var allowNotification: Bool = false
     @State var missionTitle: String = ""
-    @State var alertTime = Date()
+    @State var alertsTime: [Date] = []
     @State var selectedCategory: Category? = nil
     @State private var selectedDays: Set<Days> = []
     
     init(selectedCategory: Category? = nil) {
         self._selectedCategory = State(initialValue: selectedCategory)
+    }
+    
+    func addAlert() {
+        alertsTime.append(Date())
     }
 
     var body: some View {
@@ -58,27 +62,37 @@ struct NewHabitView: View {
                             }
                             .toggleStyle(SwitchToggleStyle(tint: Color("bgSelectedItem")))
                             .padding(.bottom, 30)
-                            .onChange(of: allowNotification, perform: { value in
-                                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/
-                            })
                             
                             
                             if allowNotification {
-                                NotificationTimePicker("Alerta 1", alertTime: $alertTime)
+                                VStack {
+                                    VStack(spacing: 0) {
+                                        ForEach(alertsTime, id:\.self) { alertTime in
+                                            NotificationTimePicker("Alerta \(alertsTime.firstIndex(of: alertTime)! + 1)", alertTime: State(initialValue: alertTime))
+                                        }
+                                    }
+                                    Spacer()
+                                    Button(action: addAlert) {
+                                        Spacer()
+                                        Text("Adicionar alerta")
+                                        Spacer()
+                                    }
+                                    .padding(.bottom, 25)
+                                }
                             }
                         }
                         .padding(.horizontal, 5)
                     }
                     .padding(.top, 24)
                     .padding(.horizontal, 9)
-                    .background(Color.white)
-                    .cornerRadius(18)
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .padding(.bottom, 110)
                 }
+                .background(Color.white)
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .cornerRadius(18)
                 .padding(.horizontal, 24)
             }
-            .background(Color("bgOptional").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
-            
+            .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
             
             Button(action: {}) {
                 Text("Salvar")
