@@ -18,7 +18,7 @@ struct TasksDisplay: View {
                     .font(.system(size: 24, weight: .semibold, design: .default))
                 Spacer()
                 NavigationLink(
-                    destination: NewHabitView(),
+                    destination: EditMissionView(),
                     label: {
                     Image(systemName: "plus.app.fill")
                         .accentColor(Color("grayAddButton"))
