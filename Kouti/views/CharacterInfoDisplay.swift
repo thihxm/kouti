@@ -18,8 +18,8 @@ struct CharacterInfoDisplay: View {
                 BestiaryGrid(bestiary: user.character.bestiary)
                 ItemsGrid(items: user.character.inventory.items)
             }.tabViewStyle(PageTabViewStyle())
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
-            .background(Color("bg1"))
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            .background(Color("light3"))
             .cornerRadius(40)
             .padding([.top, .horizontal])
         }

@@ -13,14 +13,14 @@ struct CharacterHeader: View {
     // TODO: Ajustar alinhamentos e imagem do perfil
     var body: some View {
         let title = user.character.inventory.equipedItems.filter { $0.type == .title }.first
-        HStack (alignment: .top, spacing: 12) {
+        HStack (alignment: .top, spacing: 25) {
             NavigationLink(
                 destination: Text("Pagina do personagem"),
                 label: { Circle()
                     .frame(width: 125, height: 125) })
                 .foregroundColor(.black)
-            Spacer()
-            VStack(alignment: .leading, spacing: 0) {
+            LazyVGrid(columns: [GridItem(.flexible())], alignment: .leading) {
+//            VStack(alignment: .leading, spacing: 0) {
                 Text("\(user.character.name)")
                     .font(.headline)
                 Text("\(title?.name ?? "")")
