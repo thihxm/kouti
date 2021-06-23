@@ -43,8 +43,8 @@ struct CharacterSkinPicker: View {
                     .foregroundColor(Color("light1"))
             })
             VStack {
-                ColorPicker("Cabelo", selection: $color)
-                ColorPicker("Corpo", selection: $skinColor)
+                ColorPicker("Cabelo", selection: $color, supportsOpacity: false)
+                ColorPicker("Corpo", selection: $skinColor, supportsOpacity: false)
             }
         }
     }
