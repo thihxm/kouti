@@ -14,6 +14,7 @@ struct CharacterModel {
     var money: Int
     var inventory: InventoryModel
     var bestiary: BestiaryModel
+    var selectedSkin: Int = 1
     var experienceNeededForLevel: Int {
         Int(pow(Double(2), Double(level)))
     }
