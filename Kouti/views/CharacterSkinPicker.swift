@@ -10,6 +10,7 @@ import SwiftUI
 struct CharacterSkinPicker: View {
     @State var selectedSkin: Int = 1
     @State var color: Color = Color(.red)
+    @State var skinColor: Color = Color(.red)
     
     var body: some View {
         HStack {
@@ -28,10 +29,11 @@ struct CharacterSkinPicker: View {
             Spacer()
             
             ZStack {
-                Image("CharacterSkin\(selectedSkin)")
+                Image("Body")
+                    .colorMultiply(skinColor)
                 Image("Head2")
-                    .offset(x: 0, y: -105)
                     .colorMultiply(color)
+                Image("Face")
             }
             Spacer()
             Button(action: {selectedSkin = (selectedSkin + 1) % 14}, label: {
@@ -40,7 +42,10 @@ struct CharacterSkinPicker: View {
                     .frame(maxWidth: 35, maxHeight: 35)
                     .foregroundColor(Color("light1"))
             })
-            ColorPicker("Cor", selection: $color)
+            VStack {
+                ColorPicker("Cabelo", selection: $color)
+                ColorPicker("Corpo", selection: $skinColor)
+            }
         }
     }
 }
