@@ -8,57 +8,109 @@
 import SwiftUI
 
 struct NewMissionView: View {
+    @State var tasks: [TaskModel]
     @State var selectedCategory: Category? = .health
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 25) {
-            Text("Criar missões")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-            
-            Button(action: {}) {
-                Text("Criar missão personalizada")
-                    .font(.headline)
+        NavigationView {
+            VStack(alignment: .leading, spacing: 25) {
+                Text("Criar missões")
+                    .font(.title)
+                    .fontWeight(.bold)
                     .foregroundColor(.black)
                 
-                Spacer()
-                
-                Image(systemName: "plus.app.fill")
-                    .accentColor(Color("grayAddButton"))
-                    .font(.system(size: 23, weight: .semibold, design: .default))
-                    .frame(width: 20, height: 20, alignment: .center)
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                    .shadow(color: .black.opacity(0.25), radius: 3, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
-            }
-            .padding(20)
-            .background(Color.white)
-            .cornerRadius(22)
-            
-            VStack(spacing: 25) {
-                TagList($selectedCategory)
-                ScrollView {
-                    VStack(spacing: 15) {
-                        ForEach(1..<17) { _ in
-                            DefaultMissionLink()
-                        }
-                    }
-                    .padding(.horizontal, 5)
+                Button(action: {}) {
+                    Text("Criar missão personalizada")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "plus.app.fill")
+                        .accentColor(Color("grayAddButton"))
+                        .font(.system(size: 23, weight: .semibold, design: .default))
+                        .frame(width: 20, height: 20, alignment: .center)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                        .shadow(color: .black.opacity(0.25), radius: 3, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
                 }
+                .padding(20)
+                .background(Color.white)
+                .cornerRadius(22)
+                
+                VStack(spacing: 25) {
+                    TagList($selectedCategory)
+                    ScrollView {
+                        VStack(spacing: 15) {
+                            ForEach(
+                                tasks.filter {selectedCategory == $0.tag},
+                                id: \.self.name
+                            ) { task in
+                                DefaultMissionLink(label: task.name)
+                            }
+                        }
+                        .padding(.horizontal, 5)
+                    }
+                }
+                .padding(.horizontal, 15)
+                .padding(.vertical, 20)
+                .background(Color.white)
+                .cornerRadius(22)
             }
-            .padding(.horizontal, 15)
-            .padding(.vertical, 20)
-            .background(Color.white)
-            .cornerRadius(22)
+            .padding()
+            .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
+            .navigationTitle("Criar missões")
+            .navigationBarHidden(true)
         }
-        .padding()
-        .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
     }
 }
 
 struct NewMissionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewMissionView()
+        NewMissionView(
+            tasks: [TaskModel(
+                        name: "Beber água",
+                        tag: .health,
+                        frequency:[.monday,.friday,.saturday,.sunday,.wednesday],
+                        notifications: [],
+                        monster:
+                            MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
+                     TaskModel(
+                         name: "Ler Harry Potter",
+                        tag: .entertainment,
+                        frequency:[.monday,.tuesday],
+                         notifications: [],
+                         monster:
+                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
+                     TaskModel(
+                         name: "Guardar dinheiro",
+                         tag: .financial,
+                         frequency:[.friday],
+                         notifications: [],
+                         monster:
+                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
+                     TaskModel(
+                         name: "Meditar",
+                         tag: .health,
+                        frequency:[.monday,.tuesday,.friday,.saturday,.sunday,.thursday,.wednesday],
+                         notifications: [],
+                         monster:
+                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
+                     TaskModel(
+                         name: "Estudar",
+                        tag: .learning,
+                        frequency:[.monday,.friday,.wednesday],
+                         notifications: [],
+                         monster:
+                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
+                     TaskModel(
+                         name: "Entregar relatório",
+                        tag: .work,
+                        frequency:[.thursday],
+                         notifications: [],
+                         monster:
+                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true)
+                    ]
+        )
     }
 }

@@ -21,7 +21,7 @@ struct TasksDisplay: View {
                     destination: NewHabitView(),
                     label: {
                     Image(systemName: "plus.app.fill")
-                        .accentColor(Color("grayCheckboxButtons"))
+                        .accentColor(Color("grayAddButton"))
                         .font(.system(size: 23, weight: .semibold, design: .default))
                         .frame(width: 20, height: 20, alignment: .center)
                         .background(Color.white)
