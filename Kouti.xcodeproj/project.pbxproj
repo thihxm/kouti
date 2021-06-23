@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AF2D3C142681205200878238 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D3C132681205200878238 /* Tag.swift */; };
-		AF2D3C16268122FB00878238 /* NewHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D3C15268122FB00878238 /* NewHabitView.swift */; };
+		AF2D3C16268122FB00878238 /* EditMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D3C15268122FB00878238 /* EditMissionView.swift */; };
 		AF2D3C1A26817A1700878238 /* NotificationTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D3C1926817A1700878238 /* NotificationTimePicker.swift */; };
 		AF4E72A1267D1B1500861358 /* KoutiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72A0267D1B1500861358 /* KoutiApp.swift */; };
 		AF4E72A3267D1B1500861358 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72A2267D1B1500861358 /* ContentView.swift */; };
@@ -47,7 +47,7 @@
 
 /* Begin PBXFileReference section */
 		AF2D3C132681205200878238 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		AF2D3C15268122FB00878238 /* NewHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitView.swift; sourceTree = "<group>"; };
+		AF2D3C15268122FB00878238 /* EditMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMissionView.swift; sourceTree = "<group>"; };
 		AF2D3C1926817A1700878238 /* NotificationTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimePicker.swift; sourceTree = "<group>"; };
 		AF4E729D267D1B1500861358 /* Kouti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kouti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4E72A0267D1B1500861358 /* KoutiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoutiApp.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 				FA612CA5267FABDF002BDDC2 /* CharacterHeader.swift */,
 				AF99CEC82680FB7800AD151A /* TagList.swift */,
 				AF99CECA2681083900AD151A /* DaysSelector.swift */,
-				AF2D3C15268122FB00878238 /* NewHabitView.swift */,
+				AF2D3C15268122FB00878238 /* EditMissionView.swift */,
 				AF2D3C1926817A1700878238 /* NotificationTimePicker.swift */,
 				FAD6C9632681260D00134A83 /* Items.swift */,
 				FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */,
@@ -285,7 +285,7 @@
 				FA01E2332683966F008F9C66 /* CharacterSkinPicker.swift in Sources */,
 				FAD6C9642681260D00134A83 /* Items.swift in Sources */,
 				FA612CA0267F836B002BDDC2 /* TaskButton.swift in Sources */,
-				AF2D3C16268122FB00878238 /* NewHabitView.swift in Sources */,
+				AF2D3C16268122FB00878238 /* EditMissionView.swift in Sources */,
 				FA79FEA3267D2FC2001D865D /* BestiaryModel.swift in Sources */,
 				FA79FEA9267D3159001D865D /* CharacterModel.swift in Sources */,
 				AF4E72C1267D381900861358 /* TagButton.swift in Sources */,

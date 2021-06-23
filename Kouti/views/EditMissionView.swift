@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewHabitView: View {
+struct EditMissionView: View {
     @State var task: TaskModel = TaskModel(
         name: "",
         tag: .health,
@@ -166,10 +166,10 @@ struct NewHabitView: View {
 
 struct NewHabitView_Previews: PreviewProvider {
     static var previews: some View {
-        NewHabitView()
+        EditMissionView()
             .previewDisplayName("Vazio")
             .environment(\.locale, .init(identifier: "br"))
-        NewHabitView(task: TaskModel(
+        EditMissionView(task: TaskModel(
             name: "Tomar água",
             tag: .health,
             frequency: [.monday, .tuesday, .wednesday, .friday],
