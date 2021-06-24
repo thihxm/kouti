@@ -26,13 +26,13 @@ struct StreakDisplay: View {
         
         // TODO: A imagem está pixelada, estudar @2x, @3x para ver se resolve
         HStack {
-            Image(litFlames >= 1 ? "litFlame" : "unlitFlame")
-            Image(litFlames >= 2 ? "litFlame" : "unlitFlame")
-            Image(litFlames >= 3 ? "litFlame" : "unlitFlame")
-            Image(litFlames >= 4 ? "litFlame" : "unlitFlame")
-            Image(litFlames >= 5 ? "litFlame" : "unlitFlame")
-            Image(litFlames >= 6 ? "litFlame" : "unlitFlame")
-            Image(litFlames >= 7 ? "litFlame" : "unlitFlame")
+            Image(litFlames >= 1 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
+            Image(litFlames >= 2 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
+            Image(litFlames >= 3 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
+            Image(litFlames >= 4 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
+            Image(litFlames >= 5 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
+            Image(litFlames >= 6 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
+            Image(litFlames >= 7 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
         }
     }
 }

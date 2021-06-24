@@ -11,15 +11,12 @@ struct MainPageView: View {
     @State var user: UserModel
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading, spacing: 45) {
-                CharacterHeader(user: user)
-                    .padding(.top, 75)
-                TasksDisplay(tasks: user.tasks)
-            }.padding()
-            .background(Color("bg1"))
-            .ignoresSafeArea(.container)
-        }
+        VStack(alignment: .leading, spacing: 45) {
+            CharacterHeader(user: user)
+                .frame(maxWidth: .infinity)
+            TasksDisplay(tasks: user.tasks)
+        }.padding()
+        .background(Color("bg1"))
     }
 }
 

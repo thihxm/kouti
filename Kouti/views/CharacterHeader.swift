@@ -14,11 +14,14 @@ struct CharacterHeader: View {
     var body: some View {
         let title = user.character.inventory.equipedItems.filter { $0.type == .title }.first
         HStack (alignment: .top, spacing: 25) {
-            NavigationLink(
-                destination: Text("Pagina do personagem"),
-                label: { Circle()
-                    .frame(width: 125, height: 125) })
-                .foregroundColor(.black)
+            Character(equipedItems: user.character.inventory.equipedItems)
+                .scaledToFill()
+                .offset(x: 0, y: 50)
+                .frame(width: 125, height: 125)
+                .clipShape(Circle())
+                .rotation3DEffect(
+                    .degrees(180),
+                    axis: (x: 0.0, y: 1.0, z: 0.0))
             LazyVGrid(columns: [GridItem(.flexible())], alignment: .leading) {
 //            VStack(alignment: .leading, spacing: 0) {
                 Text("\(user.character.name)")
