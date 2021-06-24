@@ -13,3 +13,9 @@ struct ItemModel {
     var price: Int
     var amount: Int = 0
 }
+
+extension ItemModel: Equatable {
+    static func == (lhs: ItemModel, rhs: ItemModel) -> Bool {
+        lhs.name == rhs.name && lhs.type == rhs.type
+    }
+}

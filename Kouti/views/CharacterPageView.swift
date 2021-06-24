@@ -11,25 +11,16 @@ struct CharacterPageView: View {
     @State var user: UserModel
     
     var body: some View {
-        let title = user.character.inventory.equipedItems.filter { $0.type == .title }.first
         VStack (spacing: 0) {
             HStack (alignment: .center){
-                Character(equipedItems: user.character.inventory.equipedItems)
+                Character(equipedItems: $user.character.inventory.equipedItems)
                     .rotation3DEffect(
                         .degrees(180),
                         axis: (x: 0.0, y: 1.0, z: 0.0))
-                LazyVGrid(columns: [GridItem(.flexible())], alignment: .leading) {
-                    Text("\(user.character.name)")
-                        .font(.headline)
-                    Text("\(title?.name ?? "")")
-                        .font(.subheadline)
-                    ExperienceBar(character: $user.character)
-                        .padding(.top)
-                    StreakDisplay(streakCount: $user.streak)
-                }.padding(.trailing)
+                CharacterHeader(user: user)
             }
             .padding()
-            CharacterInfoDisplay(user: user)
+            CharacterInfoDisplay(user: $user)
                 .padding(.bottom)
         }.background(Color("bg1").edgesIgnoringSafeArea(.all))
     }
@@ -45,25 +36,15 @@ struct CharacterPageView_Previews: PreviewProvider {
                                                money: 10,
                                                inventory:
                                                 InventoryModel(
-                                                    items: [
-                                                        ItemModel(name: "ItemA", type: .top, price: 10, amount: 1),
-                                                        ItemModel(name: "ItemB", type: .top, price: 10, amount: 1),
-                                                        ItemModel(name: "ItemC", type: .bottom, price: 10),
-                                                        ItemModel(name: "ItemD", type: .bottom, price: 10, amount: 1),
-                                                        ItemModel(name: "ItemE", type: .bottom, price: 10),
-                                                        ItemModel(name: "ItemF", type: .bottom, price: 10, amount: 1),
-                                                        ItemModel(name: "ItemG", type: .bottom, price: 10, amount: 1),
-                                                        ItemModel(name: "ItemH", type: .hat, price: 10),
-                                                        ItemModel(name: "ItemI", type: .hat, price: 10, amount: 1),
-                                                        ItemModel(name: "ItemJ", type: .hat, price: 10),
-                                                        ItemModel(name: "ItemK", type: .hat, price: 10, amount: 1),
-                                                        ItemModel(name: "ItemL", type: .hat, price: 10),
-                                                        ItemModel(name: "ItemM", type: .sticker, price: 10, amount: 1),
-                                                        ItemModel(name: "ItemN", type: .sticker, price: 10),
-                                                        ItemModel(name: "ItemO", type: .sticker, price: 10, amount: 3),
-                                                        ItemModel(name: "ItemP", type: .sticker, price: 10, amount: 5),
-                                                        ItemModel(name: "ItemQ", type: .sticker, price: 10),],
-                                                    equipedItems: [ItemModel(name: "Semideus Atlantico", type: .title, price: 0)]),
+                                                            items: [
+                                                                ItemModel(name: "coroa", type: .hat, price: 10, amount: 1),
+                                                                ItemModel(name: "toga", type: .top, price: 10, amount: 1),
+                                                                ItemModel(name: "pocao1", type: .powerUp, price: 10, amount: 1),
+                                                                ItemModel(name: "pocao2", type: .powerUp, price: 10, amount: 5),
+                                                                ItemModel(name: "pocao3", type: .powerUp, price: 10)],
+                                                            equipedItems: [
+                                                                ItemModel(name: "coroa", type: .hat, price: 10, amount: 1),]
+                                                        ),
                                                bestiary: BestiaryModel(
                                                 monsterCollection:
                                                     [MonsterModel(name: "1", category: .health, titles: []) : 1,

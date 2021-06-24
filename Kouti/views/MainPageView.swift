@@ -12,7 +12,7 @@ struct MainPageView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 45) {
-            CharacterHeader(user: user)
+            CharacterHeaderAndPicture(user: user)
                 .frame(maxWidth: .infinity)
             TasksDisplay(tasks: user.tasks)
         }.padding()

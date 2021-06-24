@@ -31,7 +31,7 @@ struct CharacterSkinPicker: View {
             ZStack {
                 Image("Body")
                     .colorMultiply(skinColor)
-                Image("Head2")
+                Image("Hair0")
                     .colorMultiply(color)
                 Image("Face")
             }
