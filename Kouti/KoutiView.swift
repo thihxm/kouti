@@ -19,8 +19,7 @@ struct KoutiView: View {
                     .tabItem { Image(systemName: "person") }
                 Text("Loja").tabItem { Image(systemName: "bag") }
             }
-        }.navigationTitle("")
-        .navigationBarTitle("")
+        }
     }
 }
 

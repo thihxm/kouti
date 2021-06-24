@@ -17,6 +17,8 @@ struct MainPageView: View {
             TasksDisplay(tasks: user.tasks)
         }.padding()
         .background(Color("bg1").edgesIgnoringSafeArea(.all))
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 

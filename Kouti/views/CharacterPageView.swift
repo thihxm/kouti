@@ -22,7 +22,10 @@ struct CharacterPageView: View {
             .padding()
             CharacterInfoDisplay(user: $user)
                 .padding(.bottom)
-        }.background(Color("bg1").edgesIgnoringSafeArea(.all))
+        }.background(Color("bg1")
+            .edgesIgnoringSafeArea(.all))
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 

@@ -12,6 +12,7 @@ struct EditMissionView: View {
         name: "",
         tag: .health,
         frequency: [],
+        notifications: [],
         monster: MonsterModel(name: "", category: .health, titles: []),
         isComplete: false
     )
