@@ -72,42 +72,36 @@ struct NewMissionView_Previews: PreviewProvider {
                         name: "Beber água",
                         tag: .health,
                         frequency:[.monday,.friday,.saturday,.sunday,.wednesday],
-                        notifications: [],
                         monster:
                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
                      TaskModel(
                          name: "Ler Harry Potter",
                         tag: .entertainment,
                         frequency:[.monday,.tuesday],
-                         notifications: [],
                          monster:
                              MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
                      TaskModel(
                          name: "Guardar dinheiro",
                          tag: .financial,
                          frequency:[.friday],
-                         notifications: [],
                          monster:
                              MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
                      TaskModel(
                          name: "Meditar",
                          tag: .health,
                         frequency:[.monday,.tuesday,.friday,.saturday,.sunday,.thursday,.wednesday],
-                         notifications: [],
                          monster:
                              MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
                      TaskModel(
                          name: "Estudar",
                         tag: .learning,
                         frequency:[.monday,.friday,.wednesday],
-                         notifications: [],
                          monster:
                              MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
                      TaskModel(
                          name: "Entregar relatório",
                         tag: .work,
                         frequency:[.thursday],
-                         notifications: [],
                          monster:
                              MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true)
                     ]

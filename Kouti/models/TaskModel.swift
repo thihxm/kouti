@@ -8,12 +8,12 @@
 import Foundation
 
 struct TaskModel {
-    let name: String
-    let tag: Category
-    let frequency: Set<Days>
-    let notifications: [DateComponents]
-    let monster: MonsterModel
-    var isComplete: Bool
+    var name: String
+    var tag: Category
+    var frequency: Set<Days>
+    var notifications: [DateComponents] = []
+    var monster: MonsterModel
+    var isComplete: Bool = false
     
     func frequencyDescription() -> String {
         if frequency.count == 7 {

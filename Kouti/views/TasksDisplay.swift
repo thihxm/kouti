@@ -18,7 +18,7 @@ struct TasksDisplay: View {
                     .font(.system(size: 24, weight: .semibold, design: .default))
                 Spacer()
                 NavigationLink(
-                    destination: EditMissionView(),
+                    destination: NewMissionView(tasks: DefaultTasks.tasks),
                     label: {
                     Image(systemName: "plus.app.fill")
                         .accentColor(Color("grayAddButton"))
@@ -50,42 +50,36 @@ struct TasksDisplay_Previews: PreviewProvider {
                 name: "Beber água",
                 tag: .health,
                 frequency:Set([.monday,.friday,.saturday,.sunday,.wednesday]),
-                notifications: [],
                 monster:
                     MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
              TaskModel(
                  name: "Ler Harry Potter",
                 tag: .entertainment,
                 frequency:Set([.monday,.tuesday]),
-                 notifications: [],
                  monster:
                      MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
              TaskModel(
                  name: "Guardar dinheiro",
                  tag: .financial,
                  frequency:Set([.friday]),
-                 notifications: [],
                  monster:
                      MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
              TaskModel(
                  name: "Meditar",
                  tag: .health,
                 frequency:Set([.monday,.tuesday,.friday,.saturday,.sunday,.thursday,.wednesday]),
-                 notifications: [],
                  monster:
                      MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
              TaskModel(
                  name: "Estudar",
                 tag: .learning,
                 frequency:Set([.monday,.friday,.wednesday]),
-                 notifications: [],
                  monster:
                      MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
              TaskModel(
                  name: "Entregar relatório",
                 tag: .work,
                 frequency:Set([.thursday]),
-                 notifications: [],
                  monster:
                      MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true)
             ], selectedCategories: Set<Category>()
