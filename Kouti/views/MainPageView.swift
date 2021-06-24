@@ -16,7 +16,7 @@ struct MainPageView: View {
                 .frame(maxWidth: .infinity)
             TasksDisplay(tasks: user.tasks)
         }.padding()
-        .background(Color("bg1"))
+        .background(Color("bg1").edgesIgnoringSafeArea(.all))
     }
 }
 

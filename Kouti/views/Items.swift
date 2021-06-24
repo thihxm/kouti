@@ -24,7 +24,7 @@ struct ItemsGrid: View {
     func itemsDisplay() -> some View {
         ScrollView {
             LazyVGrid(columns: columns, alignment: .center) {
-                ForEach(items, id: \.name) { item in
+                ForEach(items.filter {$0.type == .powerUp}, id: \.name) { item in
                     itemIcon(for: item)
                 }
             }
@@ -34,16 +34,16 @@ struct ItemsGrid: View {
     @ViewBuilder
     func itemIcon(for item: ItemModel) -> some View {
         if (item.amount == 0) {
-            Image("\(item.type.rawValue)_cheio")
+            Image("\(item.name)")
                 .resizable()
                 .padding(10)
                 .opacity(0.5)
         } else if (item.amount == 1) {
-            Image("\(item.type.rawValue)_cheio")
+            Image("\(item.name)")
                 .resizable()
                 .padding(10)
         } else {
-            Image("\(item.type.rawValue)_cheio")
+            Image("\(item.name)")
                 .resizable()
                 .padding(10)
                 .overlay(Circle()
@@ -74,6 +74,9 @@ struct ItemsGrid_Previews: PreviewProvider {
                 ItemModel(name: "ItemN", type: .sticker, price: 10),
                 ItemModel(name: "ItemO", type: .sticker, price: 10, amount: 3),
                 ItemModel(name: "ItemP", type: .sticker, price: 10, amount: 5),
-                ItemModel(name: "ItemQ", type: .sticker, price: 10),])
+                ItemModel(name: "ItemQ", type: .sticker, price: 10),
+                ItemModel(name: "pocao1", type: .powerUp, price: 10, amount: 1),
+                ItemModel(name: "pocao2", type: .powerUp, price: 10, amount: 5),
+                ItemModel(name: "pocao3", type: .powerUp, price: 10)])
     }
 }

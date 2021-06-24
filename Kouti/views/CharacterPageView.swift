@@ -31,7 +31,7 @@ struct CharacterPageView: View {
             .padding()
             CharacterInfoDisplay(user: user)
                 .padding(.bottom)
-        }.background(Color("bg1"))
+        }.background(Color("bg1").edgesIgnoringSafeArea(.all))
     }
 }
 
