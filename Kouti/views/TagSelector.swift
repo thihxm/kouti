@@ -43,10 +43,3 @@ struct TagSelector: View {
         }
     }
 }
-
-//struct TagSelector_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TagSelector(State<Set<Category>>(initialValue: Set<Category>()))
-//    }
-//}
-

@@ -22,10 +22,3 @@ struct Character: View {
         }
     }
 }
-
-//struct Character_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Character(equipedItems: [ItemModel(name: "coroa", type: .hat, price: 10),
-//                                 ItemModel(name: "toga", type: .top, price: 10)])
-//    }
-//}

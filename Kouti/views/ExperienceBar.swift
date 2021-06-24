@@ -33,10 +33,3 @@ struct ExperienceBar: View {
         }.frame(maxHeight: 47)
     }
 }
-
-// Pra usar o preview precisa alterar @Binding para @State na linha 11 e descomentar abaixo
-//struct ExperienceBar_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ExperienceBar(character: CharacterModel(name: "Camaradinha", level: 12, experience: 3000, money: 10, inventory: InventoryModel(items: [], equipedItems: []), bestiary: BestiaryModel(monsterCollection: [:])))
-//    }
-//}

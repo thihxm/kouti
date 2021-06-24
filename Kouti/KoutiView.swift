@@ -13,9 +13,9 @@ struct KoutiView: View {
     var body: some View {
         NavigationView {
             TabView {
-                MainPageView(user: user)
+                MainPageView(user: $user)
                     .tabItem { Image(systemName: "house") }
-                CharacterPageView(user: user)
+                CharacterPageView(user: $user)
                     .tabItem { Image(systemName: "person") }
                 Text("Loja").tabItem { Image(systemName: "bag") }
             }
