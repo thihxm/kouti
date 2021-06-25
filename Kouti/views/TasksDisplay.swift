@@ -34,7 +34,7 @@ struct TasksDisplay: View {
             }
             TagSelector($selectedCategories)
             ScrollView {
-                ForEach(selectedTasks, id: \.self.name) { task in
+                ForEach(selectedTasks) { task in
                     let index = tasks.firstIndex {$0.name == task.name}
                     TaskButton(task: $tasks[index!])
                 }.animation(.easeInOut)

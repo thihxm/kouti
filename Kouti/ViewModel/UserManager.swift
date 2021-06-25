@@ -29,7 +29,14 @@ class UserManager: ObservableObject {
     }
     
     func addTask(task: TaskModel) {
-        self.user.tasks.append(task)
+        if(!user.tasks.contains(task)) {
+            self.user.tasks.append(task)
+        }
+    }
+    
+    func editTask(oldTask: TaskModel, newTask: TaskModel) {
+        let index = user.tasks.firstIndex(of: oldTask)!
+        user.tasks[index] = newTask
     }
     
     func updateHistory() {

@@ -14,7 +14,7 @@ struct NewMissionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 25) {
             
-            NavigationLink(destination: EditMissionView()) {
+            NavigationLink(destination: EditMissionView(isNewMission: true)) {
                 Text("Criar missão personalizada")
                     .font(.headline)
                     .foregroundColor(.black)
@@ -27,7 +27,7 @@ struct NewMissionView: View {
                     .frame(width: 20, height: 20, alignment: .center)
                     .background(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
-                    .shadow(color: .black.opacity(0.25), radius: 3, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
+                    .shadow(color: .black.opacity(0.25), radius: 3, x: 0.0, y: 1)
             }
             .padding(20)
             .background(Color.white)
@@ -41,7 +41,7 @@ struct NewMissionView: View {
                             tasks.filter {selectedCategory == $0.tag},
                             id: \.self.name
                         ) { task in
-                            NavigationLink(destination: EditMissionView(task: task)) {
+                            NavigationLink(destination: EditMissionView(task: task, isNewMission: true)) {
                                 DefaultMissionLink(label: task.name)
                             }
                         }

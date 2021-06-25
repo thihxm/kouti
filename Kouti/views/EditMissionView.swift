@@ -8,38 +8,25 @@
 import SwiftUI
 
 struct EditMissionView: View {
-    @State var task: TaskModel = TaskModel(
-        name: "",
-        tag: .health,
-        frequency: [],
-        notifications: [],
-        monster: MonsterModel(name: "", category: .health, titles: []),
-        isComplete: false
-    )
+    @EnvironmentObject var userManager: UserManager
+    var task: TaskModel?
     @State var allowNotification: Bool = false
     @State var missionTitle: String = ""
     @State var alertsTime: [Date] = []
     @State var selectedCategory: Category? = nil
     @State private var selectedDays: Set<Days> = []
+    var isNewMission: Bool = false
     
-    init() {
-        self.task = TaskModel(
-            name: "",
-            tag: .health,
-            frequency: [],
-            notifications: [],
-            monster: MonsterModel(name: "", category: .health, titles: []),
-            isComplete: false
-        )
-        
+    init(isNewMission: Bool) {
         self.allowNotification = false
         self.missionTitle = ""
         self.alertsTime = []
         self.selectedCategory = nil
         self.selectedDays = []
+        self.isNewMission = isNewMission
     }
     
-    init(task: TaskModel) {
+    init(task: TaskModel, isNewMission: Bool) {
         self.task = task
         
         self._allowNotification = State(initialValue: !task.notifications.isEmpty)
@@ -50,6 +37,7 @@ struct EditMissionView: View {
         })
         self._selectedCategory = State(initialValue: task.tag)
         self._selectedDays = State(initialValue: task.frequency)
+        self.isNewMission = isNewMission
     }
     
     func addAlert() {
@@ -62,10 +50,10 @@ struct EditMissionView: View {
             let calendar = Calendar.current
             let hour = calendar.component(.hour, from: date)
             let minute = calendar.component(.minute, from: date)
-            
+
             return DateComponents(hour: hour, minute: minute)
         }))
-        
+
         let task = TaskModel(
             name: missionTitle,
             tag: selectedCategory!,
@@ -74,6 +62,12 @@ struct EditMissionView: View {
             monster: MonsterModel(name: "", category: .health, titles: []),
             isComplete: false
         )
+        
+        if isNewMission {
+            userManager.addTask(task: task)
+        } else {
+            userManager.editTask(oldTask: self.task!, newTask: task)
+        }
     }
 
     var body: some View {
@@ -142,7 +136,7 @@ struct EditMissionView: View {
                     .padding(.bottom, 110)
                 }
                 .background(Color.white)
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .edgesIgnoringSafeArea(.all)
                 .cornerRadius(18)
                 .padding(.horizontal, 24)
             }
@@ -159,14 +153,13 @@ struct EditMissionView: View {
             }
             .offset(y: -18)
             .shadow(color: .black.opacity(0.25), radius: 4, x: 0.0, y: 4)
-
         }
     }
 }
 
 struct NewHabitView_Previews: PreviewProvider {
     static var previews: some View {
-        EditMissionView()
+        EditMissionView(isNewMission: true)
             .previewDisplayName("Vazio")
             .environment(\.locale, .init(identifier: "br"))
         EditMissionView(
@@ -177,7 +170,8 @@ struct NewHabitView_Previews: PreviewProvider {
             notifications: [DateComponents(hour: 10, minute: 30), DateComponents(hour: 23, minute: 19)],
             monster: MonsterModel(name: "", category: .health, titles: []),
             isComplete: false
-        ))
+        ),
+            isNewMission: true)
         .previewDisplayName("Passando Task")
         .environment(\.locale, .init(identifier: "br"))
     }

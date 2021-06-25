@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TaskModel: Identifiable {
+struct TaskModel: Identifiable, Equatable {
     let id = UUID()
     let name: String
     let tag: Category
@@ -24,5 +24,9 @@ struct TaskModel: Identifiable {
             .sorted { $0.rawValue < $1.rawValue }
             .map { $0.getDescription() }
             .joined(separator: " - ")
+    }
+    
+    static func ==(lhs: TaskModel, rhs: TaskModel) -> Bool {
+        return lhs.id == rhs.id
     }
 }
