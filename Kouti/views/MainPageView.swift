@@ -14,7 +14,7 @@ struct MainPageView: View {
         VStack(alignment: .leading, spacing: 45) {
             CharacterHeaderAndPicture(user: $user)
                 .frame(maxWidth: .infinity)
-            TasksDisplay(tasks: user.tasks)
+            TasksDisplay(tasks: $user.tasks)
         }.padding()
         .background(Color("bg1").edgesIgnoringSafeArea(.all))
         .navigationBarTitle("")

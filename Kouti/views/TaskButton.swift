@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskButton: View {
-    @State var task: TaskModel
+    @Binding var task: TaskModel
     
     // TODO: Alguma modificação na aparência quando estiver completo?
     // TODO: Comportamento de slide para abrir opções. Quais são os comportamentos que devem ser incluidos?

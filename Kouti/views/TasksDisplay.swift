@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct TasksDisplay: View {
-    @State var tasks: [TaskModel]
+    @Binding var tasks: [TaskModel]
     @State var selectedCategories: Set<Category> = Set<Category>()
+    var selectedTasks: [TaskModel] {
+        tasks.filter{ selectedCategories.contains($0.tag) || selectedCategories.isEmpty }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,12 +30,13 @@ struct TasksDisplay: View {
                         .background(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 })
-                .shadow(color: .black.opacity(0.25), radius: 3, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 1)
+                .shadow(color: .black.opacity(0.25), radius: 3, x: 0.0, y: 1)
             }
             TagSelector($selectedCategories)
             ScrollView {
-                ForEach(tasks.filter {selectedCategories.contains($0.tag) || selectedCategories.isEmpty}, id: \.self.name) { task in
-                    TaskButton(task: task)
+                ForEach(selectedTasks, id: \.self.name) { task in
+                    let index = tasks.firstIndex {$0.name == task.name}
+                    TaskButton(task: $tasks[index!])
                 }.animation(.easeInOut)
             }
         }.padding(.top, 25)
@@ -41,49 +45,3 @@ struct TasksDisplay: View {
         .cornerRadius(16)
     }
 }
-
-
-struct TasksDisplay_Previews: PreviewProvider {
-    static var previews: some View {
-        TasksDisplay(tasks:
-            [TaskModel(
-                name: "Beber água",
-                tag: .health,
-                frequency:Set([.monday,.friday,.saturday,.sunday,.wednesday]),
-                monster:
-                    MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-             TaskModel(
-                 name: "Ler Harry Potter",
-                tag: .entertainment,
-                frequency:Set([.monday,.tuesday]),
-                 monster:
-                     MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-             TaskModel(
-                 name: "Guardar dinheiro",
-                 tag: .financial,
-                 frequency:Set([.friday]),
-                 monster:
-                     MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-             TaskModel(
-                 name: "Meditar",
-                 tag: .health,
-                frequency:Set([.monday,.tuesday,.friday,.saturday,.sunday,.thursday,.wednesday]),
-                 monster:
-                     MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-             TaskModel(
-                 name: "Estudar",
-                tag: .learning,
-                frequency:Set([.monday,.friday,.wednesday]),
-                 monster:
-                     MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-             TaskModel(
-                 name: "Entregar relatório",
-                tag: .work,
-                frequency:Set([.thursday]),
-                 monster:
-                     MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true)
-            ], selectedCategories: Set<Category>()
-        )
-    }
-}
-
