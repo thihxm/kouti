@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct History {
+struct HistoryModel {
     var history: [Date: [TaskModel]]
 }

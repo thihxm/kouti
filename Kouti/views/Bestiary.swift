@@ -51,14 +51,6 @@ struct BestiaryGrid: View {
 
 struct Bestiary_Previews: PreviewProvider {
     static var previews: some View {
-        BestiaryGrid(bestiary: BestiaryModel(
-                        monsterCollection:
-                            [MonsterModel(name: "1", category: .health, titles: []) : 1,
-                             MonsterModel(name: "2", category: .health, titles: []) : 0,
-                             MonsterModel(name: "3", category: .entertainment, titles: []) : 3,
-                             MonsterModel(name: "4", category: .learning, titles: []) : 0,
-                             MonsterModel(name: "5", category: .learning, titles: []) : 3,
-                             MonsterModel(name: "6", category: .financial, titles: []) : 5,
-                             MonsterModel(name: "7", category: .work, titles: []) : 2]))
+        BestiaryGrid(bestiary: UserManager.fullState().user.character.bestiary)
     }
 }

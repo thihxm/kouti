@@ -169,7 +169,8 @@ struct NewHabitView_Previews: PreviewProvider {
         EditMissionView()
             .previewDisplayName("Vazio")
             .environment(\.locale, .init(identifier: "br"))
-        EditMissionView(task: TaskModel(
+        EditMissionView(
+            task: TaskModel(
             name: "Tomar água",
             tag: .health,
             frequency: [.monday, .tuesday, .wednesday, .friday],

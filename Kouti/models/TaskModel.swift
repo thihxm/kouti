@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct TaskModel {
+struct TaskModel: Identifiable {
+    let id = UUID()
     let name: String
     let tag: Category
     let frequency: Set<Days>

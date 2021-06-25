@@ -31,7 +31,7 @@ struct TagButton: View {
             }
             return colorScheme == .dark ? Color("light1") : Color("light4")
         }
-        return isActive() ? Color("bg1") : Color("grayBgButtons")
+        return isActive() ? category.getColor().opacity(0.8) : Color("grayBgButtons")
     }
     
     func getTextColor() -> Color {

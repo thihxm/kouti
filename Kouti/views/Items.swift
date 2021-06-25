@@ -58,22 +58,6 @@ struct ItemsGrid: View {
 
 struct ItemsGrid_Previews: PreviewProvider {
     static var previews: some View {
-        ItemsGrid(items: [ItemModel(name: "ItemA", type: .top, price: 10, amount: 1),
-                ItemModel(name: "ItemB", type: .top, price: 10, amount: 1),
-                ItemModel(name: "ItemC", type: .bottom, price: 10),
-                ItemModel(name: "ItemD", type: .bottom, price: 10, amount: 1),
-                ItemModel(name: "ItemE", type: .bottom, price: 10),
-                ItemModel(name: "ItemF", type: .bottom, price: 10, amount: 1),
-                ItemModel(name: "ItemG", type: .bottom, price: 10, amount: 1),
-                ItemModel(name: "ItemH", type: .hat, price: 10),
-                ItemModel(name: "ItemI", type: .hat, price: 10, amount: 1),
-                ItemModel(name: "ItemJ", type: .hat, price: 10),
-                ItemModel(name: "ItemK", type: .hat, price: 10, amount: 1),
-                ItemModel(name: "ItemL", type: .hat, price: 10),
-                ItemModel(name: "ItemM", type: .sticker, price: 10, amount: 1),
-                ItemModel(name: "ItemN", type: .sticker, price: 10),
-                ItemModel(name: "ItemO", type: .sticker, price: 10, amount: 3),
-                ItemModel(name: "ItemP", type: .sticker, price: 10, amount: 5),
-                ItemModel(name: "ItemQ", type: .sticker, price: 10),])
+        ItemsGrid(items: UserManager.fullState().user.character.inventory.items)
     }
 }
