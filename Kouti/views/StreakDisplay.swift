@@ -23,8 +23,6 @@ struct StreakDisplay: View {
     func flameDisplay() -> some View {
         // TODO: Consertar a forma com que o streak é contado
         let litFlames = min(7, streakCount)
-        
-        // TODO: A imagem está pixelada, estudar @2x, @3x para ver se resolve
         HStack {
             Image(litFlames >= 1 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
             Image(litFlames >= 2 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
@@ -36,10 +34,3 @@ struct StreakDisplay: View {
         }
     }
 }
-
-// Pra usar o preview precisa alterar @Binding para @State na linha 11 e descomentar abaixo
-//struct StreakDisplay_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StreakDisplay(streakCount: 4)
-//    }
-//}

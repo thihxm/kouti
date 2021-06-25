@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct MainPageView: View {
-    @State var userManager: UserManager
+    @ObservedObject var userManager: UserManager
     
     var body: some View {
         VStack(alignment: .leading, spacing: 45) {
-            CharacterHeader(user: userManager.user)
+            CharacterHeaderAndPicture(userManager: userManager)
                 .frame(maxWidth: .infinity)
-            TasksDisplay(tasks: userManager.user.tasks)
+            TasksDisplay(tasks: $userManager.user.tasks)
         }.padding()
-        .background(Color("bg1"))
+        .background(Color("bg1").edgesIgnoringSafeArea(.all))
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 

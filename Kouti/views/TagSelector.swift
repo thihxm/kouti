@@ -25,7 +25,7 @@ struct TagSelector: View {
     @ViewBuilder
     func tagButtonBuilder(category: Category) -> some View {
         if (selectedCategories.contains(category)) {
-            Tag(category.rawValue, hasBorder: false, textColor: Color("light4"), bgColor: Color("bg1"))
+            Tag(category.rawValue, hasBorder: false, bgColor: category.getColor())
         } else {
             Tag(category.rawValue, hasBorder: false)
         }
@@ -43,10 +43,3 @@ struct TagSelector: View {
         }
     }
 }
-
-//struct TagSelector_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TagSelector(State<Set<Category>>(initialValue: Set<Category>()))
-//    }
-//}
-

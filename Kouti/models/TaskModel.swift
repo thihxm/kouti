@@ -12,9 +12,9 @@ struct TaskModel: Identifiable {
     let name: String
     let tag: Category
     let frequency: Set<Days>
-    let notifications: [DateComponents]
+    var notifications: [DateComponents] = []
     let monster: MonsterModel
-    var isComplete: Bool
+    var isComplete: Bool = false
     
     func frequencyDescription() -> String {
         if frequency.count == 7 {

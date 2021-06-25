@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct KoutiApp: App {
+    
+    @StateObject var userManager = UserManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            KoutiView(userManager: userManager)
         }
     }
 }

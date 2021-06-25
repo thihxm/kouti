@@ -12,11 +12,9 @@ struct CharacterInfoDisplay: View {
     
     var body: some View {
         VStack {
-//            HEADER ENTRA AQUI
-//            CharacterHeader(user: user)
             TabView {
+                ItemsGrid(items: $userManager.user.character.inventory)
                 BestiaryGrid(bestiary: userManager.user.character.bestiary)
-                ItemsGrid(items: userManager.user.character.inventory.items)
             }.tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             .background(Color("light3"))
