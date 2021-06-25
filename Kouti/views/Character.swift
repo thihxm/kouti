@@ -10,6 +10,7 @@ import SwiftUI
 struct Character: View {
     @Binding var equipedItems: [ItemModel]
     
+    // TODO: Ajustes na face e hair
     var body: some View {
         ZStack {
             Image("Body").resizable().scaledToFit()
@@ -21,10 +22,3 @@ struct Character: View {
         }
     }
 }
-
-//struct Character_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Character(equipedItems: [ItemModel(name: "coroa", type: .hat, price: 10),
-//                                 ItemModel(name: "toga", type: .top, price: 10)])
-//    }
-//}

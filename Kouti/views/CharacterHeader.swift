@@ -13,7 +13,6 @@ struct CharacterHeader: View {
     var body: some View {
         let title = user.character.inventory.equipedItems.filter { $0.type == .title }.first
         LazyVGrid(columns: [GridItem(.flexible())], alignment: .leading) {
-//            VStack(alignment: .leading, spacing: 0) {
             Text("\(user.character.name)")
                 .font(.headline)
             Text("\(title?.name ?? "")")

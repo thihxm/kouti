@@ -62,7 +62,6 @@ struct ItemsGrid: View {
         }
     }
     
-    
     @ViewBuilder
     func powerUpIcon(for item: ItemModel) -> some View {
         if (item.amount == 0) {
@@ -94,20 +93,3 @@ struct ItemsGrid: View {
         }
     }
 }
-
-
-//struct ItemsGrid_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ItemsGrid(items: InventoryModel(
-//                    items: [
-//                        ItemModel(name: "coroa", type: .top, price: 10, amount: 1),
-//                        ItemModel(name: "toga", type: .bottom, price: 10, amount: 1),
-//                        ItemModel(name: "pocao1", type: .powerUp, price: 10, amount: 1),
-//                        ItemModel(name: "pocao2", type: .powerUp, price: 10, amount: 5),
-//                        ItemModel(name: "pocao3", type: .powerUp, price: 10)],
-//                    equipedItems: [
-//                        ItemModel(name: "coroa", type: .top, price: 10, amount: 1),]
-//                )
-//            )
-//    }
-//}

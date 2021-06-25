@@ -11,7 +11,7 @@
 		AF2D3C16268122FB00878238 /* EditMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D3C15268122FB00878238 /* EditMissionView.swift */; };
 		AF2D3C1A26817A1700878238 /* NotificationTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D3C1926817A1700878238 /* NotificationTimePicker.swift */; };
 		AF4E72A1267D1B1500861358 /* KoutiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72A0267D1B1500861358 /* KoutiApp.swift */; };
-		AF4E72A3267D1B1500861358 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72A2267D1B1500861358 /* ContentView.swift */; };
+		AF4E72A3267D1B1500861358 /* KoutiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72A2267D1B1500861358 /* KoutiView.swift */; };
 		AF4E72A5267D1B1600861358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF4E72A4267D1B1600861358 /* Assets.xcassets */; };
 		AF4E72A8267D1B1600861358 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF4E72A7267D1B1600861358 /* Preview Assets.xcassets */; };
 		AF4E72B1267D21C600861358 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72B0267D21C600861358 /* UserModel.swift */; };
@@ -39,6 +39,7 @@
 		FA79FEAB267D31DD001D865D /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79FEAA267D31DD001D865D /* ItemType.swift */; };
 		FA8355D42684B807004354B7 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8355D32684B807004354B7 /* Character.swift */; };
 		FA8355D8268502D6004354B7 /* CharacterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8355D7268502D6004354B7 /* CharacterHeader.swift */; };
+		FA8355DA26850F55004354B7 /* DefaultTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8355D926850F55004354B7 /* DefaultTasks.swift */; };
 		FAD6C9622681242D00134A83 /* Bestiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9612681242D00134A83 /* Bestiary.swift */; };
 		FAD6C9642681260D00134A83 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9632681260D00134A83 /* Items.swift */; };
 		FAD6C966268126DA00134A83 /* CharacterInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */; };
@@ -53,7 +54,7 @@
 		AF2D3C1926817A1700878238 /* NotificationTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimePicker.swift; sourceTree = "<group>"; };
 		AF4E729D267D1B1500861358 /* Kouti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kouti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4E72A0267D1B1500861358 /* KoutiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoutiApp.swift; sourceTree = "<group>"; };
-		AF4E72A2267D1B1500861358 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AF4E72A2267D1B1500861358 /* KoutiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoutiView.swift; sourceTree = "<group>"; };
 		AF4E72A4267D1B1600861358 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF4E72A7267D1B1600861358 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AF4E72A9267D1B1600861358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 		FA79FEAA267D31DD001D865D /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		FA8355D32684B807004354B7 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		FA8355D7268502D6004354B7 /* CharacterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHeader.swift; sourceTree = "<group>"; };
+		FA8355D926850F55004354B7 /* DefaultTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTasks.swift; sourceTree = "<group>"; };
 		FAD6C9612681242D00134A83 /* Bestiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bestiary.swift; sourceTree = "<group>"; };
 		FAD6C9632681260D00134A83 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoDisplay.swift; sourceTree = "<group>"; };
@@ -124,7 +126,7 @@
 				AF4E72B4267D23C500861358 /* resources */,
 				AF4E72AF267D21B500861358 /* models */,
 				AF4E72A0267D1B1500861358 /* KoutiApp.swift */,
-				AF4E72A2267D1B1500861358 /* ContentView.swift */,
+				AF4E72A2267D1B1500861358 /* KoutiView.swift */,
 				AF4E72A4267D1B1600861358 /* Assets.xcassets */,
 				AF4E72A9267D1B1600861358 /* Info.plist */,
 				AF4E72A6267D1B1600861358 /* Preview Content */,
@@ -162,6 +164,7 @@
 				AF4E72B7267D245800861358 /* Category.swift */,
 				AF4E72BB267D2B0A00861358 /* Days.swift */,
 				FA79FEAA267D31DD001D865D /* ItemType.swift */,
+				FA8355D926850F55004354B7 /* DefaultTasks.swift */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -272,7 +275,7 @@
 				FAD6C9622681242D00134A83 /* Bestiary.swift in Sources */,
 				FA79FEAB267D31DD001D865D /* ItemType.swift in Sources */,
 				AF2D3C1A26817A1700878238 /* NotificationTimePicker.swift in Sources */,
-				AF4E72A3267D1B1500861358 /* ContentView.swift in Sources */,
+				AF4E72A3267D1B1500861358 /* KoutiView.swift in Sources */,
 				AF99CECB2681083900AD151A /* DaysSelector.swift in Sources */,
 				FAD6C966268126DA00134A83 /* CharacterInfoDisplay.swift in Sources */,
 				FAD6C96A2682262500134A83 /* TasksDisplay.swift in Sources */,
@@ -293,6 +296,7 @@
 				FAD6C9642681260D00134A83 /* Items.swift in Sources */,
 				FA612CA0267F836B002BDDC2 /* TaskButton.swift in Sources */,
 				AF2D3C16268122FB00878238 /* EditMissionView.swift in Sources */,
+				FA8355DA26850F55004354B7 /* DefaultTasks.swift in Sources */,
 				FA79FEA3267D2FC2001D865D /* BestiaryModel.swift in Sources */,
 				FA79FEA9267D3159001D865D /* CharacterModel.swift in Sources */,
 				AF4E72C1267D381900861358 /* TagButton.swift in Sources */,
