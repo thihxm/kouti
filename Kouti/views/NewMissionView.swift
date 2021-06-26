@@ -42,7 +42,7 @@ struct NewMissionView: View {
                             id: \.self.name
                         ) { task in
                             NavigationLink(destination: EditMissionView(task: task, isNewMission: true)) {
-                                DefaultMissionLink(label: task.name)
+                                DefaultMissionLink(sticker: task.name.lowercased(), label: task.name)
                             }
                         }
                     }

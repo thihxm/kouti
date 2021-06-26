@@ -11,7 +11,7 @@ struct TasksDisplay: View {
     @Binding var tasks: [TaskModel]
     @State var selectedCategories: Set<Category> = Set<Category>()
     var selectedTasks: [TaskModel] {
-        tasks.filter{ selectedCategories.contains($0.tag) || selectedCategories.isEmpty }
+        tasks.filter{ selectedCategories.contains($0.tag) || selectedCategories.isEmpty }.sorted(by: <)
     }
     
     var body: some View {
@@ -35,8 +35,8 @@ struct TasksDisplay: View {
             TagSelector($selectedCategories)
             ScrollView {
                 LazyVGrid(columns: [GridItem(.flexible())]) {
-                    ForEach(selectedTasks.sorted(by: <)) { task in
-                        let index = tasks.firstIndex {$0.name == task.name}
+                    ForEach(selectedTasks) { task in
+                        let index = tasks.firstIndex {$0 == task}
                         TaskButton(task: $tasks[index!])
                     }.onDelete(perform: { indexSet in
                         tasks = tasks.sorted(by: <)

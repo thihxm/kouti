@@ -23,7 +23,6 @@ struct DefaultTasks {
          TaskModel(name: "Journaling", tag: .learning, frequency: [.monday,.tuesday,.wednesday,.thursday,.friday,.saturday,.sunday], monster: MonsterModel(name: "undef", category: .health, titles: [])),
          TaskModel(name: "Fazer pequenas pausas", tag: .work, frequency: [.monday,.tuesday,.wednesday,.thursday,.friday], monster: MonsterModel(name: "undef", category: .health, titles: [])),
          TaskModel(name: "Listar tarefas", tag: .work, frequency: [.monday,.tuesday,.wednesday,.thursday,.friday], monster: MonsterModel(name: "undef", category: .health, titles: [])),
-         TaskModel(name: "Organizar minha mesa", tag: .work, frequency: [.monday], monster: MonsterModel(name: "undef", category: .health, titles: [])),
          TaskModel(name: "Guardar dinheiro", tag: .financial, frequency: [.monday,.tuesday,.wednesday,.thursday,.friday,.saturday,.sunday], monster: MonsterModel(name: "undef", category: .health, titles: [])),
          TaskModel(name: "Checar investimentos", tag: .financial, frequency: [.monday,.tuesday,.wednesday,.thursday,.friday], monster: MonsterModel(name: "undef", category: .health, titles: [])),
          TaskModel(name: "Conferir gastos", tag: .financial, frequency: [.monday,.tuesday,.wednesday,.thursday,.friday,.saturday,.sunday], monster: MonsterModel(name: "undef", category: .health, titles: [])),]

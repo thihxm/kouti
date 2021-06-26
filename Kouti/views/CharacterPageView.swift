@@ -11,7 +11,6 @@ struct CharacterPageView: View {
     @ObservedObject var userManager: UserManager
     
     var body: some View {
-        let title = userManager.user.character.inventory.equipedItems.filter { $0.type == .title }.first
         VStack (spacing: 0) {
             HStack (alignment: .center){
                 Character(equipedItems: $userManager.user.character.inventory.equipedItems)

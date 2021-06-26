@@ -29,7 +29,7 @@ class UserManager: ObservableObject {
     }
     
     func addTask(task: TaskModel) {
-        if(!user.tasks.contains(task)) {
+        if(user.tasks.filter {TaskModel.hasSameInfo(lhs: $0, rhs: task)}.isEmpty) {
             self.user.tasks.append(task)
         }
     }

@@ -38,4 +38,11 @@ struct TaskModel: Identifiable, Equatable {
         }
         return lhs.name < rhs.name
     }
+    
+    static func hasSameInfo(lhs: TaskModel, rhs: TaskModel) -> Bool {
+        lhs.name == rhs.name &&
+        lhs.tag == rhs.tag &&
+        lhs.frequency == rhs.frequency &&
+        lhs.notifications == rhs.notifications
+    }
 }

@@ -55,7 +55,7 @@ struct EditMissionView: View {
             return DateComponents(hour: hour, minute: minute)
         }))
 
-        let task = TaskModel(
+        let newTask = TaskModel(
             name: missionTitle,
             tag: selectedCategory!,
             frequency: selectedDays,
@@ -65,9 +65,9 @@ struct EditMissionView: View {
         )
         
         if isNewMission {
-            userManager.addTask(task: task)
+            userManager.addTask(task: newTask)
         } else {
-            userManager.editTask(oldTask: self.task!, newTask: task)
+            userManager.editTask(oldTask: self.task!, newTask: newTask)
         }
         
         shouldGoToMainScreen = true
