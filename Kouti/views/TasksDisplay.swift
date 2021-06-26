@@ -34,12 +34,18 @@ struct TasksDisplay: View {
             }
             TagSelector($selectedCategories)
             ScrollView {
-                ForEach(selectedTasks.sorted(by: <)) { task in
-                    let index = tasks.firstIndex {$0.name == task.name}
-                    TaskButton(task: $tasks[index!])
-                }.animation(.easeInOut)
+                LazyVGrid(columns: [GridItem(.flexible())]) {
+                    ForEach(selectedTasks.sorted(by: <)) { task in
+                        let index = tasks.firstIndex {$0.name == task.name}
+                        TaskButton(task: $tasks[index!])
+                    }.onDelete(perform: { indexSet in
+                        tasks = tasks.sorted(by: <)
+                        tasks.remove(atOffsets: indexSet)
+                    })
+                }
             }
-        }.padding(.top, 25)
+        }.navigationTitle("Meus hábitos")
+        .padding(.top, 25)
         .padding(.horizontal, 20)
         .background(Color.white)
         .cornerRadius(16)

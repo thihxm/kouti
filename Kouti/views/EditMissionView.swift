@@ -16,6 +16,7 @@ struct EditMissionView: View {
     @State var selectedCategory: Category? = nil
     @State private var selectedDays: Set<Days> = []
     var isNewMission: Bool = false
+    @State var shouldGoToMainScreen: Bool = false
     
     init(isNewMission: Bool) {
         self.allowNotification = false
@@ -68,6 +69,8 @@ struct EditMissionView: View {
         } else {
             userManager.editTask(oldTask: self.task!, newTask: task)
         }
+        
+        shouldGoToMainScreen = true
     }
 
     var body: some View {
@@ -142,7 +145,7 @@ struct EditMissionView: View {
             }
             .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
             
-            Button(action: saveTask) {
+            NavigationLink(destination: MainPageView(userManager: userManager), isActive: $shouldGoToMainScreen) {
                 Text("Salvar")
                     .font(.callout)
                     .foregroundColor(Color("dark3"))
@@ -150,9 +153,10 @@ struct EditMissionView: View {
                     .padding(.vertical, 10)
                     .background(Color.white)
                     .cornerRadius(30)
+                    .offset(y: -18)
+                    .shadow(color: .black.opacity(0.25), radius: 4, x: 0.0, y: 4)
+                    .onTapGesture(perform: saveTask)
             }
-            .offset(y: -18)
-            .shadow(color: .black.opacity(0.25), radius: 4, x: 0.0, y: 4)
         }
     }
 }
