@@ -29,4 +29,13 @@ struct TaskModel: Identifiable, Equatable {
     static func ==(lhs: TaskModel, rhs: TaskModel) -> Bool {
         return lhs.id == rhs.id
     }
+    
+    static func <(lhs: TaskModel, rhs: TaskModel) -> Bool {
+        if (lhs.isComplete && !rhs.isComplete) {
+            return false
+        } else if (!lhs.isComplete && rhs.isComplete) {
+            return true
+        }
+        return lhs.name < rhs.name
+    }
 }
