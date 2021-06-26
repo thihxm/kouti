@@ -145,7 +145,7 @@ struct EditMissionView: View {
             }
             .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
             
-            NavigationLink(destination: MainPageView(userManager: userManager), isActive: $shouldGoToMainScreen) {
+            NavigationLink(destination: AppView(userManager: userManager), isActive: $shouldGoToMainScreen) {
                 Text("Salvar")
                     .font(.callout)
                     .foregroundColor(Color("dark3"))

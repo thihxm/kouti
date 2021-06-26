@@ -12,13 +12,7 @@ struct KoutiView: View {
     
     var body: some View {
         NavigationView {
-            TabView {
-                MainPageView(userManager: userManager)
-                    .tabItem { Image(systemName: "house") }
-                CharacterPageView(userManager: userManager)
-                    .tabItem { Image(systemName: "person") }
-                Text("Loja").tabItem { Image(systemName: "bag") }
-            }
+            AppView(userManager: userManager)
         }
     }
 }

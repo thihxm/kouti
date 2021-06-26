@@ -16,7 +16,7 @@ struct Character: View {
             Image("Body").resizable().scaledToFit()
             Image("Face").resizable().scaledToFit()
             Image("Hair0").resizable().scaledToFit()
-            Image(equipedItems.filter {$0.type == .hat}.first?.name ?? "coroa").resizable().scaledToFit()
+            Image(equipedItems.filter {$0.type == .hat}.first?.name ?? "").resizable().scaledToFit()
             Image(equipedItems.filter {$0.type == .bottom}.first?.name ?? "default_bottom").resizable().scaledToFit()
             Image(equipedItems.filter {$0.type == .top}.first?.name ?? "default_top").resizable().scaledToFit()
         }
