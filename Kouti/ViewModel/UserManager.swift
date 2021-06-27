@@ -23,23 +23,45 @@ class UserManager: ObservableObject {
         let inventory = InventoryModel(items: [], equipedItems: [])
         let bestiary = BestiaryModel(monsterCollection: [:])
         let character = CharacterModel(name: "", level: 0, experience: 0, money: 0, inventory: inventory, bestiary: bestiary)
-
         self.user = UserModel(character: character, tasks: [], streak: 0)
         self.history = HistoryModel(history: [:])
+        
+        if let data = UserDefaults.standard.data(forKey: "user") {
+            if let decoded = try? JSONDecoder().decode(UserModel.self, from: data) {
+                self.user = decoded
+            }
+        }
+        if let data = UserDefaults.standard.data(forKey: "history") {
+            if let decoded = try? JSONDecoder().decode(HistoryModel.self, from: data) {
+                self.history = decoded
+            }
+        }
+    }
+    
+    func save() {
+        if let encoded = try? JSONEncoder().encode(user) {
+            UserDefaults.standard.set(encoded, forKey: "user")
+        }
+        if let encoded = try? JSONEncoder().encode(history) {
+            UserDefaults.standard.set(encoded, forKey: "history")
+        }
     }
     
     func addTask(task: TaskModel) {
         if(user.tasks.filter {TaskModel.hasSameInfo(lhs: $0, rhs: task)}.isEmpty) {
             self.user.tasks.append(task)
         }
+        save()
     }
     
     func editTask(oldTask: TaskModel, newTask: TaskModel) {
         let index = user.tasks.firstIndex(of: oldTask)!
         user.tasks[index] = newTask
+        save()
     }
     
     func updateHistory() {
+        print("Updating history")
         let calendar = Calendar.current
         let today = calendar.component(.day, from: Date())
         let yesterday = calendar.date(from: DateComponents(day: today - 1, hour: 0, minute: 0, second: 0, nanosecond: 0))!
@@ -52,6 +74,7 @@ class UserManager: ObservableObject {
                 self.user.streak = 0
             }
         }
+        save()
     }
     
     static func emptyState() -> UserManager {

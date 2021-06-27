@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CharacterModel {
+struct CharacterModel: Codable {
     var name: String
     var level: Int
     var experience: Int

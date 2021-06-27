@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel {
+struct UserModel: Codable {
     var character: CharacterModel
     var tasks: [TaskModel]
     var streak: Int

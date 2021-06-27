@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Category: String, Equatable, CaseIterable {
+enum Category: String, Equatable, CaseIterable, Codable {
     case health = "Saúde",
          entertainment = "Entretenimento",
          learning = "Aprendizado",

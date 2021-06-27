@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ItemModel: Equatable {
+struct ItemModel: Equatable, Codable {
     var name: String
     var type: ItemType
     var price: Int

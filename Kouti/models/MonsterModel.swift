@@ -7,12 +7,11 @@
 
 import Foundation
 
-struct MonsterModel: Hashable {
-    let id = UUID()
+struct MonsterModel: Hashable, Codable {
+    var id = UUID()
     let name: String
-    let description: String = ""
     let category: Category
-    let titles: [TitleModel]
+    let titles: [String]
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

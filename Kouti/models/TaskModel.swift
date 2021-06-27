@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct TaskModel: Identifiable, Equatable {
+struct TaskModel: Identifiable, Equatable, Codable {
     let id = UUID()
-    let name: String
-    let tag: Category
-    let frequency: Set<Days>
+    var name: String
+    var tag: Category
+    var frequency: Set<Days>
     var notifications: [DateComponents] = []
-    let monster: MonsterModel
+    var monster: MonsterModel
     var isComplete: Bool = false
     
     func frequencyDescription() -> String {

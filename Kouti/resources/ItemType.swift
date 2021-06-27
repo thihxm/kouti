@@ -16,7 +16,7 @@ import Foundation
 //}
 
 // TODO: A alteração com rawValue é temporária, para testar TelaPersonagemCompras. Voltar ao original quando itens tiverem nomes e representações definitivas
-enum ItemType: String {
+enum ItemType: String, Codable {
     case top = "camiseta",
          bottom = "calca",
          hat = "chapeu",

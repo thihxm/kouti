@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct InventoryModel {
+struct InventoryModel: Codable {
     var items: [ItemModel]
     var equipedItems: [ItemModel]
     

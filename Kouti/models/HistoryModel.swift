@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct HistoryModel {
+struct HistoryModel: Codable {
     var history: [Date: [TaskModel]]
 }

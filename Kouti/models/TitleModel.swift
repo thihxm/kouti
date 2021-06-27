@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TitleModel {
+struct TitleModel: Codable {
     let label: String
     let monsters: [MonsterModel]
 }

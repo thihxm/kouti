@@ -14,6 +14,9 @@ struct KoutiView: View {
         NavigationView {
             AppView(userManager: userManager)
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            userManager.updateHistory()
+        }
     }
 }
 

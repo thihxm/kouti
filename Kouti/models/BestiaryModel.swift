@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct BestiaryModel {
+struct BestiaryModel: Codable {
     var monsterCollection: [MonsterModel: Int]
 }
