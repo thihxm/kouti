@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppView: View {
-    @ObservedObject var userManager: UserManager
+    @EnvironmentObject var userManager: UserManager
     @State var selectedTab: Int = 0
     
     var body: some View {
