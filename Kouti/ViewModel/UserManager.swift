@@ -34,6 +34,11 @@ class UserManager: ObservableObject {
             if let decoded = try? JSONDecoder().decode(UserModel.self, from: data) {
                 self.user = decoded
 //                self.user.character.inventory = InventoryModel.fullInventory()
+                self.user.character.bestiary = BestiaryModel(
+                    monsterCollection: [MonsterModel(name: "1", category: .health, titles: []) : 1,
+                                        MonsterModel(name: "2", category: .health, titles: []) : 0,
+                                        MonsterModel(name: "3", category: .entertainment, titles: []) : 3,
+                                        MonsterModel(name: "4", category: .learning, titles: []) : 0])
             }
         }
         if let data = UserDefaults.standard.data(forKey: "history") {
