@@ -23,5 +23,6 @@ struct KoutiView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         KoutiView(userManager: UserManager.fullState())
+            .environmentObject(UserManager.fullState())
     }
 }
