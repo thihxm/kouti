@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TasksDisplay: View {
-    @Binding var tasks: [TaskModel]
+    @EnvironmentObject var userManager: UserManager
     @State var selectedCategories: Set<Category> = Set<Category>()
     var selectedTasks: [TaskModel] {
-        tasks.filter{ selectedCategories.contains($0.tag) || selectedCategories.isEmpty }.sorted(by: <)
+        userManager.user.tasks.filter{ selectedCategories.contains($0.tag) || selectedCategories.isEmpty }.sorted(by: <)
     }
     
     var body: some View {
@@ -35,13 +35,13 @@ struct TasksDisplay: View {
             TagSelector($selectedCategories)
                 List {
                     ForEach(selectedTasks) { task in
-                        let index = tasks.firstIndex {$0 == task}
-                        TaskButton(task: $tasks[index!])
+                        let index = userManager.user.tasks.firstIndex {$0 == task}
+                        TaskButton(task: $userManager.user.tasks[index!])
                             .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
                     }
                     .onDelete(perform: { indexSet in
-                        tasks = tasks.sorted(by: <)
-                        tasks.remove(atOffsets: indexSet)
+                        let task = selectedTasks[indexSet.first!]
+                        userManager.deleteTask(task: task)
                     })
                 }.animation(.easeInOut)
         }.padding(.top, 25)

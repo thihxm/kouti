@@ -13,7 +13,7 @@ struct CharacterInfoDisplay: View {
     var body: some View {
         VStack {
             TabView {
-                ItemsGrid(items: $userManager.user.character.inventory)
+                ItemsGrid(userManager: userManager)
                 BestiaryGrid(bestiary: userManager.user.character.bestiary)
             }.tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))

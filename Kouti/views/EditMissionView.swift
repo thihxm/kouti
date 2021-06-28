@@ -47,6 +47,9 @@ struct EditMissionView: View {
     
     // TODO: Generate a random monster or get current task Monster
     func saveTask() {
+        if (missionTitle.isEmpty || selectedCategory == nil || selectedDays.isEmpty) {
+            return
+        }
         let notifications: [DateComponents] = Array(Set(alertsTime.map {date in
             let calendar = Calendar.current
             let hour = calendar.component(.hour, from: date)
@@ -145,6 +148,7 @@ struct EditMissionView: View {
             }
             .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
             
+            // TODO: App crasha se form não estiver completo
             NavigationLink(destination: AppView(userManager: userManager), isActive: $shouldGoToMainScreen) {
                 Text("Salvar")
                     .font(.callout)

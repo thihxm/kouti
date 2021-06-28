@@ -13,7 +13,7 @@ struct CharacterHeaderAndPicture: View {
     // TODO: Ajustar alinhamentos e imagem do perfil
     var body: some View {
         HStack (alignment: .top, spacing: 25) {
-            Character(equipedItems: $userManager.user.character.inventory.equipedItems)
+            Character(equipedItems: $userManager.user.character.inventory.equipedItems, hairColor: $userManager.hairColor, skinColor: $userManager.skinColor)
                 .scaledToFill()
                 .offset(x: 0, y: 50)
                 .frame(width: 125, height: 125)

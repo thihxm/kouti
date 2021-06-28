@@ -12,12 +12,17 @@ struct CharacterPageView: View {
     
     var body: some View {
         VStack (spacing: 0) {
-            HStack (alignment: .center){
-                Character(equipedItems: $userManager.user.character.inventory.equipedItems)
+            HStack (alignment: .bottom){
+                Character(equipedItems: $userManager.user.character.inventory.equipedItems,
+                          hairColor: $userManager.hairColor, skinColor: $userManager.skinColor)
                     .rotation3DEffect(
                         .degrees(180),
                         axis: (x: 0.0, y: 1.0, z: 0.0))
-                CharacterHeader()
+                Spacer()
+                VStack {
+                    ColorPicker("Cor de pele", selection: $userManager.skinColor, supportsOpacity: false)
+                    ColorPicker("Cor do cabelo", selection: $userManager.hairColor, supportsOpacity: false)
+                }
             }
             .padding()
             CharacterInfoDisplay()
@@ -26,14 +31,18 @@ struct CharacterPageView: View {
         .edgesIgnoringSafeArea(.all))
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        .onChange(of: userManager.skinColor, perform: { value in
+            userManager.changeSkinColor(to: value)
+        })
+        .onChange(of: userManager.hairColor, perform: { value in
+            userManager.changeHairColor(to: value)
+        })
     }
 }
 
-struct CharacterPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        CharacterPageView()
-            .environmentObject(UserManager.fullState())
-        CharacterPageView()
-            .environmentObject(UserManager.emptyState())
-    }
-}
+//struct CharacterPageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CharacterPageView(userManager: UserManager.fullState())
+//        CharacterPageView(userManager: UserManager.emptyState())
+//    }
+//}

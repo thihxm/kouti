@@ -44,6 +44,7 @@
 		FA8355D8268502D6004354B7 /* CharacterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8355D7268502D6004354B7 /* CharacterHeader.swift */; };
 		FA8355DA26850F55004354B7 /* DefaultTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8355D926850F55004354B7 /* DefaultTasks.swift */; };
 		FA892A7A2687F5FD00A236A6 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA892A792687F5FD00A236A6 /* AppView.swift */; };
+		FAA57AE72688C58500A98EF9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA57AE62688C58500A98EF9 /* ColorExtension.swift */; };
 		FAD6C9622681242D00134A83 /* Bestiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9612681242D00134A83 /* Bestiary.swift */; };
 		FAD6C9642681260D00134A83 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C9632681260D00134A83 /* Items.swift */; };
 		FAD6C966268126DA00134A83 /* CharacterInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */; };
@@ -91,6 +92,7 @@
 		FA8355D7268502D6004354B7 /* CharacterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHeader.swift; sourceTree = "<group>"; };
 		FA8355D926850F55004354B7 /* DefaultTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTasks.swift; sourceTree = "<group>"; };
 		FA892A792687F5FD00A236A6 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		FAA57AE62688C58500A98EF9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		FAD6C9612681242D00134A83 /* Bestiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bestiary.swift; sourceTree = "<group>"; };
 		FAD6C9632681260D00134A83 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		FAD6C965268126DA00134A83 /* CharacterInfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoDisplay.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				AF4E72BB267D2B0A00861358 /* Days.swift */,
 				FA79FEAA267D31DD001D865D /* ItemType.swift */,
 				FA8355D926850F55004354B7 /* DefaultTasks.swift */,
+				FAA57AE62688C58500A98EF9 /* ColorExtension.swift */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				AF8B54FD2684F92D00E37C85 /* UserManager.swift in Sources */,
 				AF8B54FA2684DDC900E37C85 /* MonsterDraw.swift in Sources */,
 				FA01E23526839AB8008F9C66 /* CharacterPageView.swift in Sources */,
+				FAA57AE72688C58500A98EF9 /* ColorExtension.swift in Sources */,
 				FA79FEA5267D30D1001D865D /* InventoryModel.swift in Sources */,
 				AF4E72B3267D230200861358 /* MonsterModel.swift in Sources */,
 				AF4E72A1267D1B1500861358 /* KoutiApp.swift in Sources */,
