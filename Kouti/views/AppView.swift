@@ -20,7 +20,7 @@ struct AppView: View {
             CharacterPageView()
                 .tabItem { Image(systemName: selectedTab == 1 ? "person.fill" : "person") }
                 .tag(1)
-            Text("Loja").tabItem { Image(systemName: selectedTab == 2 ? "bag.fill" : "bag") }
+            ShopView().tabItem { Image(systemName: selectedTab == 2 ? "bag.fill" : "bag") }
                 .tag(2)
         }.navigationBarTitle("")
         .navigationBarHidden(true)
