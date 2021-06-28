@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharacterHeader: View {
-    @ObservedObject var userManager: UserManager
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         let title = userManager.user.character.inventory.equipedItems.filter { $0.type == .title }.first
@@ -27,6 +27,7 @@ struct CharacterHeader: View {
 
 struct CharacterHeader_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterHeader(userManager: UserManager.fullState())
+        CharacterHeader()
+            .environmentObject(UserManager.fullState())
     }
 }

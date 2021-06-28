@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharacterInfoDisplay: View {
-    @ObservedObject var userManager: UserManager
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         VStack {
@@ -26,6 +26,7 @@ struct CharacterInfoDisplay: View {
 
 struct CharacterInfoDisplay_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterInfoDisplay(userManager: UserManager.fullState())
+        CharacterInfoDisplay()
+            .environmentObject(UserManager.fullState())
     }
 }

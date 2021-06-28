@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharacterPageView: View {
-    @ObservedObject var userManager: UserManager
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         VStack (spacing: 0) {
@@ -17,10 +17,10 @@ struct CharacterPageView: View {
                     .rotation3DEffect(
                         .degrees(180),
                         axis: (x: 0.0, y: 1.0, z: 0.0))
-                CharacterHeader(userManager: userManager)
+                CharacterHeader()
             }
             .padding()
-            CharacterInfoDisplay(userManager: userManager)
+            CharacterInfoDisplay()
                 .padding(.bottom)
         }.background(Color("bg1")
         .edgesIgnoringSafeArea(.all))
@@ -31,7 +31,9 @@ struct CharacterPageView: View {
 
 struct CharacterPageView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterPageView(userManager: UserManager.fullState())
-        CharacterPageView(userManager: UserManager.emptyState())
+        CharacterPageView()
+            .environmentObject(UserManager.fullState())
+        CharacterPageView()
+            .environmentObject(UserManager.emptyState())
     }
 }
