@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TaskButton: View {
+    @EnvironmentObject var userManager: UserManager
     @Binding var task: TaskModel
     
     // TODO: Alguma modificação na aparência quando estiver completo?
-    // TODO: Comportamento de slide para abrir opções. Quais são os comportamentos que devem ser incluidos?
     var body: some View {
-        Button(action: {task.isComplete.toggle()})
+        Button(action: {userManager.changeCompletenessState(of: task)})
         {
             ZStack {
                 RoundedRectangle(cornerRadius: cornerRadius)

@@ -16,7 +16,7 @@ struct CharacterModel: Codable {
     var bestiary: BestiaryModel
     var selectedSkin: Int = 1
     var experienceNeededForLevel: Int {
-        Int(pow(Double(2), Double(level)))
+        max(10 + level, Int(pow(Double(2), Double(level))))
     }
     
     var percentageExperience: Double {

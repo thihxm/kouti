@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemsGrid: View {
-    @Binding var items: InventoryModel
+    @ObservedObject var userManager: UserManager
     
     var columns: [GridItem] =
         Array(repeating: .init(.flexible()), count: 3)
@@ -24,7 +24,7 @@ struct ItemsGrid: View {
     func itemsDisplay() -> some View {
         ScrollView {
             LazyVGrid(columns: columns, alignment: .center) {
-                ForEach(items.items, id: \.name) { item in
+                ForEach(userManager.user.character.inventory.items, id: \.name) { item in
                     if item.type != .powerUp {
                         itemIcon(for: item)
                     } else {
@@ -42,8 +42,8 @@ struct ItemsGrid: View {
                 .resizable()
                 .padding(10)
                 .opacity(0.5)
-        } else if (items.equipedItems.contains(item)) {
-            Button(action: { selectItem(item) })
+        } else if (userManager.user.character.inventory.equipedItems.contains(item)) {
+            Button(action: { userManager.unequipItem(item) })
             {
                 Image("\(item.name)_icone")
                     .resizable()
@@ -53,7 +53,7 @@ struct ItemsGrid: View {
                                 .offset(x: 25, y: 25))
             }
         } else {
-            Button(action: { selectItem(item) })
+            Button(action: { userManager.equipItem(item) })
             {
                 Image("\(item.name)_icone")
                     .resizable()
@@ -82,14 +82,6 @@ struct ItemsGrid: View {
                             .overlay(Text("\(item.amount)"))
                             .frame(width: 25, height: 25, alignment: .topTrailing)
                             .offset(x: 25, y: 25))
-        }
-    }
-    
-    func selectItem(_ item: ItemModel) {
-        if items.equipedItems.contains(item) {
-            items.equipedItems.remove(at: items.equipedItems.firstIndex(of: item)!)
-        } else if (item.amount != 0) {
-            items.equipedItems.append(item)
         }
     }
 }

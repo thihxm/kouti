@@ -13,16 +13,17 @@ struct StreakDisplay: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text("Streak \(streakCount)")
+            Text("Streak \(streakCount / 7)")
                 .font(.system(size: 13, weight: .bold, design: .default))
             flameDisplay()
+                .animation(.easeInOut)
         }
     }
     
     @ViewBuilder
     func flameDisplay() -> some View {
         // TODO: Consertar a forma com que o streak é contado
-        let litFlames = min(7, streakCount)
+        let litFlames = streakCount % 7
         HStack {
             Image(litFlames >= 1 ? "litFlame" : "unlitFlame").resizable().scaledToFit()
             Image(litFlames >= 2 ? "litFlame" : "unlitFlame").resizable().scaledToFit()

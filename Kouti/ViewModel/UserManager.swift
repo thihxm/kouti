@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//import SwiftUI
+import SwiftUI
 
 class UserManager: ObservableObject {
     
@@ -18,17 +18,22 @@ class UserManager: ObservableObject {
 
     @Published var user: UserModel
     @Published var history: HistoryModel
+    @Published var skinColor: Color
+    @Published var hairColor: Color
     
     required init() {
-        let inventory = InventoryModel(items: [], equipedItems: [])
+        let inventory = InventoryModel.emptyInventory()
         let bestiary = BestiaryModel(monsterCollection: [:])
         let character = CharacterModel(name: "", level: 0, experience: 0, money: 0, inventory: inventory, bestiary: bestiary)
         self.user = UserModel(character: character, tasks: [], streak: 0)
         self.history = HistoryModel(history: [:])
+        self.skinColor = .white
+        self.hairColor = .white
         
         if let data = UserDefaults.standard.data(forKey: "user") {
             if let decoded = try? JSONDecoder().decode(UserModel.self, from: data) {
                 self.user = decoded
+//                self.user.character.inventory = InventoryModel.fullInventory()
             }
         }
         if let data = UserDefaults.standard.data(forKey: "history") {
@@ -36,28 +41,16 @@ class UserManager: ObservableObject {
                 self.history = decoded
             }
         }
-    }
-    
-    func save() {
-        if let encoded = try? JSONEncoder().encode(user) {
-            UserDefaults.standard.set(encoded, forKey: "user")
+        if let data = UserDefaults.standard.data(forKey: "hairColor") {
+            if let decoded = try? JSONDecoder().decode(Color.self, from: data) {
+                self.hairColor = decoded
+            }
         }
-        if let encoded = try? JSONEncoder().encode(history) {
-            UserDefaults.standard.set(encoded, forKey: "history")
+        if let data = UserDefaults.standard.data(forKey: "skinColor") {
+            if let decoded = try? JSONDecoder().decode(Color.self, from: data) {
+                self.skinColor = decoded
+            }
         }
-    }
-    
-    func addTask(task: TaskModel) {
-        if(user.tasks.filter {TaskModel.hasSameInfo(lhs: $0, rhs: task)}.isEmpty) {
-            self.user.tasks.append(task)
-        }
-        save()
-    }
-    
-    func editTask(oldTask: TaskModel, newTask: TaskModel) {
-        let index = user.tasks.firstIndex(of: oldTask)!
-        user.tasks[index] = newTask
-        save()
     }
     
     func updateHistory() {
@@ -75,6 +68,67 @@ class UserManager: ObservableObject {
             }
         }
         save()
+    }
+    
+    func save() {
+        if let encoded = try? JSONEncoder().encode(user) {
+            UserDefaults.standard.set(encoded, forKey: "user")
+        }
+        if let encoded = try? JSONEncoder().encode(history) {
+            UserDefaults.standard.set(encoded, forKey: "history")
+        }
+    }
+    
+    func changeHairColor(to newColor: Color) {
+        self.hairColor = newColor
+        if let encoded = try? JSONEncoder().encode(hairColor) {
+            UserDefaults.standard.set(encoded, forKey: "hairColor")
+        }
+    }
+    
+    func changeSkinColor(to newColor: Color) {
+        self.skinColor = newColor
+        if let encoded = try? JSONEncoder().encode(skinColor) {
+            UserDefaults.standard.set(encoded, forKey: "skinColor")
+        }
+    }
+    
+    func addTask(task: TaskModel) {
+        if(user.tasks.filter {TaskModel.hasSameInfo(lhs: $0, rhs: task)}.isEmpty) {
+            self.user.tasks.append(task)
+        }
+        save()
+    }
+    
+    func editTask(oldTask: TaskModel, newTask: TaskModel) {
+        let index = user.tasks.firstIndex(of: oldTask)!
+        user.tasks[index] = newTask
+        save()
+    }
+    
+    func equipItem(_ item: ItemModel) {
+        if let equipedItem = user.character.inventory.equipedItems.filter({ $0.type == item.type }).first {
+            user.character.inventory.equipedItems.remove(at: user.character.inventory.equipedItems.firstIndex(of: equipedItem)!)
+        }
+        user.character.inventory.equipedItems.append(item)
+        save()
+    }
+    
+    func unequipItem(_ item: ItemModel) {
+        user.character.inventory.equipedItems.remove(at: user.character.inventory.equipedItems.firstIndex(of: item)!)
+        save()
+    }
+    
+    func changeCompletenessState(of task: TaskModel) {
+        let taskIndex = user.tasks.firstIndex(of: task)
+        
+        user.tasks[taskIndex!].isComplete.toggle()
+        if (user.tasks[taskIndex!].isComplete) {
+            user.character.receiveExperience(amount: 10 * max(1,user.streak))
+        }
+        if (user.tasks.allSatisfy {$0.isComplete}) {
+            user.streak += 1
+        }
     }
     
     static func emptyState() -> UserManager {
