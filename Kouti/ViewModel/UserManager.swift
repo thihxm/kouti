@@ -33,7 +33,7 @@ class UserManager: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: "user") {
             if let decoded = try? JSONDecoder().decode(UserModel.self, from: data) {
                 self.user = decoded
-//                self.user.character.inventory = InventoryModel.fullInventory()
+                self.user.character.inventory = InventoryModel.fullInventory()
             }
         }
         if let data = UserDefaults.standard.data(forKey: "history") {

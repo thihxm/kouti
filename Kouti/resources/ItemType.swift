@@ -22,5 +22,6 @@ enum ItemType: String, Codable {
          hat = "chapeu",
          powerUp = "powerUp",
          sticker = "adesivo",
-         title = "titulo"
+         title = "titulo",
+         hair = "cabelo"
 }

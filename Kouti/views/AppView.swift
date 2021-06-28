@@ -9,15 +9,19 @@ import SwiftUI
 
 struct AppView: View {
     @ObservedObject var userManager: UserManager
+    @State var selectedTab: Int = 0
     
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
 //            MainPageView(userManager: userManager)
             MainPageView()
-                .tabItem { Image(systemName: "house") }
+                .tabItem { Image(systemName: selectedTab == 0 ? "house.fill" : "house") }
+                .tag(0)
             CharacterPageView()
-                .tabItem { Image(systemName: "person") }
-            Text("Loja").tabItem { Image(systemName: "bag") }
+                .tabItem { Image(systemName: selectedTab == 1 ? "person.fill" : "person") }
+                .tag(1)
+            Text("Loja").tabItem { Image(systemName: selectedTab == 2 ? "bag.fill" : "bag") }
+                .tag(2)
         }.navigationBarTitle("")
         .navigationBarHidden(true)
     }

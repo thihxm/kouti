@@ -27,6 +27,10 @@ struct InventoryModel: Codable {
     
     static func emptyInventory() -> InventoryModel {
         InventoryModel(items: [ItemModel(name: "coroa", type: .hat, price: 100),
+                               ItemModel(name: "cabelo1", type: .hair, price: 100),
+                               ItemModel(name: "cabelo2", type: .hair, price: 100),
+                               ItemModel(name: "cabelo3", type: .hair, price: 100),
+                               ItemModel(name: "cabelo4", type: .hair, price: 100),
                                 ItemModel(name: "camiseta0", type: .top, price: 100),
                                 ItemModel(name: "camiseta1", type: .top, price: 100),
                                 ItemModel(name: "camiseta2", type: .top, price: 100),
@@ -42,7 +46,10 @@ struct InventoryModel: Codable {
     }
     
     static func fullInventory() -> InventoryModel {
-        InventoryModel(items: [ItemModel(name: "coroa", type: .hat, price: 100, amount: 1),
+        InventoryModel(items: [ItemModel(name: "coroa", type: .hat, price: 100, amount: 1),       ItemModel(name: "cabelo1", type: .hair, price: 100, amount: 1),
+                               ItemModel(name: "cabelo2", type: .hair, price: 100, amount: 1),
+                               ItemModel(name: "cabelo3", type: .hair, price: 100, amount: 1),
+                               ItemModel(name: "cabelo4", type: .hair, price: 100, amount: 1),
                                 ItemModel(name: "camiseta0", type: .top, price: 100, amount: 1),
                                 ItemModel(name: "camiseta1", type: .top, price: 100, amount: 1),
                                 ItemModel(name: "camiseta2", type: .top, price: 100, amount: 1),
