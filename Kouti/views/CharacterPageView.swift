@@ -12,15 +12,16 @@ struct CharacterPageView: View {
     
     var body: some View {
         VStack (spacing: 0) {
-            HStack (alignment: .center){
+            HStack (alignment: .bottom){
                 Character(equipedItems: $userManager.user.character.inventory.equipedItems,
                           hairColor: $userManager.hairColor, skinColor: $userManager.skinColor)
                     .rotation3DEffect(
                         .degrees(180),
                         axis: (x: 0.0, y: 1.0, z: 0.0))
+                Spacer()
                 VStack {
-                    ColorPicker("Pele", selection: $userManager.skinColor, supportsOpacity: false)
-                    ColorPicker("Cabelo", selection: $userManager.hairColor, supportsOpacity: false)
+                    ColorPicker("Cor de pele", selection: $userManager.skinColor, supportsOpacity: false)
+                    ColorPicker("Cor do cabelo", selection: $userManager.hairColor, supportsOpacity: false)
                 }
             }
             .padding()

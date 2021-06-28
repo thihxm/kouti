@@ -39,14 +39,14 @@ struct ItemsGrid: View {
     func itemIcon(for item: ItemModel) -> some View {
         if (item.amount == 0) {
             Image("\(item.name)_icone")
-                .resizable()
+                .resizable().scaledToFit()
                 .padding(10)
                 .opacity(0.5)
         } else if (userManager.user.character.inventory.equipedItems.contains(item)) {
             Button(action: { userManager.unequipItem(item) })
             {
                 Image("\(item.name)_icone")
-                    .resizable()
+                    .resizable().scaledToFit()
                     .padding(10)
                     .overlay(Image(systemName: "checkmark.seal.fill")
                                 .foregroundColor(Color("green"))
@@ -56,7 +56,7 @@ struct ItemsGrid: View {
             Button(action: { userManager.equipItem(item) })
             {
                 Image("\(item.name)_icone")
-                    .resizable()
+                    .resizable().scaledToFit()
                     .padding(10)
             }
         }
@@ -66,16 +66,16 @@ struct ItemsGrid: View {
     func powerUpIcon(for item: ItemModel) -> some View {
         if (item.amount == 0) {
             Image("\(item.name)_icone")
-                .resizable()
+                .resizable().scaledToFit()
                 .padding(10)
                 .opacity(0.5)
         } else if (item.amount == 1) {
             Image("\(item.name)_icone")
-                .resizable()
+                .resizable().scaledToFit()
                 .padding(10)
         } else {
             Image("\(item.name)_icone")
-                .resizable()
+                .resizable().scaledToFit()
                 .padding(10)
                 .overlay(Circle()
                     .foregroundColor(Color("bg3"))

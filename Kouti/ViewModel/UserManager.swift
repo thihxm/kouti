@@ -106,6 +106,11 @@ class UserManager: ObservableObject {
         save()
     }
     
+    func deleteTask(task: TaskModel) {
+        self.user.tasks.remove(at: self.user.tasks.firstIndex {$0 == task}!)
+        save()
+    }
+    
     func equipItem(_ item: ItemModel) {
         if let equipedItem = user.character.inventory.equipedItems.filter({ $0.type == item.type }).first {
             user.character.inventory.equipedItems.remove(at: user.character.inventory.equipedItems.firstIndex(of: equipedItem)!)
