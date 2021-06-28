@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct KoutiView: View {
-    @ObservedObject var userManager: UserManager
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         NavigationView {
-            AppView(userManager: userManager)
+            AppView()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             userManager.updateHistory()
@@ -22,6 +22,7 @@ struct KoutiView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        KoutiView(userManager: UserManager.fullState())
+        KoutiView()
+            .environmentObject(UserManager.fullState())
     }
 }

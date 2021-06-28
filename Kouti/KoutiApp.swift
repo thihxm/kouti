@@ -14,7 +14,7 @@ struct KoutiApp: App {
     
     var body: some Scene {
         WindowGroup {
-            KoutiView(userManager: userManager).environmentObject(userManager)
+            KoutiView().environmentObject(userManager)
         }
     }
 }

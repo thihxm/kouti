@@ -8,7 +8,7 @@
 import Foundation
 
 struct TaskModel: Identifiable, Equatable, Codable {
-    let id = UUID()
+    var id = UUID()
     var name: String
     var tag: Category
     var frequency: Set<Days>
