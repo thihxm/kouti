@@ -12,9 +12,10 @@ struct AppView: View {
     
     var body: some View {
         TabView {
-            MainPageView(userManager: userManager)
+//            MainPageView(userManager: userManager)
+            MainPageView()
                 .tabItem { Image(systemName: "house") }
-            CharacterPageView(userManager: userManager)
+            CharacterPageView()
                 .tabItem { Image(systemName: "person") }
             Text("Loja").tabItem { Image(systemName: "bag") }
         }.navigationBarTitle("")

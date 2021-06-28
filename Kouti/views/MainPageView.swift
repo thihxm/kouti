@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MainPageView: View {
-    @ObservedObject var userManager: UserManager
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         VStack(alignment: .leading, spacing: 45) {
-            CharacterHeaderAndPicture(userManager: userManager)
+            CharacterHeaderAndPicture()
                 .frame(maxWidth: .infinity)
             TasksDisplay(tasks: $userManager.user.tasks)
         }.padding()
@@ -25,6 +25,7 @@ struct MainPageView: View {
 
 struct MainPageView_Previews: PreviewProvider {
     static var previews: some View {
-        MainPageView(userManager: UserManager.fullState())
+        MainPageView()
+            .environmentObject(UserManager.fullState())
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharacterPageView: View {
-    @ObservedObject var userManager: UserManager
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         VStack (spacing: 0) {
@@ -24,7 +24,7 @@ struct CharacterPageView: View {
                 }
             }
             .padding()
-            CharacterInfoDisplay(userManager: userManager)
+            CharacterInfoDisplay()
                 .padding(.bottom)
         }.background(Color("bg1")
         .edgesIgnoringSafeArea(.all))
