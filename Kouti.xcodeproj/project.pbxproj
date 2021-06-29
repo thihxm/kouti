@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF01558B268BBD4500854DCA /* PandoraAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = AF01558A268BBD4500854DCA /* PandoraAnimation.json */; };
 		AF2D3C142681205200878238 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D3C132681205200878238 /* Tag.swift */; };
 		AF2D3C16268122FB00878238 /* EditMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D3C15268122FB00878238 /* EditMissionView.swift */; };
 		AF2D3C1A26817A1700878238 /* NotificationTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D3C1926817A1700878238 /* NotificationTimePicker.swift */; };
 		AF33D263268A3AAC00DD38D3 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D262268A3AAC00DD38D3 /* ShopView.swift */; };
 		AF33D265268A3FC600DD38D3 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D264268A3FC600DD38D3 /* RoundedCorner.swift */; };
 		AF33D267268A430300DD38D3 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D266268A430300DD38D3 /* PopUpView.swift */; };
+		AF33D269268A775600DD38D3 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D268268A775600DD38D3 /* LottieView.swift */; };
+		AF33D270268A781300DD38D3 /* PandoraAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D26F268A781300DD38D3 /* PandoraAnimation.swift */; };
+		AF33D274268A85B200DD38D3 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D273268A85B200DD38D3 /* OnBoardingView.swift */; };
 		AF4E72A1267D1B1500861358 /* KoutiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72A0267D1B1500861358 /* KoutiApp.swift */; };
 		AF4E72A3267D1B1500861358 /* KoutiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E72A2267D1B1500861358 /* KoutiView.swift */; };
 		AF4E72A5267D1B1600861358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF4E72A4267D1B1600861358 /* Assets.xcassets */; };
@@ -57,12 +61,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF01558A268BBD4500854DCA /* PandoraAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PandoraAnimation.json; sourceTree = "<group>"; };
 		AF2D3C132681205200878238 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		AF2D3C15268122FB00878238 /* EditMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMissionView.swift; sourceTree = "<group>"; };
 		AF2D3C1926817A1700878238 /* NotificationTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimePicker.swift; sourceTree = "<group>"; };
 		AF33D262268A3AAC00DD38D3 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		AF33D264268A3FC600DD38D3 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		AF33D266268A430300DD38D3 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		AF33D268268A775600DD38D3 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		AF33D26F268A781300DD38D3 /* PandoraAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PandoraAnimation.swift; sourceTree = "<group>"; };
+		AF33D273268A85B200DD38D3 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		AF4E729D267D1B1500861358 /* Kouti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kouti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4E72A0267D1B1500861358 /* KoutiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoutiApp.swift; sourceTree = "<group>"; };
 		AF4E72A2267D1B1500861358 /* KoutiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoutiView.swift; sourceTree = "<group>"; };
@@ -119,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF33D26E268A780900DD38D3 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				AF33D26F268A781300DD38D3 /* PandoraAnimation.swift */,
+				AF33D273268A85B200DD38D3 /* OnBoardingView.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
 		AF4E7294267D1B1500861358 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +155,7 @@
 		AF4E729F267D1B1500861358 /* Kouti */ = {
 			isa = PBXGroup;
 			children = (
+				AF01558A268BBD4500854DCA /* PandoraAnimation.json */,
 				AF8B54FB2684F88700E37C85 /* ViewModel */,
 				AF4E72BF267D369100861358 /* views */,
 				AF4E72B4267D23C500861358 /* resources */,
@@ -184,6 +202,7 @@
 				FA8355D926850F55004354B7 /* DefaultTasks.swift */,
 				FAA57AE62688C58500A98EF9 /* ColorExtension.swift */,
 				AF33D264268A3FC600DD38D3 /* RoundedCorner.swift */,
+				AF33D268268A775600DD38D3 /* LottieView.swift */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -191,6 +210,7 @@
 		AF4E72BF267D369100861358 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				AF33D26E268A780900DD38D3 /* OnBoarding */,
 				AF4E72C0267D381900861358 /* TagButton.swift */,
 				AF2D3C132681205200878238 /* Tag.swift */,
 				FAD6C96F2682586F00134A83 /* TagSelector.swift */,
@@ -294,6 +314,7 @@
 			files = (
 				AF4E72A8267D1B1600861358 /* Preview Assets.xcassets in Resources */,
 				AF4E72A5267D1B1600861358 /* Assets.xcassets in Resources */,
+				AF01558B268BBD4500854DCA /* PandoraAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,11 +327,14 @@
 			files = (
 				AF99CEC92680FB7800AD151A /* TagList.swift in Sources */,
 				AF4E72B6267D23E300861358 /* TitleModel.swift in Sources */,
+				AF33D269268A775600DD38D3 /* LottieView.swift in Sources */,
 				FA8355D42684B807004354B7 /* Character.swift in Sources */,
 				FAD6C972268260A700134A83 /* MainPageView.swift in Sources */,
 				FAD6C9702682586F00134A83 /* TagSelector.swift in Sources */,
 				FAD6C9622681242D00134A83 /* Bestiary.swift in Sources */,
+				AF33D274268A85B200DD38D3 /* OnBoardingView.swift in Sources */,
 				FA79FEAB267D31DD001D865D /* ItemType.swift in Sources */,
+				AF33D270268A781300DD38D3 /* PandoraAnimation.swift in Sources */,
 				AF2D3C1A26817A1700878238 /* NotificationTimePicker.swift in Sources */,
 				AF4E72A3267D1B1500861358 /* KoutiView.swift in Sources */,
 				AF99CECB2681083900AD151A /* DaysSelector.swift in Sources */,

@@ -13,7 +13,6 @@ struct AppView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-//            MainPageView(userManager: userManager)
             MainPageView()
                 .tabItem { Image(systemName: selectedTab == 0 ? "house.fill" : "house") }
                 .tag(0)

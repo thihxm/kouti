@@ -20,6 +20,7 @@ class UserManager: ObservableObject {
     @Published var history: HistoryModel
     @Published var skinColor: Color
     @Published var hairColor: Color
+    @Published var isFirstLogin: Bool
     
     required init() {
         let inventory = InventoryModel.emptyInventory()
@@ -29,6 +30,7 @@ class UserManager: ObservableObject {
         self.history = HistoryModel(history: [:])
         self.skinColor = .white
         self.hairColor = .white
+        self.isFirstLogin = true
         
         if let data = UserDefaults.standard.data(forKey: "user") {
             if let decoded = try? JSONDecoder().decode(UserModel.self, from: data) {
@@ -54,6 +56,11 @@ class UserManager: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: "skinColor") {
             if let decoded = try? JSONDecoder().decode(Color.self, from: data) {
                 self.skinColor = decoded
+            }
+        }
+        if let data = UserDefaults.standard.data(forKey: "isFirstLogin") {
+            if let decoded = try? JSONDecoder().decode(Bool.self, from: data) {
+                self.isFirstLogin = decoded
             }
         }
     }
@@ -95,6 +102,18 @@ class UserManager: ObservableObject {
         self.skinColor = newColor
         if let encoded = try? JSONEncoder().encode(skinColor) {
             UserDefaults.standard.set(encoded, forKey: "skinColor")
+        }
+    }
+    
+    func changeUserName(to newUserName: String) {
+        self.isFirstLogin = false
+        self.user.character.name = newUserName
+        
+        if let encoded = try? JSONEncoder().encode(isFirstLogin) {
+            UserDefaults.standard.set(encoded, forKey: "isFirstLogin")
+        }
+        if let encoded = try? JSONEncoder().encode(user) {
+            UserDefaults.standard.set(encoded, forKey: "user")
         }
     }
     
@@ -146,10 +165,11 @@ class UserManager: ObservableObject {
         
         let inventory = InventoryModel(items: [], equipedItems: [])
         let bestiary = BestiaryModel(monsterCollection: [:])
-        let character = CharacterModel(name: "Camaradinha", level: 0, experience: 0, money: 0, inventory: inventory, bestiary: bestiary)
+        let character = CharacterModel(name: "", level: 0, experience: 0, money: 0, inventory: inventory, bestiary: bestiary)
         
         manager.user = UserModel(character: character, tasks: [], streak: 0)
         manager.history = HistoryModel(history: [:])
+        manager.isFirstLogin = true
         
         return manager
     }
@@ -229,6 +249,7 @@ class UserManager: ObservableObject {
         
         manager.user = UserModel(character: character, tasks: tasks, streak: 17)
         manager.history = HistoryModel(history: [:])
+        manager.isFirstLogin = false
         
         return manager
     }
