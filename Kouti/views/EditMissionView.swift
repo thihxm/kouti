@@ -16,7 +16,10 @@ struct EditMissionView: View {
     @State var selectedCategory: Category? = nil
     @State private var selectedDays: Set<Days> = []
     var isNewMission: Bool = false
+    @State var isAnimationActive: Bool = false
+    @State var isAnimationDone: Bool = false
     @State var shouldGoToMainScreen: Bool = false
+    var monster: Int = 0
     
     init(isNewMission: Bool) {
         self.allowNotification = false
@@ -25,6 +28,7 @@ struct EditMissionView: View {
         self.selectedCategory = nil
         self.selectedDays = []
         self.isNewMission = isNewMission
+        self.monster = Int.random(in: 1...4)
     }
     
     init(task: TaskModel, isNewMission: Bool) {
@@ -39,6 +43,7 @@ struct EditMissionView: View {
         self._selectedCategory = State(initialValue: task.tag)
         self._selectedDays = State(initialValue: task.frequency)
         self.isNewMission = isNewMission
+        self.monster = Int(self.task!.monster.name)!
     }
     
     func addAlert() {
@@ -63,11 +68,12 @@ struct EditMissionView: View {
             tag: selectedCategory!,
             frequency: selectedDays,
             notifications: notifications,
-            monster: MonsterModel(name: "", category: .health, titles: []),
+            monster: MonsterModel(name: String(monster), titles: []),
             isComplete: false
         )
         
         if isNewMission {
+            isAnimationActive = true
             userManager.addTask(task: newTask)
         } else {
             userManager.editTask(oldTask: self.task!, newTask: newTask)
@@ -80,9 +86,16 @@ struct EditMissionView: View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             VStack(spacing: 25) {
                 VStack(spacing: 8) {
-                    Image("Monster")
-                        .resizable()
-                        .scaledToFit()
+//                    Image("Monster")
+//                        .resizable()
+//                        .scaledToFit()
+                    if (isNewMission) {
+                        AnimationTest(spinX: $isAnimationActive, done: $isAnimationDone, monster: monster)
+                            .frame(maxHeight: 180)
+                    } else {
+                        Image("monster#\(String(describing: task!.monster.name))")
+                            .frame(maxHeight: 180)
+                    }
                     
                     TextField("Escreva sua missão", text: $missionTitle)
                         .font(.callout)
@@ -149,7 +162,7 @@ struct EditMissionView: View {
             .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
             
             // TODO: App crasha se form não estiver completo
-            NavigationLink(destination: AppView(), isActive: $shouldGoToMainScreen) {
+            NavigationLink(destination: AppView(), isActive: isNewMission ? $isAnimationDone : $shouldGoToMainScreen) {
                 Text("Salvar")
                     .font(.callout)
                     .foregroundColor(Color("dark3"))
@@ -176,7 +189,7 @@ struct NewHabitView_Previews: PreviewProvider {
             tag: .health,
             frequency: [.monday, .tuesday, .wednesday, .friday],
             notifications: [DateComponents(hour: 10, minute: 30), DateComponents(hour: 23, minute: 19)],
-            monster: MonsterModel(name: "", category: .health, titles: []),
+            monster: MonsterModel(name: "", titles: []),
             isComplete: false
         ),
             isNewMission: true)

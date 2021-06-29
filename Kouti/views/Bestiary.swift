@@ -36,7 +36,7 @@ struct BestiaryGrid: View {
             ZStack {
                 Image("sticker#\(monster.name)_filled")
                     .overlay(Circle()
-                                .foregroundColor(monster.category.getColor())
+                                .foregroundColor(Color("bg1"))
                                 .overlay(Text("\(times)"))
                                 .frame(width: 25, height: 25, alignment: .topTrailing)
                                 .offset(x: 25, y: 25))

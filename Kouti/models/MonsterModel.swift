@@ -10,7 +10,6 @@ import Foundation
 struct MonsterModel: Hashable, Codable {
     var id = UUID()
     let name: String
-    let category: Category
     // TODO: Modificacao do titles de TitleModel para String. Fazer o TitleModel atender ao protocolo Enodable e Decodable para conseguir retornar ao original
     let titles: [String]
     

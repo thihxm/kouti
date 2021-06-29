@@ -11,6 +11,16 @@ struct NewMissionView: View {
     @State var tasks: [TaskModel]
     @State var selectedCategory: Category? = .health
     
+    
+    func taskLabel(_ task: TaskModel) -> some View {
+        var taskModel = task
+        taskModel.monster = MonsterModel(name: String(Int.random(in: 1...4)), titles: [])
+        
+        return NavigationLink(destination: EditMissionView(task: taskModel, isNewMission: true)) {
+            DefaultMissionLink(sticker: task.name.lowercased(), label: task.name)
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 25) {
             
@@ -41,9 +51,7 @@ struct NewMissionView: View {
                             tasks.filter {selectedCategory == $0.tag},
                             id: \.self.name
                         ) { task in
-                            NavigationLink(destination: EditMissionView(task: task, isNewMission: true)) {
-                                DefaultMissionLink(sticker: task.name.lowercased(), label: task.name)
-                            }
+                            taskLabel(task)
                         }
                     }
                     .padding(.horizontal, 5)
@@ -60,46 +68,46 @@ struct NewMissionView: View {
     }
 }
 
-struct NewMissionView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewMissionView(
-            tasks: [TaskModel(
-                        name: "Beber água",
-                        tag: .health,
-                        frequency:[.monday,.friday,.saturday,.sunday,.wednesday],
-                        monster:
-                            MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-                     TaskModel(
-                         name: "Ler Harry Potter",
-                        tag: .entertainment,
-                        frequency:[.monday,.tuesday],
-                         monster:
-                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-                     TaskModel(
-                         name: "Guardar dinheiro",
-                         tag: .financial,
-                         frequency:[.friday],
-                         monster:
-                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-                     TaskModel(
-                         name: "Meditar",
-                         tag: .health,
-                        frequency:[.monday,.tuesday,.friday,.saturday,.sunday,.thursday,.wednesday],
-                         monster:
-                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-                     TaskModel(
-                         name: "Estudar",
-                        tag: .learning,
-                        frequency:[.monday,.friday,.wednesday],
-                         monster:
-                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true),
-                     TaskModel(
-                         name: "Entregar relatório",
-                        tag: .work,
-                        frequency:[.thursday],
-                         monster:
-                             MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true)
-                    ]
-        )
-    }
-}
+//struct NewMissionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewMissionView(
+//            tasks: [TaskModel(
+//                        name: "Beber água",
+//                        tag: .health,
+//                        frequency:[.monday,.friday,.saturday,.sunday,.wednesday],
+//                        monster:
+//                            MonsterModel(name: "1", titles: []), isComplete: true),
+//                     TaskModel(
+//                         name: "Ler Harry Potter",
+//                        tag: .entertainment,
+//                        frequency:[.monday,.tuesday],
+//                         monster:
+//                             MonsterModel(name: "1", titles: []), isComplete: true),
+//                     TaskModel(
+//                         name: "Guardar dinheiro",
+//                         tag: .financial,
+//                         frequency:[.friday],
+//                         monster:
+//                             MonsterModel(name: "2", titles: []), isComplete: true),
+//                     TaskModel(
+//                         name: "Meditar",
+//                         tag: .health,
+//                        frequency:[.monday,.tuesday,.friday,.saturday,.sunday,.thursday,.wednesday],
+//                         monster:
+//                             MonsterModel(name: "2", titles: []), isComplete: true),
+//                     TaskModel(
+//                         name: "Estudar",
+//                        tag: .learning,
+//                        frequency:[.monday,.friday,.wednesday],
+//                         monster:
+//                             MonsterModel(name: "3", titles: []), isComplete: true),
+//                     TaskModel(
+//                         name: "Entregar relatório",
+//                        tag: .work,
+//                        frequency:[.thursday],
+//                         monster:
+//                             MonsterModel(name: "4", titles: []), isComplete: true)
+//                    ]
+//        )
+//    }
+//}
