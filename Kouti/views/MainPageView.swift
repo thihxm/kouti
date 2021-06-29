@@ -11,10 +11,11 @@ struct MainPageView: View {
     @EnvironmentObject var userManager: UserManager
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 45) {
+        VStack(alignment: .leading, spacing: 30) {
             CharacterHeaderAndPicture()
                 .frame(maxWidth: .infinity)
-            TasksDisplay()
+//            Statistics()
+            TasksDisplay(userManager: userManager)
         }.padding()
         .background(Color("bg1").edgesIgnoringSafeArea(.all))
         .navigationBarTitle("")

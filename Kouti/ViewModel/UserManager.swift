@@ -20,25 +20,28 @@ class UserManager: ObservableObject {
     @Published var history: HistoryModel
     @Published var skinColor: Color
     @Published var hairColor: Color
+    var lastLogin: Date
+    var today: Date {
+        let calendar = Calendar.current
+        let today = calendar.dateComponents([.day, .month, .year], from: Date())
+        return calendar.date(from: DateComponents(year: today.year, month: today.month, day: today.day, hour: 0, minute: 0, second: 0, nanosecond: 0))!
+    }
     
     required init() {
         let inventory = InventoryModel.emptyInventory()
-        let bestiary = BestiaryModel(monsterCollection: [:])
-        let character = CharacterModel(name: "", level: 0, experience: 0, money: 0, inventory: inventory, bestiary: bestiary)
+        let bestiary = BestiaryModel.emptyBestiary()
+        let character = CharacterModel(name: "Camaradinha", level: 1, experience: 0, money: 0, inventory: inventory, bestiary: bestiary)
         self.user = UserModel(character: character, tasks: [], streak: 0)
         self.history = HistoryModel(history: [:])
         self.skinColor = .white
         self.hairColor = .white
-        
+        let calendar = Calendar.current
+        let today = calendar.dateComponents([.day, .month, .year], from: Date())
+        self.lastLogin = calendar.date(from: DateComponents(year: today.year, month: today.month, day: today.day, hour: 0, minute: 0, second: 0, nanosecond: 0))!
+
         if let data = UserDefaults.standard.data(forKey: "user") {
             if let decoded = try? JSONDecoder().decode(UserModel.self, from: data) {
                 self.user = decoded
-//                self.user.character.inventory = InventoryModel.fullInventory()
-                self.user.character.bestiary = BestiaryModel(
-                    monsterCollection: [MonsterModel(name: "1", category: .health, titles: []) : 1,
-                                        MonsterModel(name: "2", category: .health, titles: []) : 0,
-                                        MonsterModel(name: "3", category: .entertainment, titles: []) : 3,
-                                        MonsterModel(name: "4", category: .learning, titles: []) : 0])
             }
         }
         if let data = UserDefaults.standard.data(forKey: "history") {
@@ -56,23 +59,39 @@ class UserManager: ObservableObject {
                 self.skinColor = decoded
             }
         }
+        
+        if let data = UserDefaults.standard.data(forKey: "lastLogin") {
+            if let decoded = try? JSONDecoder().decode(Date.self, from: data) {
+                self.lastLogin = decoded
+            }
+        }
+        user.character.inventory = InventoryModel.fullInventory()
+        user.character.bestiary = BestiaryModel.fullBestiary()
+        save()
     }
     
     func updateHistory() {
         print("Updating history")
-        let calendar = Calendar.current
-        let today = calendar.component(.day, from: Date())
-        let yesterday = calendar.date(from: DateComponents(day: today - 1, hour: 0, minute: 0, second: 0, nanosecond: 0))!
-
-        for var task in self.user.tasks {
-            if task.isComplete {
-                self.history.history[yesterday]?.append(task)
-                task.isComplete = false
-            } else {
-                self.user.streak = 0
+        print("History: \(history)")
+        print("Last login was \(lastLogin). Today is \(today)")
+        if (today != lastLogin) {
+            for task in self.user.tasks {
+                if task.isComplete {
+                    self.user.tasks[self.user.tasks.firstIndex(of: task)!].isComplete = false
+                } else {
+                    self.user.streak = 0
+                }
             }
         }
+        
+        print(lastLogin.distance(to: today))
+        if (lastLogin.distance(to: today) > 86400) {
+            self.user.streak = 0
+        }
+
+        lastLogin = today
         save()
+        print(user.tasks)
     }
     
     func save() {
@@ -81,6 +100,9 @@ class UserManager: ObservableObject {
         }
         if let encoded = try? JSONEncoder().encode(history) {
             UserDefaults.standard.set(encoded, forKey: "history")
+        }
+        if let encoded = try? JSONEncoder().encode(lastLogin) {
+            UserDefaults.standard.set(encoded, forKey: "lastLogin")
         }
     }
     
@@ -99,6 +121,8 @@ class UserManager: ObservableObject {
     }
     
     func addTask(task: TaskModel) {
+        print(task)
+        print("monster#\(String(describing: task.monster.name))")
         if(user.tasks.filter {TaskModel.hasSameInfo(lhs: $0, rhs: task)}.isEmpty) {
             self.user.tasks.append(task)
         }
@@ -112,7 +136,10 @@ class UserManager: ObservableObject {
     }
     
     func deleteTask(task: TaskModel) {
+        print("indice da tarefa \(self.user.tasks.firstIndex {$0 == task}!)")
+        print("total de tarefas \(self.user.tasks.count)")
         self.user.tasks.remove(at: self.user.tasks.firstIndex {$0 == task}!)
+        print("tarefa apagada, novo total de tarefas: \(self.user.tasks.count)")
         save()
     }
     
@@ -134,11 +161,22 @@ class UserManager: ObservableObject {
         
         user.tasks[taskIndex!].isComplete.toggle()
         if (user.tasks[taskIndex!].isComplete) {
-            user.character.receiveExperience(amount: 10 * max(1,user.streak))
+            if (!(self.history.history[today]?.contains(task) ?? false)) {
+                user.character.receiveExperience(amount: 10 * max(1,user.streak))
+                
+                if let _ = self.history.history[today] {
+                    self.history.history[today]?.append(task)
+                } else {
+                    self.history.history[today] = [task]
+                }
+                
+                if (user.tasks.allSatisfy {$0.isComplete}) {
+                    user.streak += 1
+                }
+            }
         }
-        if (user.tasks.allSatisfy {$0.isComplete}) {
-            user.streak += 1
-        }
+        
+        save()
     }
     
     static func emptyState() -> UserManager {
@@ -173,13 +211,10 @@ class UserManager: ObservableObject {
                 equipedItems: [ItemModel(name: "coroa", type: .hat, price: 10, amount: 1)]
             ),
             bestiary: BestiaryModel(
-                monsterCollection: [MonsterModel(name: "1", category: .health, titles: []) : 1,
-                                    MonsterModel(name: "2", category: .health, titles: []) : 0,
-                                    MonsterModel(name: "3", category: .entertainment, titles: []) : 3,
-                                    MonsterModel(name: "4", category: .learning, titles: []) : 0,
-                                    MonsterModel(name: "5", category: .learning, titles: []) : 3,
-                                    MonsterModel(name: "6", category: .financial, titles: []) : 5,
-                                    MonsterModel(name: "7", category: .work, titles: []) : 2]
+                monsterCollection: [MonsterModel(name: "1", titles: []) : 1,
+                                    MonsterModel(name: "2", titles: []) : 0,
+                                    MonsterModel(name: "3", titles: []) : 3,
+                                    MonsterModel(name: "4", titles: []) : 0]
             )
         )
         let tasks = [
@@ -188,42 +223,42 @@ class UserManager: ObservableObject {
                 tag: .health,
                 frequency:Set([.monday,.friday,.saturday,.sunday,.wednesday]),
                 notifications: [],
-                monster:MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true
+                monster:MonsterModel(name: "1", titles: []), isComplete: true
             ),
             TaskModel(
                 name: "Ler Harry Potter",
                 tag: .entertainment,
                 frequency:Set([.monday,.tuesday]),
                 notifications: [],
-                monster: MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true
+                monster: MonsterModel(name: "1", titles: []), isComplete: true
             ),
             TaskModel(
                 name: "Guardar dinheiro",
                 tag: .financial,
                 frequency:Set([.friday]),
                 notifications: [],
-                monster: MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true
+                monster: MonsterModel(name: "2", titles: []), isComplete: true
             ),
             TaskModel(
                 name: "Meditar",
                 tag: .health,
                 frequency:Set([.monday,.tuesday,.friday,.saturday,.sunday,.thursday,.wednesday]),
                 notifications: [],
-                monster: MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true
+                monster: MonsterModel(name: "2", titles: []), isComplete: true
             ),
             TaskModel(
                 name: "Estudar",
                 tag: .learning,
                 frequency:Set([.monday,.friday,.wednesday]),
                 notifications: [],
-                monster: MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true
+                monster: MonsterModel(name: "3", titles: []), isComplete: true
             ),
             TaskModel(
                 name: "Entregar relatório",
                 tag: .work,
                 frequency:Set([.thursday]),
                 notifications: [],
-                monster: MonsterModel(name: "Monstro1", category: .health, titles: []), isComplete: true
+                monster: MonsterModel(name: "4", titles: []), isComplete: true
             )
         ]
         

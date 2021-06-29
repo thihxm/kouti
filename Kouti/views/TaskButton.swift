@@ -13,26 +13,28 @@ struct TaskButton: View {
     
     // TODO: Alguma modificação na aparência quando estiver completo?
     var body: some View {
-        Button(action: {userManager.changeCompletenessState(of: task)})
-        {
-            ZStack {
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .offset(y: bottomRectangleOffset)
-                    .foregroundColor(task.tag.getColor())
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .foregroundColor(Color("grayBgButtons"))
-                HStack (alignment: .center) {
-                    VStack (alignment: .leading, spacing: 10) {
-                        Text(task.name)
-                            .font(.system(size: 17, weight: .bold, design: .default))
-                        Text(task.frequencyDescription())
-                            .font(.footnote)
-                    }
-                    Spacer()
+        ZStack {
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .offset(y: bottomRectangleOffset)
+                .foregroundColor(task.tag.getColor())
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .foregroundColor(Color("grayBgButtons"))
+            HStack (alignment: .center) {
+                Image("sticker#\(task.monster.name)_filled").resizable().scaledToFit()
+                VStack (alignment: .leading, spacing: 5) {
+                    Text(task.name)
+                        .font(.system(size: 17, weight: .bold, design: .default))
+                    Text(task.frequencyDescription())
+                        .font(.footnote)
+                }
+                Spacer()
+                Button(action: {userManager.changeCompletenessState(of: task)})
+                {
                     makeCompleteButton()
-                }.padding()
-            }.frame(maxHeight: 68)
-        }.foregroundColor(.black)
+                }.buttonStyle(PlainButtonStyle())
+            }.padding()
+        }.frame(maxHeight: 68)
+        .foregroundColor(.black)
         .animation(.easeInOut)
         //.padding(.vertical)
     }

@@ -8,10 +8,33 @@
 import SwiftUI
 
 struct TasksDisplay: View {
-    @EnvironmentObject var userManager: UserManager
+    @ObservedObject var userManager: UserManager
     @State var selectedCategories: Set<Category> = Set<Category>()
     var selectedTasks: [TaskModel] {
-        userManager.user.tasks.filter{ selectedCategories.contains($0.tag) || selectedCategories.isEmpty }.sorted(by: <)
+        userManager.user.tasks.filter{ (selectedCategories.contains($0.tag) || selectedCategories.isEmpty) }.sorted(by: <)
+    }
+    
+    
+    func buildButton(for task: TaskModel) -> some View {
+        print("Construindo botão")
+        let index = userManager.user.tasks.firstIndex {$0 == task}
+        print("Indice \(String(describing: index))")
+        return ZStack {
+            NavigationLink(destination: EditMissionView(task: selectedTasks[index!], isNewMission: false)) {
+                EmptyView()
+            }.opacity(0.0)
+            .buttonStyle(PlainButtonStyle())
+
+            TaskButton(task: $userManager.user.tasks[index!])
+                
+        }.listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
+    }
+    
+    func deletar(_ indexSet: IndexSet) {
+        print("Buscando tarefa")
+        let task = selectedTasks[indexSet.first!]
+        print("Tarefa encontrada: \(task.name)")
+        userManager.deleteTask(task: task)
     }
     
     var body: some View {
@@ -36,17 +59,25 @@ struct TasksDisplay: View {
                 List {
                     ForEach(selectedTasks) { task in
                         let index = userManager.user.tasks.firstIndex {$0 == task}
-                        TaskButton(task: $userManager.user.tasks[index!])
-                            .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
+                        ZStack {
+                            NavigationLink(destination: EditMissionView(task: userManager.user.tasks[index!], isNewMission: false)) {
+                                EmptyView()
+                            }.opacity(0.0)
+                            .buttonStyle(PlainButtonStyle())
+
+                            TaskButton(task: $userManager.user.tasks[index!])
+                                
+                        }.listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
                     }
                     .onDelete(perform: { indexSet in
-                        let task = selectedTasks[indexSet.first!]
-                        userManager.deleteTask(task: task)
+                        deletar(indexSet)
                     })
                 }.animation(.easeInOut)
+                .listStyle(PlainListStyle())
         }.padding(.top, 25)
         .padding(.horizontal, 20)
         .background(Color.white)
         .cornerRadius(16)
+        .shadow(radius: 10)
     }
 }
