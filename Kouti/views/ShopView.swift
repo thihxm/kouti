@@ -18,18 +18,47 @@ struct ShopView: View {
 
     var body: some View {
         ZStack {
+            Ellipse()
+                .fill(Color(#colorLiteral(red: 0.4509803922, green: 0.3058823529, blue: 0.1490196078, alpha: 1)).opacity(0.37))
+                .frame(width: 330, height: 150, alignment: .center)
+                .scaleEffect(1.08)
+                .offset(x: 3, y: 225)
+                
             Image("hermesStore")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .scaleEffect(1.08)
                 .offset(x: -30, y: 0)
+                
             VStack {
-                VStack(spacing: 0) {
-                    Image("Coin")
-                    Text("\(userManager.user.character.money)$")
+                VStack {
+                    HStack {
+                        Text("Lojinha do Hermes")
+                            .foregroundColor(Color("bg6"))
+                            .font(.title)
+                            .fontWeight(.medium)
+                            .padding(.leading, 25)
+                            .padding(.trailing, 35)
+                            .frame(maxHeight: 55, alignment: .center)
+                            .background(Color.white)
+                            .clipShape(RoundedCorner(radius: 17, corners: [.topRight, .bottomRight]))
+                        
+                        Spacer()
+                        
+                        VStack(spacing: 0) {
+                            Image("Coin")
+                            Text("\(userManager.user.character.money)$")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                        }
+                        .padding(.leading, 10)
+                        .frame(width: 70, height: 55, alignment: .center)
+                        .background(Color.white)
+                        .clipShape(RoundedCorner(radius: 17, corners: [.topLeft, .bottomLeft]))
+                    }
                 }
-                .offset(x: 3, y: 0)
-                .frame(width: 66, height: 55, alignment: .center)
-                .background(Color("bg2"))
-                .clipShape(RoundedCorner(radius: 17, corners: [.topLeft, .bottomLeft]))
-            }.offset(x: 165, y: -300)
+                .frame(maxHeight: .infinity, alignment: .top)
+            }
             
             Button(action: clickPotion1) {
                 Image("potion1")
@@ -44,9 +73,7 @@ struct ShopView: View {
             openPopUp = false
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("bg6"))
-        .edgesIgnoringSafeArea(.all)
-        
+        .background(Background(color: Color("bgShop"), imageOffset: CGSize(width: -97, height: -68), rectOffset: CGSize(width: 25, height: 331)))
     }
 }
 
