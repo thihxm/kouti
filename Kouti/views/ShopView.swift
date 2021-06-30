@@ -11,24 +11,126 @@ struct ShopView: View {
     @EnvironmentObject var userManager: UserManager
     
     @State var openPopUp = false
+    @State var popUpItem: Item = .plusOne
     
-    func clickPotion1() {
-        openPopUp.toggle()
+    enum Item: String {
+        case plusOne = "plusOne",
+             freeze = "freeze",
+             double = "doubleCoins",
+             dracmas10 = "dracmas10",
+             dracmas100 = "dracmas100",
+             dracmas550 = "dracmas550"
+        
+        func getDescription() -> String {
+            switch self {
+            case .plusOne:
+                return "Aumente seu ganho semanal em uma moeda pelo resto da eternidade. Ganhava 10? Ganhe 11!"
+            case .freeze:
+                return "Congele seu streak por 24h. Perdeu um dia? Sem problemas!"
+            case .double:
+                return "Dobre suas moedas por uma semana (uso único semanal)"
+            case .dracmas10:
+                return "Um punhado de 10 dracmas, para te ajudar a avançar em suas missões"
+            case .dracmas100:
+                return "Uma pequena sacola de 100 dracmas, para te ajudar a avançar em suas missões"
+            default:
+                return "Algumas notas, ou 550 dracmas, para te ajudar a avançar em suas missões"
+            }
+        }
+        
+        func getPrice() -> String {
+            switch self {
+            case .plusOne:
+                return "30$"
+            case .freeze:
+                return "50$"
+            case .double:
+                return "20$"
+            case .dracmas10:
+                return "1,90 BR$"
+            case .dracmas100:
+                return "5,90 BR$"
+            default:
+                return "27,90 BR$"
+            }
+        }
+    }
+    
+    func buyItem(_ item: Item) -> () -> () {
+        return {
+            popUpItem = item
+            openPopUp.toggle()
+        }
     }
 
     var body: some View {
         ZStack {
             Ellipse()
                 .fill(Color(#colorLiteral(red: 0.4509803922, green: 0.3058823529, blue: 0.1490196078, alpha: 1)).opacity(0.37))
-                .frame(width: 330, height: 150, alignment: .center)
-                .scaleEffect(1.08)
-                .offset(x: 3, y: 225)
+                .frame(width: 340, height: 150, alignment: .center)
+                .scaleEffect(1.02)
+                .offset(x: 10, y: 215)
                 
             Image("hermesStore")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .scaleEffect(1.08)
                 .offset(x: -30, y: 0)
+            
+            Group {
+                ZStack {
+                    Button(action: buyItem(.plusOne)) {
+                        Image("plusOne")
+                    }
+                    Image("streakPrice")
+                        .offset(x: 36, y: 9)
+                }
+                .offset(x: -58, y: -11)
+                
+                ZStack {
+                    Button(action: buyItem(.freeze)) {
+                        Image("freeze")
+                    }
+                    Image("freezePrice")
+                        .offset(x: -21, y: 49)
+                }
+                .offset(x: 64.5, y: -61)
+                
+                ZStack {
+                    Button(action: buyItem(.double)) {
+                        Image("doubleCoins")
+                    }
+                    Image("doublePrice")
+                        .offset(x: 1, y: 52)
+                }
+                .offset(x: -49.5, y: 160)
+                
+                ZStack {
+                    Button(action: buyItem(.dracmas10)) {
+                        Image("dracmas10")
+                    }
+                    Image("dracmas10Price")
+                        .offset(x: 17, y: 14.5)
+                }
+                .offset(x: 32, y: 187)
+                
+                ZStack {
+                    Button(action: buyItem(.dracmas100)) {
+                        Image("dracmas100")
+                    }
+                    Image("dracmas100Price")
+                        .offset(x: 23, y: -21)
+                }
+                .offset(x: 42, y: 130)
+                
+                ZStack {
+                    Button(action: buyItem(.dracmas550)) {
+                        Image("dracmas550")
+                    }
+                    Image("dracmas550Price")
+                        .offset(x: 14, y: 20)
+                }
+                .offset(x: 106, y: 165)
+            }
                 
             VStack {
                 VStack {
@@ -46,7 +148,7 @@ struct ShopView: View {
                         Spacer()
                         
                         VStack(spacing: 0) {
-                            Image("Coin")
+                            Image("dracma")
                             Text("\(userManager.user.character.money)$")
                                 .font(.subheadline)
                                 .fontWeight(.medium)
@@ -59,15 +161,11 @@ struct ShopView: View {
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
             }
-            
-            Button(action: clickPotion1) {
-                Image("potion1")
-                    .offset(x: -62, y: -14)
-            }
-            
-            if openPopUp {
-                PopUpView(imagemCompra: "potion1", price: "30", descricao: "Aumente seu ganho semanal em uma moeda pelo resto da eternidade. Ganhava 10? Ganhe 11!")
-            }
+
+            PopUpView(imagemCompra: popUpItem.rawValue, price: popUpItem.getPrice(), descricao: popUpItem.getDescription())
+                .opacity(openPopUp ? 1 : 0)
+                .zIndex(openPopUp ? 100 : 0)
+                .animation(.easeInOut.speed(3))
         }
         .onTapGesture {
             openPopUp = false

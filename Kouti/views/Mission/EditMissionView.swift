@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+func requestNotificationAuthorization(completion: @escaping  (Bool) -> Void) {
+  UNUserNotificationCenter.current()
+    .requestAuthorization(options: [.alert, .sound, .badge]) { granted, _  in
+      // TODO: Fetch notification settings
+      completion(granted)
+    }
+}
+
 struct EditMissionView: View {
     @EnvironmentObject var userManager: UserManager
     var task: TaskModel?

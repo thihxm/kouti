@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Lojinha.png",
+      "filename" : "PrecoFreeze.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Lojinha@2x.png",
+      "filename" : "PrecoFreeze@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Lojinha@3x.png",
+      "filename" : "PrecoFreeze@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

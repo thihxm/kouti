@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Lojinha.png",
+      "filename" : "Dinheiro.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Lojinha@2x.png",
+      "filename" : "Dinheiro@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Lojinha@3x.png",
+      "filename" : "Dinheiro@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

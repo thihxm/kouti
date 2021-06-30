@@ -30,7 +30,7 @@ struct PopUpView: View {
                 
                 HStack {
                     Image("dracmaIcon")
-                    Text("\(price)$")
+                    Text(price)
                         .font(.callout)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
