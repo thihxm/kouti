@@ -56,3 +56,10 @@ struct Statistics: View {
         .shadow(radius: 10)
     }
 }
+
+struct Statistics_Previews: PreviewProvider {
+    static var previews: some View {
+        Statistics()
+            .environmentObject(UserManager.fullState())
+    }
+}

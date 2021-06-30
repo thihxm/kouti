@@ -40,9 +40,11 @@ struct CharacterPageView: View {
     }
 }
 
-//struct CharacterPageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CharacterPageView(userManager: UserManager.fullState())
-//        CharacterPageView(userManager: UserManager.emptyState())
-//    }
-//}
+struct CharacterPageView_Previews: PreviewProvider {
+    static var previews: some View {
+        CharacterPageView()
+            .environmentObject(UserManager.fullState())
+        CharacterPageView()
+            .environmentObject(UserManager.emptyState())
+    }
+}
