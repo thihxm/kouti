@@ -31,6 +31,9 @@ class UserManager: ObservableObject {
         let today = calendar.dateComponents([.day, .month, .year], from: Date())
         return calendar.date(from: DateComponents(year: today.year, month: today.month, day: today.day, hour: 0, minute: 0, second: 0, nanosecond: 0))!
     }
+    var todayTasks: [TaskModel] {
+        return user.getMissionsFor(today)
+    }
     
     required init() {
         let inventory = InventoryModel.emptyInventory()
@@ -101,14 +104,16 @@ class UserManager: ObservableObject {
         print("Updating history")
         print("History: \(history)")
         print("Last login was \(lastLogin). Today is \(today)")
-        if (today != lastLogin) {
-            for task in self.user.tasks {
-                if task.isComplete {
-                    self.user.tasks[self.user.tasks.firstIndex(of: task)!].isComplete = false
-                } else {
-                    if (freezeStreakLastUse.distance(to: today) > 86400) {
-                        self.user.streak = 0
-                    }
+        if (today == lastLogin) {
+            return
+        }
+        
+        for task in self.user.tasks {
+            if task.isComplete {
+                self.user.tasks[self.user.tasks.firstIndex(of: task)!].isComplete = false
+            } else {
+                if (freezeStreakLastUse.distance(to: today) > 86400 && user.getMissionsFor(lastLogin).contains(task)) {
+                    self.user.streak = 0
                 }
             }
         }
@@ -237,7 +242,7 @@ class UserManager: ObservableObject {
                     self.history.history[today] = [task]
                 }
                 
-                if (user.tasks.allSatisfy {$0.isComplete}) {
+                if (todayTasks.allSatisfy {$0.isComplete}) {
                     user.streak += 1
                 }
             }

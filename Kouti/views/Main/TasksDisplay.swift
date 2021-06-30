@@ -13,6 +13,9 @@ struct TasksDisplay: View {
     var selectedTasks: [TaskModel] {
         userManager.user.tasks.filter{ (selectedCategories.contains($0.tag) || selectedCategories.isEmpty) }.sorted(by: <)
     }
+//    var unselectedTasks: [TaskModel] {
+//        userManager.user.tasks.filter { !selectedTasks.contains($0) }
+//    }
     
     
     func buildButton(for task: TaskModel) -> some View {
