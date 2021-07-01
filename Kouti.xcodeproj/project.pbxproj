@@ -36,6 +36,7 @@
 		AF99CEC92680FB7800AD151A /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF99CEC82680FB7800AD151A /* TagList.swift */; };
 		AF99CECB2681083900AD151A /* DaysSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF99CECA2681083900AD151A /* DaysSelector.swift */; };
 		AF9DE0A0268CBBBF005E7A96 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DE09F268CBBBF005E7A96 /* Background.swift */; };
+		AFE704F7268D51210048597E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE704F6268D51210048597E /* NotificationManager.swift */; };
 		AFEAF34D26826DBA0084D34C /* DefaultMissionLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEAF34C26826DBA0084D34C /* DefaultMissionLink.swift */; };
 		FA01E2332683966F008F9C66 /* CharacterSkinPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA01E2322683966F008F9C66 /* CharacterSkinPicker.swift */; };
 		FA01E23526839AB8008F9C66 /* CharacterPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA01E23426839AB8008F9C66 /* CharacterPageView.swift */; };
@@ -95,6 +96,7 @@
 		AF99CEC82680FB7800AD151A /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
 		AF99CECA2681083900AD151A /* DaysSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysSelector.swift; sourceTree = "<group>"; };
 		AF9DE09F268CBBBF005E7A96 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		AFE704F6268D51210048597E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		AFEAF34C26826DBA0084D34C /* DefaultMissionLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMissionLink.swift; sourceTree = "<group>"; };
 		FA01E2322683966F008F9C66 /* CharacterSkinPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSkinPicker.swift; sourceTree = "<group>"; };
 		FA01E23426839AB8008F9C66 /* CharacterPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPageView.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				AF8B54FC2684F92D00E37C85 /* UserManager.swift */,
+				AFE704F6268D51210048597E /* NotificationManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				AF8B54FD2684F92D00E37C85 /* UserManager.swift in Sources */,
 				AF8B54FA2684DDC900E37C85 /* MonsterDraw.swift in Sources */,
 				FA01E23526839AB8008F9C66 /* CharacterPageView.swift in Sources */,
+				AFE704F7268D51210048597E /* NotificationManager.swift in Sources */,
 				FAA57AE72688C58500A98EF9 /* ColorExtension.swift in Sources */,
 				FA79FEA5267D30D1001D865D /* InventoryModel.swift in Sources */,
 				AF4E72B3267D230200861358 /* MonsterModel.swift in Sources */,

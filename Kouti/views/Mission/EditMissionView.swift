@@ -7,16 +7,10 @@
 
 import SwiftUI
 
-func requestNotificationAuthorization(completion: @escaping  (Bool) -> Void) {
-  UNUserNotificationCenter.current()
-    .requestAuthorization(options: [.alert, .sound, .badge]) { granted, _  in
-      // TODO: Fetch notification settings
-      completion(granted)
-    }
-}
-
 struct EditMissionView: View {
     @EnvironmentObject var userManager: UserManager
+    @EnvironmentObject var notificationManager: NotificationManager
+    
     var task: TaskModel?
     @State var allowNotification: Bool = false
     @State var missionTitle: String = ""
@@ -90,6 +84,10 @@ struct EditMissionView: View {
             userManager.editTask(oldTask: self.task!, newTask: newTask)
         }
         
+        if allowNotification {
+            notificationManager.queueTestNotification()
+        }
+        
         shouldGoToMainScreen = true
     }
 
@@ -141,13 +139,10 @@ struct EditMissionView: View {
                             .toggleStyle(SwitchToggleStyle(tint: Color("bgSelectedItem")))
                             .padding(.bottom, 30)
                             .onChange(of: allowNotification, perform: { value in
-                                var authorizationStatus: UNAuthorizationStatus = .notDetermined
-                                UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { permission in
-                                    authorizationStatus = permission.authorizationStatus
-                                })
+                                let authorizationStatus: UNAuthorizationStatus = NotificationManager.getAuthorizationStatus()
                                 
                                 if value && authorizationStatus != .authorized  {
-                                    requestNotificationAuthorization(completion: { isAuthorized in
+                                    NotificationManager.requestNotificationAuthorization(completion: { isAuthorized in
                                         if !isAuthorized {
                                             allowNotification = false
                                             showNotificationNotAllowedAlert = true
@@ -157,11 +152,7 @@ struct EditMissionView: View {
                                 }
                             })
                             .alert(isPresented: $showNotificationNotAllowedAlert) {
-                                Alert(
-                                    title: Text("Erro"),
-                                    message: Text("Não foi possível ativar as notificações! Elas já foram negadas anteriormente."),
-                                    dismissButton: .default(Text("OK"))
-                                )
+                                NotificationManager.alert
                             }
                             
                             
@@ -217,6 +208,7 @@ struct NewHabitView_Previews: PreviewProvider {
         EditMissionView(isNewMission: true)
             .previewDisplayName("Vazio")
             .environment(\.locale, .init(identifier: "br"))
+            .environmentObject(NotificationManager())
         EditMissionView(
             task: TaskModel(
             name: "Tomar água",
@@ -229,5 +221,6 @@ struct NewHabitView_Previews: PreviewProvider {
             isNewMission: true)
         .previewDisplayName("Passando Task")
         .environment(\.locale, .init(identifier: "br"))
+            .environmentObject(NotificationManager())
     }
 }
