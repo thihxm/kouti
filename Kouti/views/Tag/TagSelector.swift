@@ -32,7 +32,7 @@ struct TagSelector: View {
     }
     
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 11) {
                 ForEach(Category.allCases, id: \.self) { category in
                     Button(action: {selectCategory(category)}, label: {
