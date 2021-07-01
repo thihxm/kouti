@@ -60,7 +60,7 @@ struct PopUpView: View {
         }
         .frame(maxWidth: 318)
         .padding(20)
-        .background(Color("bg2"))
+        .background(Color("purpleGuide"))
         .cornerRadius(25)
         .shadow(color: .black.opacity(0.5), radius: 8)
         .transition(.asymmetric(insertion: .scale(scale: 1.1).combined(with: .opacity), removal: .opacity).animation(.easeInOut(duration: 0.1)))
