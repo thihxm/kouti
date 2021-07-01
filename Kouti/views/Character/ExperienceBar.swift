@@ -14,6 +14,7 @@ struct ExperienceBar: View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Nv. \(character.level)")
                 .font(.system(size: 13, weight: .bold, design: .default))
+                .foregroundColor(.white)
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 25)
@@ -22,13 +23,14 @@ struct ExperienceBar: View {
                     
                     RoundedRectangle(cornerRadius: 25)
                         .frame(width: CGFloat(character.percentageExperience)*geometry.size.width, height: geometry.size.height)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("yellowRedesign"))
                 }.animation(.easeOut)
             }
             HStack {
                 Spacer()
                 Text("\(character.experience) / \(character.experienceNeededForLevel)")
                     .font(.caption)
+                    .foregroundColor(.white)
             }
         }.frame(maxHeight: 47)
     }
