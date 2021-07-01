@@ -18,6 +18,14 @@ struct BestiaryModel: Codable {
                                 MonsterModel(name: "4", titles: []) : 0])
     }
     
+    static func halfInventory() -> BestiaryModel {
+        BestiaryModel(
+            monsterCollection: [MonsterModel(name: "1", titles: []) : 3,
+                                MonsterModel(name: "2", titles: []) : 1,
+                                MonsterModel(name: "3", titles: []) : 0,
+                                MonsterModel(name: "4", titles: []) : 0])
+    }
+    
     static func fullBestiary() -> BestiaryModel {
         BestiaryModel(
             monsterCollection: [MonsterModel(name: "1", titles: []) : 0,

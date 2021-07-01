@@ -15,7 +15,7 @@ struct ItemsGrid: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Tag("Inventário", hasBorder: false)
+            Tag("Inventário", hasBorder: false, textColor: .white, bgColor: Color("purpleGuide"))
             itemsDisplay()
         }.padding()
     }
@@ -38,10 +38,12 @@ struct ItemsGrid: View {
     @ViewBuilder
     func itemIcon(for item: ItemModel) -> some View {
         if (item.amount == 0) {
-            Image("\(item.name)_icone")
-                .resizable().scaledToFit()
-                .padding(10)
-                .opacity(0.5)
+            Rectangle()
+                .fill(Color("dark4"))
+                .mask(Image("\(item.name)_icone")
+                                .resizable().scaledToFit()
+                                .padding(10))
+            
         } else if (userManager.user.character.inventory.equipedItems.contains(item)) {
             Button(action: { userManager.unequipItem(item) })
             {

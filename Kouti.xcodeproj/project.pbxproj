@@ -36,6 +36,7 @@
 		AF99CEC92680FB7800AD151A /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF99CEC82680FB7800AD151A /* TagList.swift */; };
 		AF99CECB2681083900AD151A /* DaysSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF99CECA2681083900AD151A /* DaysSelector.swift */; };
 		AF9DE0A0268CBBBF005E7A96 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DE09F268CBBBF005E7A96 /* Background.swift */; };
+		AFC1866B268E626C005D2D64 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC1866A268E626C005D2D64 /* BackButton.swift */; };
 		AFE704F7268D51210048597E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE704F6268D51210048597E /* NotificationManager.swift */; };
 		AFEAF34D26826DBA0084D34C /* DefaultMissionLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEAF34C26826DBA0084D34C /* DefaultMissionLink.swift */; };
 		FA01E2332683966F008F9C66 /* CharacterSkinPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA01E2322683966F008F9C66 /* CharacterSkinPicker.swift */; };
@@ -96,6 +97,7 @@
 		AF99CEC82680FB7800AD151A /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
 		AF99CECA2681083900AD151A /* DaysSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysSelector.swift; sourceTree = "<group>"; };
 		AF9DE09F268CBBBF005E7A96 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		AFC1866A268E626C005D2D64 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		AFE704F6268D51210048597E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		AFEAF34C26826DBA0084D34C /* DefaultMissionLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMissionLink.swift; sourceTree = "<group>"; };
 		FA01E2322683966F008F9C66 /* CharacterSkinPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSkinPicker.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				AF33D262268A3AAC00DD38D3 /* ShopView.swift */,
 				FA892A792687F5FD00A236A6 /* AppView.swift */,
 				AF9DE09F268CBBBF005E7A96 /* Background.swift */,
+				AFC1866A268E626C005D2D64 /* BackButton.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				AF4E72A1267D1B1500861358 /* KoutiApp.swift in Sources */,
 				AF33D265268A3FC600DD38D3 /* RoundedCorner.swift in Sources */,
 				FA79FEA7267D30FD001D865D /* ItemModel.swift in Sources */,
+				AFC1866B268E626C005D2D64 /* BackButton.swift in Sources */,
 				FA612CA4267FA4FF002BDDC2 /* StreakDisplay.swift in Sources */,
 				AF4E72B8267D245800861358 /* Category.swift in Sources */,
 				FA01E2332683966F008F9C66 /* CharacterSkinPicker.swift in Sources */,

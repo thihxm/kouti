@@ -41,6 +41,6 @@ struct Tag: View {
 
 struct Tag_Previews: PreviewProvider {
     static var previews: some View {
-        Tag("Cabeça", hasBorder: true)
+        Tag("Cabeça", hasBorder: false)
     }
 }

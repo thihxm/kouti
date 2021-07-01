@@ -24,9 +24,9 @@ struct TasksDisplay: View {
                 EmptyView()
             }.opacity(0.0)
             .buttonStyle(PlainButtonStyle())
-
+            
             TaskButton(task: $userManager.user.tasks[index!])
-                
+            
         }.listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
     }
     
@@ -38,24 +38,25 @@ struct TasksDisplay: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("Meus hábitos")
-                    .font(.system(size: 24, weight: .semibold, design: .default))
-                Spacer()
-                NavigationLink(
-                    destination: NewMissionView(tasks: DefaultTasks.tasks),
-                    label: {
-                    Image(systemName: "plus.app.fill")
-                        .accentColor(Color("grayAddButton"))
-                        .font(.system(size: 23, weight: .semibold, design: .default))
-                        .frame(width: 20, height: 20, alignment: .center)
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                })
-                .shadow(color: .black.opacity(0.25), radius: 3, x: 0.0, y: 1)
-            }
-            TagSelector($selectedCategories)
+        ZStack(alignment: .topTrailing) {
+            NavigationLink(
+                destination: NewMissionView(tasks: DefaultTasks.tasks),
+                label: {
+                    Image(systemName: "plus")
+                        .foregroundColor(.white)
+                        .font(.system(size: 18, weight: .bold, design: .default))
+                        .imageScale(.medium)
+                        .frame(width: 30, height: 30, alignment: .center)
+                        .background(Color("purpleGuide"))
+                        .clipShape(Circle())
+                }
+            )
+            .shadow(color: .black.opacity(0.25), radius: 3, x: 0.0, y: 1)
+            .offset(x: 5, y: -10)
+            .zIndex(100)
+            
+            VStack(alignment: .leading) {
+                TagSelector($selectedCategories)
                 List {
                     ForEach(selectedTasks) { task in
                         let index = userManager.user.tasks.firstIndex {$0 == task}
@@ -64,9 +65,9 @@ struct TasksDisplay: View {
                                 EmptyView()
                             }.opacity(0.0)
                             .buttonStyle(PlainButtonStyle())
-
+                            
                             TaskButton(task: $userManager.user.tasks[index!])
-                                
+                            
                         }.listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
                     }
                     .onDelete(perform: { indexSet in
@@ -74,10 +75,12 @@ struct TasksDisplay: View {
                     })
                 }.animation(.easeInOut)
                 .listStyle(PlainListStyle())
-        }.padding(.top, 25)
-        .padding(.horizontal, 20)
-        .background(Color.white)
-        .cornerRadius(16)
-        .shadow(radius: 10)
+            }.padding(.top, 25)
+            .padding(.bottom, 8)
+            .padding(.horizontal, 20)
+            .background(Color.white)
+            .cornerRadius(16)
+            .shadow(radius: 10)
+        }
     }
 }

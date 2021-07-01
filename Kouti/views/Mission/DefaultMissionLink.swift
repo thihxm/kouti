@@ -8,29 +8,40 @@
 import SwiftUI
 
 struct DefaultMissionLink: View {
-    var sticker = "adesivo_cheio"
-    var label = "Caminhada"
+    var sticker = "menos celular"
+    var label = "Menos celular"
     var body: some View {
-        HStack(spacing: 15) {
-            Image(sticker)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 34, height: 32, alignment: .center)
-            Text(label)
+        ZStack(alignment: .bottom) {
+            VStack(spacing: 0) {
+                Text(label)
+                    .font(.headline)
+                    .foregroundColor(Color("purpleGuide"))
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                Spacer()
+                Image(sticker)
+                    .resizable()
+                    .frame(maxWidth: 100, maxHeight: 85, alignment: .center)
+                    .scaledToFit()
+            }
+            .padding(.horizontal, 18)
+            .padding(.vertical, 23)
+            .frame(width: 152, height: 159)
+            .background(Color.white)
+            .cornerRadius(30)
+            .shadow(color: .black.opacity(0.2), radius: 5, y: 5)
+            
+            
+            Image(systemName: "plus")
                 .font(.headline)
-                .foregroundColor(Color("bg4"))
-            Spacer()
-            Image(systemName: "plus.app.fill")
-                .accentColor(Color("grayAddButton"))
-                .foregroundColor(Color("grayAddButton"))
-                .font(.system(size: 23, weight: .semibold, design: .default))
-                .frame(width: 20, height: 20, alignment: .center)
+                .padding(.horizontal, 25)
+                .padding(.vertical, 4)
                 .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 4))
-        }
-        .padding(15)
-        .background(Color("grayBgButtons"))
-        .cornerRadius(10)
+                .cornerRadius(50)
+                .foregroundColor(Color("purpleGuide"))
+                .offset(y: 16)
+                .shadow(color: .black.opacity(0.2), radius: 5, y: 5)
+        }.padding(.bottom, 30)
     }
 }
 

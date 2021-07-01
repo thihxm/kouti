@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct NewMissionView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var tasks: [TaskModel]
     @State var selectedCategory: Category? = .health
     
+    let columns: [GridItem] =
+        Array(repeating: .init(.flexible()), count: 2)
     
     func taskLabel(_ task: TaskModel) -> some View {
         var taskModel = task
@@ -22,92 +26,67 @@ struct NewMissionView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 25) {
+        VStack(alignment: .leading, spacing: 18) {
+            BackButton()
+                .padding(.leading, -8)
+                .padding(.top, -5)
             
             NavigationLink(destination: EditMissionView(isNewMission: true)) {
                 Text("Criar missão personalizada")
                     .font(.headline)
-                    .foregroundColor(.black)
-                
+                    .foregroundColor(.white)
+                    .padding(.leading, 11)
+
                 Spacer()
-                
-                Image(systemName: "plus.app.fill")
-                    .accentColor(Color("grayAddButton"))
-                    .font(.system(size: 23, weight: .semibold, design: .default))
-                    .frame(width: 20, height: 20, alignment: .center)
+
+                Image(systemName: "plus")
+                    .foregroundColor(Color("purpleGuide"))
+                    .font(.system(size: 18, weight: .bold, design: .default))
+                    .imageScale(.medium)
+                    .frame(width: 30, height: 30, alignment: .center)
                     .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                    .shadow(color: .black.opacity(0.25), radius: 3, x: 0.0, y: 1)
+                    .clipShape(Circle())
             }
-            .padding(20)
-            .background(Color.white)
-            .cornerRadius(22)
+            .padding(10)
+            .background(Color("purpleGuide"))
+            .cornerRadius(30)
+            
+            Divider()
+            
+            HStack {
+                Text("Escolher missão pré-pronta:")
+                    .font(.headline)
+                    .foregroundColor(Color("purpleGuide"))
+
+                Spacer()
+            }
             
             VStack(spacing: 25) {
                 TagList($selectedCategory)
                 ScrollView {
-                    VStack(spacing: 15) {
+                    LazyVGrid(columns: columns, spacing: 22) {
                         ForEach(
                             tasks.filter {selectedCategory == $0.tag},
                             id: \.self.name
                         ) { task in
                             taskLabel(task)
                         }
-                    }
-                    .padding(.horizontal, 5)
+                    }.padding(.top, 8)
                 }
             }
-            .padding(.horizontal, 15)
-            .padding(.vertical, 20)
             .background(Color.white)
-            .cornerRadius(22)
         }
-        .padding()
-        .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
-        .navigationTitle("Criar missões")
+        .padding([.top, .leading, .trailing])
+        .background(Color.white.edgesIgnoringSafeArea(.all))
+        .navigationTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
     }
 }
 
-//struct NewMissionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewMissionView(
-//            tasks: [TaskModel(
-//                        name: "Beber água",
-//                        tag: .health,
-//                        frequency:[.monday,.friday,.saturday,.sunday,.wednesday],
-//                        monster:
-//                            MonsterModel(name: "1", titles: []), isComplete: true),
-//                     TaskModel(
-//                         name: "Ler Harry Potter",
-//                        tag: .entertainment,
-//                        frequency:[.monday,.tuesday],
-//                         monster:
-//                             MonsterModel(name: "1", titles: []), isComplete: true),
-//                     TaskModel(
-//                         name: "Guardar dinheiro",
-//                         tag: .financial,
-//                         frequency:[.friday],
-//                         monster:
-//                             MonsterModel(name: "2", titles: []), isComplete: true),
-//                     TaskModel(
-//                         name: "Meditar",
-//                         tag: .health,
-//                        frequency:[.monday,.tuesday,.friday,.saturday,.sunday,.thursday,.wednesday],
-//                         monster:
-//                             MonsterModel(name: "2", titles: []), isComplete: true),
-//                     TaskModel(
-//                         name: "Estudar",
-//                        tag: .learning,
-//                        frequency:[.monday,.friday,.wednesday],
-//                         monster:
-//                             MonsterModel(name: "3", titles: []), isComplete: true),
-//                     TaskModel(
-//                         name: "Entregar relatório",
-//                        tag: .work,
-//                        frequency:[.thursday],
-//                         monster:
-//                             MonsterModel(name: "4", titles: []), isComplete: true)
-//                    ]
-//        )
-//    }
-//}
+struct NewMissionView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewMissionView(tasks: DefaultTasks.tasks)
+    }
+}

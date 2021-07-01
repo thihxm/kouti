@@ -14,7 +14,7 @@ struct MainPageView: View {
         VStack(alignment: .leading, spacing: 30) {
             CharacterHeaderAndPicture()
                 .frame(maxWidth: .infinity)
-//            Statistics()
+            Statistics()
             TasksDisplay(userManager: userManager)
         }.padding()
         .background(Background())

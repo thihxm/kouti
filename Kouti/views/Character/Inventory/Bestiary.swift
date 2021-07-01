@@ -14,7 +14,7 @@ struct BestiaryGrid: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Tag("Bestiário", hasBorder: false)
+            Tag("Caixa de Pandora", hasBorder: false, textColor: .white, bgColor: Color("purpleGuide"))
             bestiatyDisplay()
         }.padding()
     }
