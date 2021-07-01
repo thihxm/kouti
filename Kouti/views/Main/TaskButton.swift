@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TaskButton: View {
     @EnvironmentObject var userManager: UserManager
-    @Binding var task: TaskModel
+    @State var task: TaskModel
     
     // TODO: Alguma modificação na aparência quando estiver completo?
     var body: some View {
@@ -28,15 +28,11 @@ struct TaskButton: View {
                         .font(.footnote)
                 }
                 Spacer()
-                Button(action: {userManager.changeCompletenessState(of: task)})
-                {
-                    makeCompleteButton()
-                }.buttonStyle(PlainButtonStyle())
+                makeCompleteButton()
             }.padding()
         }.frame(maxHeight: 68)
         .foregroundColor(.black)
         .animation(.easeInOut)
-        //.padding(.vertical)
     }
     
     @ViewBuilder

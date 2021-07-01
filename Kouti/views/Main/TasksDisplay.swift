@@ -11,31 +11,11 @@ struct TasksDisplay: View {
     @ObservedObject var userManager: UserManager
     @State var selectedCategories: Set<Category> = Set<Category>()
     var selectedTasks: [TaskModel] {
-        userManager.user.tasks.filter{ (selectedCategories.contains($0.tag) || selectedCategories.isEmpty) }.sorted(by: <)
+        userManager.user.tasks.filter { (selectedCategories.contains($0.tag) || selectedCategories.isEmpty) }.sorted(by: <)
     }
-    
-    
-    func buildButton(for task: TaskModel) -> some View {
-        print("Construindo botão")
-        let index = userManager.user.tasks.firstIndex {$0 == task}
-        print("Indice \(String(describing: index))")
-        return ZStack {
-            NavigationLink(destination: EditMissionView(task: selectedTasks[index!], isNewMission: false)) {
-                EmptyView()
-            }.opacity(0.0)
-            .buttonStyle(PlainButtonStyle())
-            
-            TaskButton(task: $userManager.user.tasks[index!])
-            
-        }.listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
-    }
-    
-    func deletar(_ indexSet: IndexSet) {
-        print("Buscando tarefa")
-        let task = selectedTasks[indexSet.first!]
-        print("Tarefa encontrada: \(task.name)")
-        userManager.deleteTask(task: task)
-    }
+    //    var selectedTasks: [TaskModel] {
+    //        userManager.user.tasks.filter { (selectedCategories.contains($0.tag) || selectedCategories.isEmpty) }.sorted(by: <)
+    //    }
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -57,24 +37,22 @@ struct TasksDisplay: View {
             
             VStack(alignment: .leading) {
                 TagSelector($selectedCategories)
-                List {
-                    ForEach(selectedTasks) { task in
-                        let index = userManager.user.tasks.firstIndex {$0 == task}
-                        ZStack {
-                            NavigationLink(destination: EditMissionView(task: userManager.user.tasks[index!], isNewMission: false)) {
-                                EmptyView()
-                            }.opacity(0.0)
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            TaskButton(task: $userManager.user.tasks[index!])
-                            
-                        }.listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
+                ScrollView {
+                    LazyVStack.init(spacing: 15) {
+                        ForEach(selectedTasks) { task in
+                            ZStack {
+                                TaskButton(task: task)
+                                    .addButtonActions(task: task, leadingButtons: [],
+                                                      trailingButton:  [.edit,.delete], onClick: { button in
+                                                        print("clicked: \(button)")
+                                                      })
+                                    .onTapGesture {
+                                        userManager.changeCompletenessState(of: task)
+                                    }
+                            }
+                        }
                     }
-                    .onDelete(perform: { indexSet in
-                        deletar(indexSet)
-                    })
-                }.animation(.easeInOut)
-                .listStyle(PlainListStyle())
+                }.animation(.easeIn)
             }.padding(.top, 25)
             .padding(.bottom, 8)
             .padding(.horizontal, 20)
