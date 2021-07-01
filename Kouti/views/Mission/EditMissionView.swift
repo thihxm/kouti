@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EditMissionView: View {
     @EnvironmentObject var userManager: UserManager
+    @EnvironmentObject var notificationManager: NotificationManager
+    
     var task: TaskModel?
     @State var allowNotification: Bool = false
     @State var missionTitle: String = ""
@@ -19,6 +21,9 @@ struct EditMissionView: View {
     @State var isAnimationActive: Bool = false
     @State var isAnimationDone: Bool = false
     @State var shouldGoToMainScreen: Bool = false
+    
+    @State var showNotificationNotAllowedAlert: Bool = false
+    
     var monster: Int = 0
     
     init(isNewMission: Bool) {
@@ -79,6 +84,10 @@ struct EditMissionView: View {
             userManager.editTask(oldTask: self.task!, newTask: newTask)
         }
         
+        if allowNotification {
+            notificationManager.queueTestNotification()
+        }
+        
         shouldGoToMainScreen = true
     }
 
@@ -129,6 +138,22 @@ struct EditMissionView: View {
                             }
                             .toggleStyle(SwitchToggleStyle(tint: Color("bgSelectedItem")))
                             .padding(.bottom, 30)
+                            .onChange(of: allowNotification, perform: { value in
+                                let authorizationStatus: UNAuthorizationStatus = NotificationManager.getAuthorizationStatus()
+                                
+                                if value && authorizationStatus != .authorized  {
+                                    NotificationManager.requestNotificationAuthorization(completion: { isAuthorized in
+                                        if !isAuthorized {
+                                            allowNotification = false
+                                            showNotificationNotAllowedAlert = true
+                                        }
+                                        
+                                    })
+                                }
+                            })
+                            .alert(isPresented: $showNotificationNotAllowedAlert) {
+                                NotificationManager.alert
+                            }
                             
                             
                             if allowNotification {
@@ -183,6 +208,7 @@ struct NewHabitView_Previews: PreviewProvider {
         EditMissionView(isNewMission: true)
             .previewDisplayName("Vazio")
             .environment(\.locale, .init(identifier: "br"))
+            .environmentObject(NotificationManager())
         EditMissionView(
             task: TaskModel(
             name: "Tomar água",
@@ -195,5 +221,6 @@ struct NewHabitView_Previews: PreviewProvider {
             isNewMission: true)
         .previewDisplayName("Passando Task")
         .environment(\.locale, .init(identifier: "br"))
+            .environmentObject(NotificationManager())
     }
 }

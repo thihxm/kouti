@@ -11,10 +11,13 @@ import SwiftUI
 struct KoutiApp: App {
     
     @StateObject var userManager = UserManager()
+    @StateObject var notificationManager = NotificationManager()
     
     var body: some Scene {
         WindowGroup {
-            KoutiView().environmentObject(userManager)
+            KoutiView()
+                .environmentObject(userManager)
+                .environmentObject(notificationManager)
         }
     }
 }

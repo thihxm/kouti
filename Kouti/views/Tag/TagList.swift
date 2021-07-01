@@ -16,7 +16,7 @@ struct TagList: View {
     }
     
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 11) {
                 ForEach(Category.allCases, id: \.self) { category in
                     TagButton(category, hasBorder: hasBorder, activeCategory: $selectedCategory)

@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Lojinha.png",
+      "filename" : "bgTexture.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Lojinha@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Lojinha@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
