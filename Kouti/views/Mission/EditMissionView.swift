@@ -108,7 +108,7 @@ struct EditMissionView: View {
                     
                     TextField("Escreva sua missão", text: $missionTitle)
                         .font(.callout)
-                        .foregroundColor(Color("bg4"))
+                        .foregroundColor(Color("purpleGuide"))
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
                         .background(Color("light3"))
@@ -136,7 +136,7 @@ struct EditMissionView: View {
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
                             }
-                            .toggleStyle(SwitchToggleStyle(tint: Color("bgSelectedItem")))
+                            .toggleStyle(SwitchToggleStyle(tint: Color("purpleGuide")))
                             .padding(.bottom, 30)
                             .onChange(of: allowNotification, perform: { value in
                                 let authorizationStatus: UNAuthorizationStatus = NotificationManager.getAuthorizationStatus()
@@ -167,6 +167,7 @@ struct EditMissionView: View {
                                     Button(action: addAlert) {
                                         Spacer()
                                         Text("Adicionar alerta")
+                                            .foregroundColor(Color("purpleGuide"))
                                         Spacer()
                                     }
                                     .padding(.bottom, 25)
@@ -190,7 +191,7 @@ struct EditMissionView: View {
             NavigationLink(destination: AppView(), isActive: isNewMission ? $isAnimationDone : $shouldGoToMainScreen) {
                 Text("Salvar")
                     .font(.callout)
-                    .foregroundColor(Color("dark3"))
+                    .foregroundColor(Color("purpleGuide"))
                     .padding(.horizontal, 61)
                     .padding(.vertical, 10)
                     .background(Color.white)
