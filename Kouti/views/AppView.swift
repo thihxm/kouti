@@ -23,5 +23,6 @@ struct AppView: View {
                 .tag(2)
         }.navigationBarTitle("")
         .navigationBarHidden(true)
+        .accentColor(Color("AccentColor"))
     }
 }
