@@ -184,7 +184,7 @@ struct EditMissionView: View {
                 .cornerRadius(18)
                 .padding(.horizontal, 24)
             }
-            .background(Color("bgOptional").edgesIgnoringSafeArea(.all))
+            .background(Background())
             
             // TODO: App crasha se form não estiver completo
             NavigationLink(destination: AppView(), isActive: isNewMission ? $isAnimationDone : $shouldGoToMainScreen) {
