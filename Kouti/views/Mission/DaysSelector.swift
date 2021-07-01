@@ -27,7 +27,7 @@ struct DaysSelector: View {
     
     func getBackgroundColor(_ day: Days) -> Color {
         if selectedDays.contains(day) {
-            return Color("bgSelectedItem")
+            return Color("purpleGuide")
         }
         return Color("grayCheckboxButtons")
     }
