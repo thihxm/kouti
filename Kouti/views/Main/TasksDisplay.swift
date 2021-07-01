@@ -39,15 +39,16 @@ struct TasksDisplay: View {
             ScrollView {
                 LazyVStack.init(spacing: 15) {
                     ForEach(selectedTasks) { task in
-                        Button(action: {userManager.changeCompletenessState(of: task)}, label: {
-                            ZStack {
-                                TaskButton(task: task)
-                                    .addButtonActions(task: task, leadingButtons: [],
-                                                      trailingButton:  [.edit,.delete], onClick: { button in
-                                                        print("clicked: \(button)")
-                                                      })
-                            }
-                        })
+                        ZStack {
+                            TaskButton(task: task)
+                                .addButtonActions(task: task, leadingButtons: [],
+                                                  trailingButton:  [.edit,.delete], onClick: { button in
+                                                    print("clicked: \(button)")
+                                                  })
+                                .onTapGesture {
+                                    userManager.changeCompletenessState(of: task)
+                                }
+                        }
                     }
                 }
             }.animation(.easeIn)
