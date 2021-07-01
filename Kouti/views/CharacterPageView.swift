@@ -15,8 +15,10 @@ struct CharacterPageView: View {
             HStack (alignment: .bottom){
                 Character(equipedItems: $userManager.user.character.inventory.equipedItems,
                           hairColor: $userManager.hairColor, skinColor: $userManager.skinColor)
+                    .scaleEffect(1.5)
+                    .offset(y: 50)
                     .rotation3DEffect(
-                        .degrees(180),
+                        .degrees(0),
                         axis: (x: 0.0, y: 1.0, z: 0.0))
                 Spacer()
                 VStack {
@@ -26,9 +28,10 @@ struct CharacterPageView: View {
             }
             .padding()
             CharacterInfoDisplay()
+                .shadow(color: .black.opacity(0.2), radius: 20, y: 5)
                 .padding(.bottom)
-        }.background(Color("bg1")
-        .edgesIgnoringSafeArea(.all))
+        }
+        .background(Background(rectOffset: CGSize(width: 0, height: 156)))
         .navigationBarTitle("")
         .navigationBarHidden(true)
         .onChange(of: userManager.skinColor, perform: { value in

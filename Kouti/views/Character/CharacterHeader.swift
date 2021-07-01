@@ -20,7 +20,7 @@ struct CharacterHeader: View {
             ExperienceBar(character: $userManager.user.character)
                 .padding(.top)
             StreakDisplay(streakCount: $userManager.user.streak)
-        }
+        }.foregroundColor(.white)
     }
 }
 

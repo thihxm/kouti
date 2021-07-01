@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "fire.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "litFlame.png",
+      "filename" : "fire@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "fire@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

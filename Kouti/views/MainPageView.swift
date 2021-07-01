@@ -17,7 +17,7 @@ struct MainPageView: View {
 //            Statistics()
             TasksDisplay(userManager: userManager)
         }.padding()
-        .background(Color("bg1").edgesIgnoringSafeArea(.all))
+        .background(Background())
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }

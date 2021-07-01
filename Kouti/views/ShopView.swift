@@ -194,7 +194,7 @@ struct ShopView: View {
             openPopUp = false
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Background(color: Color("bgShop"), imageOffset: CGSize(width: -97, height: -68), rectOffset: CGSize(width: 25, height: 331)))
+        .background(Background(color: Color("yellowRedesign"), imageOffset: CGSize(width: -97, height: -68), rectOffset: CGSize(width: 25, height: 331)))
     }
 }
 
