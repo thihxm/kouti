@@ -98,6 +98,10 @@ class UserManager: ObservableObject {
                 self.increaseBaseMoneyUsages = decoded
             }
         }
+        
+        user.character.inventory = InventoryModel.fullInventory()
+        user.character.bestiary = BestiaryModel.fullBestiary()
+        save()
     }
     
     func updateHistory() {

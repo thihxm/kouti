@@ -50,7 +50,7 @@ struct Statistics: View {
                     Text("Trabalho").font(.caption2)
                 }
             }
-        }.frame(maxHeight:145)
+        }.frame(maxHeight:125)
         .padding()
         .background(RoundedRectangle(cornerRadius: 30).foregroundColor(.white))
         .shadow(radius: 10)

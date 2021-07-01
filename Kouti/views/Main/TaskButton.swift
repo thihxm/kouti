@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TaskButton: View {
     @EnvironmentObject var userManager: UserManager
-    @State var task: TaskModel
+    @Binding var task: TaskModel
     
     // TODO: Alguma modificação na aparência quando estiver completo?
     var body: some View {

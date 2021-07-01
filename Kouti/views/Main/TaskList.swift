@@ -43,7 +43,7 @@ struct CellButtonView: View {
                 label: {
                     getView(for: "square.and.pencil", title: "Edit")
                     .background(Color.gray)
-                })
+                }).environmentObject(userManager)
         case .delete:
             getView(for: "trash", title: "Delete")
                 .background(Color.red)

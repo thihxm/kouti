@@ -48,7 +48,7 @@ struct EditMissionView: View {
         self._selectedCategory = State(initialValue: task.tag)
         self._selectedDays = State(initialValue: task.frequency)
         self.isNewMission = isNewMission
-        self.monster = Int(self.task!.monster.name) ?? 1
+        self.monster = Int(self.task!.monster.name)!
     }
     
     func addAlert() {

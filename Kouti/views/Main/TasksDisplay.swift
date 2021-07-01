@@ -40,8 +40,12 @@ struct TasksDisplay: View {
                 ScrollView {
                     LazyVStack.init(spacing: 15) {
                         ForEach(selectedTasks) { task in
+                            let binding = Binding(
+                                get: { task },
+                                set: { $0 }
+                            )
                             ZStack {
-                                TaskButton(task: task)
+                                TaskButton(task: binding)
                                     .addButtonActions(task: task, leadingButtons: [],
                                                       trailingButton:  [.edit,.delete], onClick: { button in
                                                         print("clicked: \(button)")
