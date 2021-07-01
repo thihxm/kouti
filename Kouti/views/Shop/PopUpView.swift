@@ -10,61 +10,65 @@ import SwiftUI
 struct PopUpView: View {
     
     var imagemCompra: String
-    var price : String
+    var price: (Double, String)
     var descricao : String
+    var isFIAT: Bool = false
+    
+    func cleanPrice() -> String {
+        let value = price.0
+        return value.truncatingRemainder(dividingBy: 1) == 0 ?
+            String(format: "%.0f", value) :
+            String(format: "%.2f", locale: Locale(identifier: "pt-br"), value)
+    }
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 25)
-                .fill(Color("bg2"))
-                .frame(width: 295, height: 370)
-                .shadow(color: .black.opacity(0.8), radius: 10.0)
-            VStack {
-                Spacer()
-                    .frame(height:15)
-                Image(imagemCompra)
-                    .frame(width: 120, height: 120, alignment: .center)
-                    .background(Color("bg1"))
-                    .cornerRadius(16)
-                    .padding(.bottom, 10)
-                
+        VStack(spacing: 10) {
+            Image(imagemCompra)
+                .frame(width: 128, height: 112, alignment: .center)
+                .background(Color("bg1"))
+                .cornerRadius(16)
+            
+            VStack(spacing: 5) {
                 HStack {
-                    Image("dracmaIcon")
-                    Text(price)
+                    if !isFIAT {
+                        Image("dracma")
+                    }
+                    Text("\(cleanPrice())\(price.1)")
                         .font(.callout)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                 }
-                
-                
                 Text(descricao)
                     .font(.body)
                     .fontWeight(.regular)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                    .frame(width: 240)
-                
-                ZStack {
-                    Button {
-                    } label: {
-                        Text("Comprar")
-                            .frame(width: 160, height: 40)
-                            .font(.callout)
-                            .foregroundColor(.black)
-                            .background(Color.white)
-                            .cornerRadius(16)
-                            .padding(.top, 15)
-                    }
-                }
-                Spacer()
-                    .frame(height:15)
+                    .fixedSize(horizontal: false, vertical: true)
             }
+            
+            
+            Button(action: {}) {
+                Text("Comprar")
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 35)
+                    .font(.callout)
+                    .foregroundColor(.black)
+                    .background(Color.white)
+                    .cornerRadius(50)
+            }
+            .shadow(color: .black.opacity(0.25), radius: 4, y: 4)
         }
+        .frame(maxWidth: 318)
+        .padding(20)
+        .background(Color("bg2"))
+        .cornerRadius(25)
+        .shadow(color: .black.opacity(0.5), radius: 8)
+        .transition(.asymmetric(insertion: .scale(scale: 1.1).combined(with: .opacity), removal: .opacity).animation(.easeInOut(duration: 0.1)))
     }
 }
 
 struct PopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        PopUpView(imagemCompra: "streak", price: "30", descricao: "Aumente seu ganho semanal em uma moeda pelo resto da eternidade. Ganhava 10? Ganhe 11!")
+        PopUpView(imagemCompra: "plusOne", price: (30, "$"), descricao: "Aumente seu ganho semanal em uma moeda pelo resto da eternidade. Ganhava 10? Ganhe 11!")
     }
 }

@@ -38,20 +38,31 @@ struct ShopView: View {
             }
         }
         
-        func getPrice() -> String {
+        func getPrice() -> (Double, String) {
             switch self {
             case .plusOne:
-                return "30$"
+                return (30, "$")
             case .freeze:
-                return "50$"
+                return (50, "$")
             case .double:
-                return "20$"
+                return (20, "$")
             case .dracmas10:
-                return "1,90 BR$"
+                return (1.90, " BR$")
             case .dracmas100:
-                return "5,90 BR$"
+                return (5.90, " BR$")
             default:
-                return "27,90 BR$"
+                return (27.90, " BR$")
+            }
+        }
+        
+        func isFIAT() -> Bool {
+            switch self {
+            case .dracmas10,
+                 .dracmas100,
+                 .dracmas550:
+                return true
+            default:
+                return false
             }
         }
     }
@@ -59,79 +70,14 @@ struct ShopView: View {
     func buyItem(_ item: Item) -> () -> () {
         return {
             popUpItem = item
-            openPopUp.toggle()
+            withAnimation {
+                openPopUp.toggle()
+            }
         }
     }
-
+    
     var body: some View {
         ZStack {
-            Ellipse()
-                .fill(Color(#colorLiteral(red: 0.4509803922, green: 0.3058823529, blue: 0.1490196078, alpha: 1)).opacity(0.37))
-                .frame(width: 340, height: 150, alignment: .center)
-                .scaleEffect(1.02)
-                .offset(x: 10, y: 215)
-                
-            Image("hermesStore")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .offset(x: -30, y: 0)
-            
-            Group {
-                ZStack {
-                    Button(action: buyItem(.plusOne)) {
-                        Image("plusOne")
-                    }
-                    Image("streakPrice")
-                        .offset(x: 36, y: 9)
-                }
-                .offset(x: -58, y: -11)
-                
-                ZStack {
-                    Button(action: buyItem(.freeze)) {
-                        Image("freeze")
-                    }
-                    Image("freezePrice")
-                        .offset(x: -21, y: 49)
-                }
-                .offset(x: 64.5, y: -61)
-                
-                ZStack {
-                    Button(action: buyItem(.double)) {
-                        Image("doubleCoins")
-                    }
-                    Image("doublePrice")
-                        .offset(x: 1, y: 52)
-                }
-                .offset(x: -49.5, y: 160)
-                
-                ZStack {
-                    Button(action: buyItem(.dracmas10)) {
-                        Image("dracmas10")
-                    }
-                    Image("dracmas10Price")
-                        .offset(x: 17, y: 14.5)
-                }
-                .offset(x: 32, y: 187)
-                
-                ZStack {
-                    Button(action: buyItem(.dracmas100)) {
-                        Image("dracmas100")
-                    }
-                    Image("dracmas100Price")
-                        .offset(x: 23, y: -21)
-                }
-                .offset(x: 42, y: 130)
-                
-                ZStack {
-                    Button(action: buyItem(.dracmas550)) {
-                        Image("dracmas550")
-                    }
-                    Image("dracmas550Price")
-                        .offset(x: 14, y: 20)
-                }
-                .offset(x: 106, y: 165)
-            }
-                
             VStack {
                 VStack {
                     HStack {
@@ -161,11 +107,90 @@ struct ShopView: View {
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
             }
+            .zIndex(10)
 
-            PopUpView(imagemCompra: popUpItem.rawValue, price: popUpItem.getPrice(), descricao: popUpItem.getDescription())
-                .opacity(openPopUp ? 1 : 0)
-                .zIndex(openPopUp ? 100 : 0)
-                .animation(.easeInOut.speed(3))
+            Ellipse()
+                .fill(Color(#colorLiteral(red: 0.4509803922, green: 0.3058823529, blue: 0.1490196078, alpha: 1)).opacity(0.37))
+                .frame(width: 340, height: 150, alignment: .center)
+                .scaleEffect(1.02)
+                .offset(x: 10, y: 215)
+            
+            Image("hermesStore")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .offset(x: -30, y: 0)
+            
+            Group {
+                ZStack {
+                    Button(action: buyItem(.plusOne)) {
+                        Image("plusOne")
+                    }
+                    .disabled(openPopUp)
+                    Image("streakPrice")
+                        .offset(x: 36, y: 9)
+                }
+                .offset(x: -58, y: -11)
+                
+                ZStack {
+                    Button(action: buyItem(.freeze)) {
+                        Image("freeze")
+                    }
+                    .disabled(openPopUp)
+                    Image("freezePrice")
+                        .offset(x: -21, y: 49)
+                }
+                .offset(x: 64.5, y: -61)
+                
+                ZStack {
+                    Button(action: buyItem(.double)) {
+                        Image("doubleCoins")
+                    }
+                    .disabled(openPopUp)
+                    Image("doublePrice")
+                        .offset(x: 1, y: 52)
+                }
+                .offset(x: -49.5, y: 160)
+                
+                ZStack {
+                    Button(action: buyItem(.dracmas10)) {
+                        Image("dracmas10")
+                    }
+                    .disabled(openPopUp)
+                    Image("dracmas10Price")
+                        .offset(x: 17, y: 14.5)
+                }
+                .offset(x: 32, y: 187)
+                
+                ZStack {
+                    Button(action: buyItem(.dracmas100)) {
+                        Image("dracmas100")
+                    }
+                    .disabled(openPopUp)
+                    Image("dracmas100Price")
+                        .offset(x: 23, y: -21)
+                }
+                .offset(x: 42, y: 130)
+                
+                ZStack {
+                    Button(action: buyItem(.dracmas550)) {
+                        Image("dracmas550")
+                    }
+                    .disabled(openPopUp)
+                    Image("dracmas550Price")
+                        .offset(x: 14, y: 20)
+                }
+                .offset(x: 106, y: 165)
+            }
+            
+            
+            
+            if openPopUp {
+                
+                PopUpView(imagemCompra: popUpItem.rawValue, price: popUpItem.getPrice(), descricao: popUpItem.getDescription(), isFIAT: popUpItem.isFIAT())
+                    
+                    //                    .opacity(openPopUp ? 1 : 0)
+                    .zIndex(100)
+            }
         }
         .onTapGesture {
             openPopUp = false
