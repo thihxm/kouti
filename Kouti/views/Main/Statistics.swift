@@ -9,13 +9,6 @@ import SwiftUI
 
 struct Statistics: View {
     @EnvironmentObject var userManager: UserManager
-    
-    var completedTasks: Int {
-        userManager.user.tasks.filter { $0.isComplete }.count
-    }
-    var totalTasks: Int {
-        max(1, userManager.user.tasks.count)
-    }
 
     public var body: some View {
         VStack (alignment: .center) {
@@ -26,28 +19,31 @@ struct Statistics: View {
                 VStack(alignment: .center)
                 {
                     GeometryReader { geometry in
-                        Graph(geometry: geometry, percentage: completedTasks * 100 / totalTasks)
+                        Graph(geometry: geometry)
                     }
                     Text("Progresso").font(.headline)
                     Text("DIÁRIO").font(.caption2)
                 }
+
                 VStack {
                     GeometryReader { geometry in
-                        Graph(geometry: geometry, percentage: completedTasks * 100 / totalTasks, half: false)
+                        Graph(geometry: geometry, category: .health, half: false)
                     }.frame(width: 50, height: 50, alignment: .center)
                     Text("Saúde").font(.caption2)
                 }
+                    
                 VStack {
                     GeometryReader { geometry in
-                        Graph(geometry: geometry, percentage: completedTasks * 100 / totalTasks, half: false)
+                        Graph(geometry: geometry, category: .financial, half: false)
                     }.frame(width: 50, height: 50, alignment: .center)
                     Text("Financeiro").font(.caption2)
                 }
+                   
                 VStack {
                     GeometryReader { geometry in
-                        Graph(geometry: geometry, percentage: completedTasks * 100 / totalTasks, half: false)
+                        Graph(geometry: geometry, category: .learning, half: false)
                     }.frame(width: 50, height: 50, alignment: .center)
-                    Text("Trabalho").font(.caption2)
+                    Text("Aprendizado").font(.caption2)
                 }
             }
         }.frame(maxHeight:125)
