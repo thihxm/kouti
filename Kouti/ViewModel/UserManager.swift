@@ -232,7 +232,7 @@ class UserManager: ObservableObject {
         
         user.tasks[taskIndex!].isComplete.toggle()
         if (user.tasks[taskIndex!].isComplete) {
-            if (!(self.history.history[today]?.contains(task) ?? false)) {
+            if (!(self.history.history[today]?.contains(task) ?? false) && todayTasks.contains(task)) {
                 user.character.receiveExperience(amount: 10 * max(1,user.streak))
                 user.character.money += (10 + increaseBaseMoneyUsages) * (doubleMoneyLastUse.distance(to: today) > 86400 * 7 ? 1 : 2)
                 
