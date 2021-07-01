@@ -22,6 +22,7 @@ struct KoutiView: View {
             NavigationView {
                 AppView()
             }
+            .accentColor(.white)
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                 userManager.updateHistory()
             }

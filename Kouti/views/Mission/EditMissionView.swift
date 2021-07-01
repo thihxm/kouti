@@ -200,7 +200,7 @@ struct EditMissionView: View {
                     .shadow(color: .black.opacity(0.25), radius: 4, x: 0.0, y: 4)
                     .onTapGesture(perform: saveTask)
             }
-        }
+        }.accentColor(Color("AccentColor"))
     }
 }
 
