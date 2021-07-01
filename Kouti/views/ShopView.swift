@@ -187,8 +187,6 @@ struct ShopView: View {
             if openPopUp {
                 
                 PopUpView(imagemCompra: popUpItem.rawValue, price: popUpItem.getPrice(), descricao: popUpItem.getDescription(), isFIAT: popUpItem.isFIAT())
-                    
-                    //                    .opacity(openPopUp ? 1 : 0)
                     .zIndex(100)
             }
         }

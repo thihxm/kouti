@@ -27,6 +27,9 @@ struct EditMissionView: View {
     @State var isAnimationActive: Bool = false
     @State var isAnimationDone: Bool = false
     @State var shouldGoToMainScreen: Bool = false
+    
+    @State var showNotificationNotAllowedAlert: Bool = false
+    
     var monster: Int = 0
     
     init(isNewMission: Bool) {
@@ -137,6 +140,29 @@ struct EditMissionView: View {
                             }
                             .toggleStyle(SwitchToggleStyle(tint: Color("bgSelectedItem")))
                             .padding(.bottom, 30)
+                            .onChange(of: allowNotification, perform: { value in
+                                var authorizationStatus: UNAuthorizationStatus = .notDetermined
+                                UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { permission in
+                                    authorizationStatus = permission.authorizationStatus
+                                })
+                                
+                                if value && authorizationStatus != .authorized  {
+                                    requestNotificationAuthorization(completion: { isAuthorized in
+                                        if !isAuthorized {
+                                            allowNotification = false
+                                            showNotificationNotAllowedAlert = true
+                                        }
+                                        
+                                    })
+                                }
+                            })
+                            .alert(isPresented: $showNotificationNotAllowedAlert) {
+                                Alert(
+                                    title: Text("Erro"),
+                                    message: Text("Não foi possível ativar as notificações! Elas já foram negadas anteriormente."),
+                                    dismissButton: .default(Text("OK"))
+                                )
+                            }
                             
                             
                             if allowNotification {
