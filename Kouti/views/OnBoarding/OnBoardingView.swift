@@ -184,6 +184,9 @@ struct OnBoardingView: View {
     var onStartJourney: () -> Void
     
     func getBackgroundColor() -> Color {
+        if selectedTab == 3 || selectedTab == 4 {
+            return Color("purpleGuide")
+        }
         if selectedTab == 6 {
             return Color("dark1")
         }
@@ -222,6 +225,9 @@ struct OnBoardingView: View {
             PandoraAnimation(animationEnded: $animationEnded, playAnimation: $showAnimation)
                 .opacity(isAnimationEnabled() ? 1 : 0)
                 .zIndex(isAnimationEnabled() ? 100 : 0)
+                .onChange(of: animationEnded) { _ in
+                    selectedTab = 3
+                }
             
             if animationEnded {
                 TabView(selection: $selectedTab) {
