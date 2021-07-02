@@ -184,11 +184,11 @@ struct OnBoardingView: View {
     var onStartJourney: () -> Void
     
     func getBackgroundColor() -> Color {
-        if selectedTab == 3 || selectedTab == 4 {
-            return Color("purpleGuide")
-        }
         if selectedTab == 6 {
             return Color("dark1")
+        }
+        if selectedTab >= 3 {
+            return Color("purpleGuide")
         }
         return Color("bgOptional")
     }

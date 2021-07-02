@@ -22,7 +22,7 @@ struct TaskButton: View {
             HStack (alignment: .center) {
                 VStack {
                     Image("sticker#\(task.monster.name)_filled").resizable().scaledToFit()
-                    Text("\(task.taskStreak)/5").font(.caption2)
+//                    Text("\(task.taskStreak)/5").font(.caption2)
                 }
                 VStack (alignment: .leading, spacing: 5) {
                     Text(task.name)
