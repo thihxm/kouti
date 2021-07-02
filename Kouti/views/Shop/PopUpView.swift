@@ -13,6 +13,7 @@ struct PopUpView: View {
     var price: (Double, String)
     var descricao : String
     var isFIAT: Bool = false
+    var buyAction: () -> Void = {}
     
     func cleanPrice() -> String {
         let value = price.0
@@ -47,7 +48,7 @@ struct PopUpView: View {
             }
             
             
-            Button(action: {}) {
+            Button(action: buyAction) {
                 Text("Comprar")
                     .padding(.vertical, 8)
                     .padding(.horizontal, 35)

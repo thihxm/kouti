@@ -55,6 +55,19 @@ struct ShopView: View {
             }
         }
         
+        func getName() -> String {
+            switch self {
+            case .plusOne:
+                return "pocao1"
+            case .freeze:
+                return "pocao3"
+            case .double:
+                return "pocao2"
+            default:
+                return ""
+            }
+        }
+        
         func isFIAT() -> Bool {
             switch self {
             case .dracmas10,
@@ -67,13 +80,33 @@ struct ShopView: View {
         }
     }
     
-    func buyItem(_ item: Item) -> () -> () {
+    func openPopUpItem(_ item: Item) -> () -> () {
         return {
             popUpItem = item
             withAnimation {
                 openPopUp.toggle()
             }
         }
+    }
+    
+    func buyItem() {
+        let price = Int(popUpItem.getPrice().0)
+        let name = popUpItem.getName()
+        
+        if (userManager.user.character.money < price) {
+            return
+        }
+        userManager.user.character.money -= price
+        
+        switch popUpItem {
+        case .double, .freeze, .plusOne:
+            let index = userManager.user.character.inventory.items.firstIndex { $0.name == name }!
+            userManager.user.character.inventory.items[index].amount += 1
+        default:
+            break
+        }
+        
+        openPopUp = false
     }
     
     var body: some View {
@@ -122,7 +155,7 @@ struct ShopView: View {
             
             Group {
                 ZStack {
-                    Button(action: buyItem(.plusOne)) {
+                    Button(action: openPopUpItem(.plusOne)) {
                         Image("plusOne")
                     }
                     .disabled(openPopUp)
@@ -132,7 +165,7 @@ struct ShopView: View {
                 .offset(x: -58, y: -11)
                 
                 ZStack {
-                    Button(action: buyItem(.freeze)) {
+                    Button(action: openPopUpItem(.freeze)) {
                         Image("freeze")
                     }
                     .disabled(openPopUp)
@@ -142,7 +175,7 @@ struct ShopView: View {
                 .offset(x: 64.5, y: -61)
                 
                 ZStack {
-                    Button(action: buyItem(.double)) {
+                    Button(action: openPopUpItem(.double)) {
                         Image("doubleCoins")
                     }
                     .disabled(openPopUp)
@@ -152,7 +185,7 @@ struct ShopView: View {
                 .offset(x: -49.5, y: 160)
                 
                 ZStack {
-                    Button(action: buyItem(.dracmas10)) {
+                    Button(action: openPopUpItem(.dracmas10)) {
                         Image("dracmas10")
                     }
                     .disabled(openPopUp)
@@ -162,7 +195,7 @@ struct ShopView: View {
                 .offset(x: 32, y: 187)
                 
                 ZStack {
-                    Button(action: buyItem(.dracmas100)) {
+                    Button(action: openPopUpItem(.dracmas100)) {
                         Image("dracmas100")
                     }
                     .disabled(openPopUp)
@@ -172,7 +205,7 @@ struct ShopView: View {
                 .offset(x: 42, y: 130)
                 
                 ZStack {
-                    Button(action: buyItem(.dracmas550)) {
+                    Button(action: openPopUpItem(.dracmas550)) {
                         Image("dracmas550")
                     }
                     .disabled(openPopUp)
@@ -185,8 +218,7 @@ struct ShopView: View {
             
             
             if openPopUp {
-                
-                PopUpView(imagemCompra: popUpItem.rawValue, price: popUpItem.getPrice(), descricao: popUpItem.getDescription(), isFIAT: popUpItem.isFIAT())
+                PopUpView(imagemCompra: popUpItem.rawValue, price: popUpItem.getPrice(), descricao: popUpItem.getDescription(), isFIAT: popUpItem.isFIAT(), buyAction: buyItem)
                     .zIndex(100)
             }
         }

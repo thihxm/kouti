@@ -45,6 +45,8 @@ public struct Graph: View {
     }
     
     private func getPercentage() -> Int {
+        if userManager.todayTasks.filter({ $0.tag == category }).count == 0 { return 100 }
+        
         if let category = self.category {
             return userManager.todayTasks.filter { $0.isComplete && $0.tag == category }.count * 100 / max(1, userManager.todayTasks.filter { $0.tag == category }.count)
         }
