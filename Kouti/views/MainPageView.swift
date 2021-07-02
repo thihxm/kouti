@@ -15,31 +15,7 @@ struct MainPageView: View {
             CharacterHeaderAndPicture()
                 .frame(maxWidth: .infinity)
             Statistics()
-            ZStack(alignment: .topTrailing) {
-                NavigationLink(
-                    destination: NewMissionView(tasks: DefaultTasks.tasks),
-                    label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(.white)
-                            .font(.system(size: 18, weight: .bold, design: .default))
-                            .imageScale(.medium)
-                            .frame(width: 30, height: 30, alignment: .center)
-                            .background(Color("purpleGuide"))
-                            .clipShape(Circle())
-                    }
-                )
-                .shadow(color: .black.opacity(0.25), radius: 3, x: 0.0, y: 1)
-                .offset(x: 5, y: -10)
-                .zIndex(100)
-                TabView {
-                    TasksDisplay(userManager: userManager, main: true)
-                    TasksDisplay(userManager: userManager, main: false)
-                }.tabViewStyle(PageTabViewStyle())
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-                .background(Color.white)
-                .cornerRadius(16)
-                .shadow(radius: 10)
-            }
+            TasksDisplay(userManager: userManager)
         }.padding()
         .background(Background())
         .navigationBarTitle("")
