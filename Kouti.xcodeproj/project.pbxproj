@@ -36,6 +36,7 @@
 		AF99CEC92680FB7800AD151A /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF99CEC82680FB7800AD151A /* TagList.swift */; };
 		AF99CECB2681083900AD151A /* DaysSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF99CECA2681083900AD151A /* DaysSelector.swift */; };
 		AF9DE0A0268CBBBF005E7A96 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DE09F268CBBBF005E7A96 /* Background.swift */; };
+		AFBDDDF9268F8F2400F36EF7 /* CategoryRoulette.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBDDDF8268F8F2400F36EF7 /* CategoryRoulette.swift */; };
 		AFC1866B268E626C005D2D64 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC1866A268E626C005D2D64 /* BackButton.swift */; };
 		AFE704F7268D51210048597E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE704F6268D51210048597E /* NotificationManager.swift */; };
 		AFEAF34D26826DBA0084D34C /* DefaultMissionLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEAF34C26826DBA0084D34C /* DefaultMissionLink.swift */; };
@@ -98,6 +99,7 @@
 		AF99CEC82680FB7800AD151A /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
 		AF99CECA2681083900AD151A /* DaysSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysSelector.swift; sourceTree = "<group>"; };
 		AF9DE09F268CBBBF005E7A96 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		AFBDDDF8268F8F2400F36EF7 /* CategoryRoulette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRoulette.swift; sourceTree = "<group>"; };
 		AFC1866A268E626C005D2D64 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		AFE704F6268D51210048597E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		AFEAF34C26826DBA0084D34C /* DefaultMissionLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMissionLink.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				AF8D166E26826ADD008173B3 /* NewMissionView.swift */,
 				AFEAF34C26826DBA0084D34C /* DefaultMissionLink.swift */,
 				AF2D3C15268122FB00878238 /* EditMissionView.swift */,
+				AFBDDDF8268F8F2400F36EF7 /* CategoryRoulette.swift */,
 			);
 			path = Mission;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				FA79FEAB267D31DD001D865D /* ItemType.swift in Sources */,
 				AF33D270268A781300DD38D3 /* PandoraAnimation.swift in Sources */,
 				AF2D3C1A26817A1700878238 /* NotificationTimePicker.swift in Sources */,
+				AFBDDDF9268F8F2400F36EF7 /* CategoryRoulette.swift in Sources */,
 				AF4E72A3267D1B1500861358 /* KoutiView.swift in Sources */,
 				AF99CECB2681083900AD151A /* DaysSelector.swift in Sources */,
 				FAD6C966268126DA00134A83 /* CharacterInfoDisplay.swift in Sources */,

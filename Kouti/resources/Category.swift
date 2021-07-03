@@ -29,4 +29,19 @@ enum Category: String, Equatable, CaseIterable, Codable {
             return Color("green")
         }
     }
+    
+    func getIconName() -> String {
+        switch self {
+        case .financial:
+            return "dollarsign.square.fill"
+        case .entertainment:
+            return "film.fill"
+        case .learning:
+            return "book.fill"
+        case .work:
+            return "briefcase.fill"
+        default: // Health is set as default
+            return "cross.fill"
+        }
+    }
 }
