@@ -119,7 +119,7 @@ struct CategoryRoulette: View {
                             .onChanged { gesture in
                                 self.dragEnded = false
                                 let currentLocationX = gesture.location.x
-                                let degrees: Angle = .degrees(3)
+                                let degrees: Angle = .degrees(2)
                                 if abs(currentLocationX) > self.lastLocationX {
                                     self.rotation += degrees
                                     self.dragDirection = .right
