@@ -15,6 +15,7 @@ struct TaskModel: Identifiable, Equatable, Codable {
     var notifications: [DateComponents] = []
     var monster: MonsterModel
     var isComplete: Bool = false
+    var taskStreak: Int = 0
     
     func frequencyDescription() -> String {
         if frequency.count == 7 {

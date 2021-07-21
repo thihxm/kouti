@@ -98,10 +98,6 @@ class UserManager: ObservableObject {
                 self.increaseBaseMoneyUsages = decoded
             }
         }
-        
-        user.character.inventory = InventoryModel.fullInventory()
-        user.character.bestiary = BestiaryModel.fullBestiary()
-        save()
     }
     
     func updateHistory() {
@@ -118,6 +114,7 @@ class UserManager: ObservableObject {
             } else {
                 if (freezeStreakLastUse.distance(to: today) > 86400 && user.getMissionsFor(lastLogin).contains(task)) {
                     self.user.streak = 0
+                    self.user.tasks[self.user.tasks.firstIndex(of: task)!].taskStreak = 0
                 }
             }
         }
@@ -238,7 +235,18 @@ class UserManager: ObservableObject {
         if (user.tasks[taskIndex!].isComplete) {
             if (!(self.history.history[today]?.contains(task) ?? false) && todayTasks.contains(task)) {
                 user.character.receiveExperience(amount: 10 * max(1,user.streak))
-                user.character.money += (10 + increaseBaseMoneyUsages) * (doubleMoneyLastUse.distance(to: today) > 86400 * 7 ? 1 : 2)
+                user.tasks[taskIndex!].taskStreak += 1
+                
+                if (user.tasks[taskIndex!].taskStreak == 5) {
+                    user.character.money += (10 + increaseBaseMoneyUsages) * (doubleMoneyLastUse.distance(to: today) > 86400 * 7 ? 1 : 2)
+                    if let _ = user.character.bestiary.monsterCollection[task.monster] {
+                        user.character.bestiary.monsterCollection[task.monster]! += 1
+                    } else {
+                        user.character.bestiary.monsterCollection[task.monster] = 1
+                    }
+                    user.tasks[taskIndex!].monster = MonsterModel(name: String(Int.random(in: 1...4)), titles: [])
+                    user.tasks[taskIndex!].taskStreak = 0
+                }
                 
                 if let _ = self.history.history[today] {
                     self.history.history[today]?.append(task)

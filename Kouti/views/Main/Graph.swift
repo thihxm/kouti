@@ -55,7 +55,7 @@ public struct Graph: View {
     public var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: half ? .bottom : .center)){
             backPath.stroke(Color("graphBack"), style: StrokeStyle(lineWidth: 3, lineCap: .round))
-            frontPath.stroke(Color("graphFront"), style: StrokeStyle(lineWidth: 3, lineCap: .round)).animation(.linear)
+            frontPath.stroke((category != nil) ? category!.getColor() : Color("graphFront"), style: StrokeStyle(lineWidth: 3, lineCap: .round)).animation(.linear)
             Text("\(getPercentage())%").font(.system(size: half ? 18 : 12, weight: .semibold, design: .default))
         }
     }

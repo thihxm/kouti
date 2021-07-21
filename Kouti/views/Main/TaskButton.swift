@@ -20,7 +20,10 @@ struct TaskButton: View {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .foregroundColor(Color("grayBgButtons"))
             HStack (alignment: .center) {
-                Image("sticker#\(task.monster.name)_filled").resizable().scaledToFit()
+                VStack {
+                    Image("sticker#\(task.monster.name)_filled").resizable().scaledToFit()
+//                    Text("\(task.taskStreak)/5").font(.caption2)
+                }
                 VStack (alignment: .leading, spacing: 5) {
                     Text(task.name)
                         .font(.system(size: 17, weight: .bold, design: .default))
