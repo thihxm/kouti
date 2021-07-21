@@ -70,18 +70,24 @@ struct ItemsGrid: View {
                 .padding(10)
                 .opacity(0.5)
         } else if (item.amount == 1) {
-            Image("\(item.name)_icone")
-                .resizable().scaledToFit()
-                .padding(10)
+            Button(action: { userManager.usePowerUp(item) })
+            {
+                Image("\(item.name)_icone")
+                    .resizable().scaledToFit()
+                    .padding(10)
+            }
         } else {
-            Image("\(item.name)_icone")
-                .resizable().scaledToFit()
-                .padding(10)
-                .overlay(Circle()
-                    .foregroundColor(Color("bg3"))
-                            .overlay(Text("\(item.amount)"))
-                            .frame(width: 25, height: 25, alignment: .topTrailing)
-                            .offset(x: 25, y: 25))
+            Button(action: { userManager.usePowerUp(item) })
+            {
+                Image("\(item.name)_icone")
+                    .resizable().scaledToFit()
+                    .padding(10)
+                    .overlay(Circle()
+                        .foregroundColor(Color("bg3"))
+                                .overlay(Text("\(item.amount)"))
+                                .frame(width: 25, height: 25, alignment: .topTrailing)
+                                .offset(x: 25, y: 25))
+            }
         }
     }
 }

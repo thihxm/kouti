@@ -23,6 +23,9 @@ class UserManager: ObservableObject {
     @Published var isFirstLogin: Bool
 
     var lastLogin: Date
+    var doubleMoneyLastUse: Date = Calendar.current.date(from: DateComponents(year: 1))!
+    var freezeStreakLastUse: Date = Calendar.current.date(from: DateComponents(year: 1))!
+    var increaseBaseMoneyUsages: Int = 0
     var today: Date {
         let calendar = Calendar.current
         let today = calendar.dateComponents([.day, .month, .year], from: Date())
@@ -74,9 +77,24 @@ class UserManager: ObservableObject {
                 self.lastLogin = decoded
             }
         }
-        user.character.inventory = InventoryModel.fullInventory()
-        user.character.bestiary = BestiaryModel.fullBestiary()
-        save()
+        
+        if let data = UserDefaults.standard.data(forKey: "doubleMoney") {
+            if let decoded = try? JSONDecoder().decode(Date.self, from: data) {
+                self.doubleMoneyLastUse = decoded
+            }
+        }
+
+        if let data = UserDefaults.standard.data(forKey: "freeze") {
+            if let decoded = try? JSONDecoder().decode(Date.self, from: data) {
+                self.freezeStreakLastUse = decoded
+            }
+        }
+        
+        if let data = UserDefaults.standard.data(forKey: "increaseMoney") {
+            if let decoded = try? JSONDecoder().decode(Int.self, from: data) {
+                self.increaseBaseMoneyUsages = decoded
+            }
+        }
     }
     
     func updateHistory() {
@@ -88,7 +106,9 @@ class UserManager: ObservableObject {
                 if task.isComplete {
                     self.user.tasks[self.user.tasks.firstIndex(of: task)!].isComplete = false
                 } else {
-                    self.user.streak = 0
+                    if (freezeStreakLastUse.distance(to: today) > 86400) {
+                        self.user.streak = 0
+                    }
                 }
             }
         }
@@ -100,7 +120,6 @@ class UserManager: ObservableObject {
 
         lastLogin = today
         save()
-        print(user.tasks)
     }
     
     func save() {
@@ -112,6 +131,15 @@ class UserManager: ObservableObject {
         }
         if let encoded = try? JSONEncoder().encode(lastLogin) {
             UserDefaults.standard.set(encoded, forKey: "lastLogin")
+        }
+        if let encoded = try? JSONEncoder().encode(increaseBaseMoneyUsages) {
+            UserDefaults.standard.set(encoded, forKey: "increaseMoney")
+        }
+        if let encoded = try? JSONEncoder().encode(doubleMoneyLastUse) {
+            UserDefaults.standard.set(encoded, forKey: "doubleMoney")
+        }
+        if let encoded = try? JSONEncoder().encode(freezeStreakLastUse) {
+            UserDefaults.standard.set(encoded, forKey: "freeze")
         }
     }
     
@@ -172,6 +200,23 @@ class UserManager: ObservableObject {
         save()
     }
     
+    func usePowerUp(_ powerUp: ItemModel) {
+        switch powerUp.name {
+        case "pocao1":
+            increaseBaseMoneyUsages += 1
+        case "pocao2":
+            doubleMoneyLastUse = today
+        case "pocao3":
+            freezeStreakLastUse = today
+        default:
+            print("\(powerUp.name) not found" )
+        }
+        
+        let index = user.character.inventory.items.firstIndex(of: powerUp)!
+        user.character.inventory.items[index].amount -= 1
+        save()
+    }
+    
     func unequipItem(_ item: ItemModel) {
         user.character.inventory.equipedItems.remove(at: user.character.inventory.equipedItems.firstIndex(of: item)!)
         save()
@@ -184,6 +229,7 @@ class UserManager: ObservableObject {
         if (user.tasks[taskIndex!].isComplete) {
             if (!(self.history.history[today]?.contains(task) ?? false)) {
                 user.character.receiveExperience(amount: 10 * max(1,user.streak))
+                user.character.money += (10 + increaseBaseMoneyUsages) * (doubleMoneyLastUse.distance(to: today) > 86400 * 7 ? 1 : 2)
                 
                 if let _ = self.history.history[today] {
                     self.history.history[today]?.append(task)
