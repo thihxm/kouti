@@ -230,6 +230,7 @@ class UserManager: ObservableObject {
     
     func changeCompletenessState(of task: TaskModel) {
         let taskIndex = user.tasks.firstIndex(of: task)
+        let key = user.character.bestiary.monsterCollection.keys.filter { $0.name == task.monster.name }.first!
         
         user.tasks[taskIndex!].isComplete.toggle()
         if (user.tasks[taskIndex!].isComplete) {
@@ -239,11 +240,7 @@ class UserManager: ObservableObject {
                 
                 if (user.tasks[taskIndex!].taskStreak == 5) {
                     user.character.money += (10 + increaseBaseMoneyUsages) * (doubleMoneyLastUse.distance(to: today) > 86400 * 7 ? 1 : 2)
-                    if let _ = user.character.bestiary.monsterCollection[task.monster] {
-                        user.character.bestiary.monsterCollection[task.monster]! += 1
-                    } else {
-                        user.character.bestiary.monsterCollection[task.monster] = 1
-                    }
+                    user.character.bestiary.monsterCollection[key]! += 1
                     user.tasks[taskIndex!].monster = MonsterModel(name: String(Int.random(in: 1...4)), titles: [])
                     user.tasks[taskIndex!].taskStreak = 0
                 }
