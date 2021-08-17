@@ -38,7 +38,7 @@ class UserManager: ObservableObject {
     required init() {
         let inventory = InventoryModel.halfInventory()
         let bestiary = BestiaryModel.halfInventory()
-        let character = CharacterModel(name: "Camaradinha", level: 1, experience: 0, money: 0, inventory: inventory, bestiary: bestiary)
+        let character = CharacterModel(name: "Camaradinha", level: 1, experience: 0, money: 30, inventory: inventory, bestiary: bestiary)
         self.user = UserModel(character: character, tasks: [], streak: 0)
         self.history = HistoryModel(history: [:])
         self.skinColor = .white
