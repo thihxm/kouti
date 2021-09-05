@@ -85,10 +85,7 @@ struct NewMissionView: View {
             .navigationBarHidden(true)
             
             // Não é o ideal, mas não consegui fazer com que as bordas do circulo fossem cortadas sem usar o GeometryReader
-            GeometryReader { geometry in
-                CategoryRoulette(selectedCategory: $selectedCategory)
-                    .offset(x: -22.5)
-            }
+            CategoryRoulette(selectedCategory: $selectedCategory)
         }
     }
 }
